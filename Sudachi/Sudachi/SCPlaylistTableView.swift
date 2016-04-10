@@ -1,0 +1,101 @@
+//
+//  SCPlaylistTableView.swift
+//  Sudachi
+//
+//  Created by Seth on 2016-04-02.
+//  Copyright © 2016 DrabWeb. All rights reserved.
+//
+
+import Cocoa
+
+class SCPlaylistTableView: NSTableView {
+
+    override func drawRect(dirtyRect: NSRect) {
+        super.drawRect(dirtyRect)
+
+        // Drawing code here.
+    }
+    
+    // Override the alternate row colors
+    private func alternateBackgroundColor() -> NSColor? {
+        self.superview?.superview?.superview?.layer?.backgroundColor = SCThemingEngine().defaultEngine().playlistSecondAlternatingColor.CGColor;
+        return SCThemingEngine().defaultEngine().playlistFirstAlternatingColor;
+    }
+    
+    internal override func drawBackgroundInClipRect(clipRect: NSRect) {
+        // http://stackoverflow.com/questions/3973841/change-nstableview-alternate-row-colors
+        // Refactored
+        if(alternateBackgroundColor() == nil) {
+            // If we didn't set the alternate color, fall back to the default behaviour
+            super.drawBackgroundInClipRect(clipRect);
+        }
+        else {
+            // Fill in the background color
+            self.backgroundColor.set();
+            NSRectFill(clipRect);
+            
+            // Check if we should be drawing alternating colored rows
+            if(usesAlternatingRowBackgroundColors) {
+                // Set the alternating background color
+                alternateBackgroundColor()!.set();
+                
+                // Go through all of the intersected rows and draw their rects
+                var checkRect = bounds;
+                checkRect.origin.y = clipRect.origin.y;
+                checkRect.size.height = clipRect.size.height;
+                let rowsToDraw = rowsInRect(checkRect);
+                var curRow = rowsToDraw.location;
+                repeat {
+                    if curRow % 2 != 0 {
+                        // This is an alternate row
+                        var rowRect = rectOfRow(curRow);
+                        rowRect.origin.x = clipRect.origin.x;
+                        rowRect.size.width = clipRect.size.width;
+                        NSRectFill(rowRect);
+                    }
+                    
+                    curRow++;
+                } while curRow < rowsToDraw.location + rowsToDraw.length;
+                
+                // Figure out the height of "off the table" rows
+                var thisRowHeight = rowHeight;
+                if gridStyleMask.contains(NSTableViewGridLineStyle.SolidHorizontalGridLineMask)
+                    || gridStyleMask.contains(NSTableViewGridLineStyle.DashedHorizontalGridLineMask) {
+                        thisRowHeight += 2.0; // Compensate for a grid
+                }
+                
+                // Draw fake rows below the table's last row
+                var virtualRowOrigin = 0.0 as CGFloat;
+                var virtualRowNumber = numberOfRows;
+                if(numberOfRows > 0) {
+                    let finalRect = rectOfRow(numberOfRows-1);
+                    virtualRowOrigin = finalRect.origin.y + finalRect.size.height;
+                }
+                repeat {
+                    if virtualRowNumber % 2 != 0 {
+                        // This is an alternate row
+                        let virtualRowRect = NSRect(x: clipRect.origin.x, y: virtualRowOrigin, width: clipRect.size.width, height: thisRowHeight);
+                        NSRectFill(virtualRowRect);
+                    }
+                    
+                    virtualRowNumber++;
+                    virtualRowOrigin += thisRowHeight;
+                } while virtualRowOrigin < clipRect.origin.y + clipRect.size.height;
+                
+                // Draw fake rows above the table's first row
+                virtualRowOrigin = -1 * thisRowHeight;
+                virtualRowNumber = -1;
+                repeat {
+                    if(abs(virtualRowNumber) % 2 != 0) {
+                        // This is an alternate row
+                        let virtualRowRect = NSRect(x: clipRect.origin.x, y: virtualRowOrigin, width: clipRect.size.width, height: thisRowHeight);
+                        NSRectFill(virtualRowRect);
+                    }
+                    
+                    virtualRowNumber--;
+                    virtualRowOrigin -= thisRowHeight;
+                } while virtualRowOrigin + thisRowHeight > clipRect.origin.y;
+            }
+        }
+    }
+}

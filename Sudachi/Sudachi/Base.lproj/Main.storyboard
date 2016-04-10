@@ -1,0 +1,728 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9531"/>
+    </dependencies>
+    <scenes>
+        <!--Application-->
+        <scene sceneID="JPo-4y-FX3">
+            <objects>
+                <application id="hnw-xV-0zn" sceneMemberID="viewController">
+                    <menu key="mainMenu" title="Main Menu" systemMenu="main" id="AYu-sK-qS6">
+                        <items>
+                            <menuItem title="Sudachi" id="1Xt-HY-uBw">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="Sudachi" systemMenu="apple" id="uQy-DD-JDr">
+                                    <items>
+                                        <menuItem title="About Sudachi" id="5kV-Vb-QxS">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="orderFrontStandardAboutPanel:" target="Ady-hI-5gd" id="Exp-CZ-Vem"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="VOq-y0-SEH"/>
+                                        <menuItem title="Preferences…" keyEquivalent="," id="BOF-NM-1cW"/>
+                                        <menuItem isSeparatorItem="YES" id="wFC-TO-SCJ"/>
+                                        <menuItem title="Services" id="NMo-om-nkz">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <menu key="submenu" title="Services" systemMenu="services" id="hz9-B4-Xy5"/>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="4je-JR-u6R"/>
+                                        <menuItem title="Hide Sudachi" keyEquivalent="h" id="Olw-nP-bQN">
+                                            <connections>
+                                                <action selector="hide:" target="Ady-hI-5gd" id="PnN-Uc-m68"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Hide Others" keyEquivalent="h" id="Vdr-fp-XzO">
+                                            <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
+                                            <connections>
+                                                <action selector="hideOtherApplications:" target="Ady-hI-5gd" id="VT4-aY-XCT"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Show All" id="Kd2-mp-pUS">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="unhideAllApplications:" target="Ady-hI-5gd" id="Dhg-Le-xox"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="kCx-OE-vgT"/>
+                                        <menuItem title="Quit Sudachi" keyEquivalent="q" id="4sb-4s-VLi">
+                                            <connections>
+                                                <action selector="terminate:" target="Ady-hI-5gd" id="Te7-pn-YzF"/>
+                                            </connections>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </menuItem>
+                            <menuItem title="File" id="dMs-cI-mzQ">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="File" id="bib-Uj-vzu">
+                                    <items>
+                                        <menuItem title="Close" keyEquivalent="w" id="DVo-aG-piG">
+                                            <connections>
+                                                <action selector="performClose:" target="Ady-hI-5gd" id="HmO-Ls-i7Q"/>
+                                            </connections>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </menuItem>
+                            <menuItem title="Edit" id="5QF-Oa-p0T">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="Edit" id="W48-6f-4Dl">
+                                    <items>
+                                        <menuItem title="Undo" keyEquivalent="z" id="dRJ-4n-Yzg">
+                                            <connections>
+                                                <action selector="undo:" target="Ady-hI-5gd" id="M6e-cu-g7V"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Redo" keyEquivalent="Z" id="6dh-zS-Vam">
+                                            <connections>
+                                                <action selector="redo:" target="Ady-hI-5gd" id="oIA-Rs-6OD"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="WRV-NI-Exz"/>
+                                        <menuItem title="Cut" keyEquivalent="x" id="uRl-iY-unG">
+                                            <connections>
+                                                <action selector="cut:" target="Ady-hI-5gd" id="YJe-68-I9s"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Copy" keyEquivalent="c" id="x3v-GG-iWU">
+                                            <connections>
+                                                <action selector="copy:" target="Ady-hI-5gd" id="G1f-GL-Joy"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Paste" keyEquivalent="v" id="gVA-U4-sdL">
+                                            <connections>
+                                                <action selector="paste:" target="Ady-hI-5gd" id="UvS-8e-Qdg"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Select All" keyEquivalent="a" id="Ruw-6m-B2m">
+                                            <connections>
+                                                <action selector="selectAll:" target="Ady-hI-5gd" id="VNm-Mi-diN"/>
+                                            </connections>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </menuItem>
+                            <menuItem title="Browser" id="2su-9h-rhq" userLabel="Browser">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="Browser" id="mP9-XX-buI">
+                                    <items>
+                                        <menuItem title="Open Selected Item(s)" keyEquivalent="o" id="L23-YX-Ueq"/>
+                                        <menuItem title="Enclosing Folder" keyEquivalent="" id="XbP-BF-V03"/>
+                                        <menuItem isSeparatorItem="YES" id="Edh-KG-9Vc"/>
+                                        <menuItem title="Select Search Field" keyEquivalent="f" id="Esl-sH-SIM"/>
+                                        <menuItem title="Select Music Browser" keyEquivalent="B" id="ijE-Ys-YYE"/>
+                                    </items>
+                                </menu>
+                            </menuItem>
+                            <menuItem title="Playlist" id="gcj-YW-5ku" userLabel="Playlist">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="Playlist" id="abN-QL-UCC">
+                                    <items>
+                                        <menuItem title="Clear Playlist" keyEquivalent="C" id="mE6-AP-gJx"/>
+                                        <menuItem title="Remove Selected Item" id="aqr-Qy-W1y">
+                                            <string key="keyEquivalent" base64-UTF8="YES">
+CA
+</string>
+                                        </menuItem>
+                                        <menuItem title="Play Selected Item" id="d82-ZK-LKo" userLabel="Play Selected Item">
+                                            <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="Bqw-8m-bhJ"/>
+                                        <menuItem title="Select Playlist" keyEquivalent="P" id="a99-Ev-73l"/>
+                                    </items>
+                                </menu>
+                            </menuItem>
+                            <menuItem title="View" id="H8h-7b-M4v">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="View" id="HyV-fh-RgO">
+                                    <items>
+                                        <menuItem title="Show Toolbar" keyEquivalent="t" id="snW-S8-Cw5">
+                                            <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
+                                            <connections>
+                                                <action selector="toggleToolbarShown:" target="Ady-hI-5gd" id="BXY-wc-z0C"/>
+                                            </connections>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </menuItem>
+                            <menuItem title="Window" id="aUF-d1-5bR">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="Window" systemMenu="window" id="Td7-aD-5lo">
+                                    <items>
+                                        <menuItem title="Minimize" keyEquivalent="m" id="OY7-WF-poV">
+                                            <connections>
+                                                <action selector="performMiniaturize:" target="Ady-hI-5gd" id="VwT-WD-YPe"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Zoom" id="R4o-n2-Eq4">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="performZoom:" target="Ady-hI-5gd" id="DIl-cC-cCs"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="eu3-7i-yIM"/>
+                                        <menuItem title="Bring All to Front" id="LE2-aR-0XJ">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="arrangeInFront:" target="Ady-hI-5gd" id="DRN-fu-gQh"/>
+                                            </connections>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </menuItem>
+                            <menuItem title="Help" id="wpr-3q-Mcd">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="Help" systemMenu="help" id="F2S-fz-NVQ">
+                                    <items>
+                                        <menuItem title="Sudachi Help" keyEquivalent="?" id="FKE-Sm-Kum">
+                                            <connections>
+                                                <action selector="showHelp:" target="Ady-hI-5gd" id="y7X-2Q-9no"/>
+                                            </connections>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </menuItem>
+                        </items>
+                    </menu>
+                    <connections>
+                        <outlet property="delegate" destination="Voe-Tx-rLC" id="PrD-fu-P6m"/>
+                    </connections>
+                </application>
+                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="Sudachi" customModuleProvider="target">
+                    <connections>
+                        <outlet property="menuItemClearPlaylist" destination="mE6-AP-gJx" id="yAk-Ry-IgO"/>
+                        <outlet property="menuItemEnclosingFolder" destination="XbP-BF-V03" id="w4H-nx-dOS"/>
+                        <outlet property="menuItemOpenSelectedItem" destination="L23-YX-Ueq" id="xOq-HM-it4"/>
+                        <outlet property="menuItemPlaySelectedPlaylistItem" destination="d82-ZK-LKo" id="Xpg-FD-t5M"/>
+                        <outlet property="menuItemRemoveSelectedPlaylistItem" destination="aqr-Qy-W1y" id="pfF-ua-LCY"/>
+                        <outlet property="menuItemSelectMusicBrowser" destination="ijE-Ys-YYE" id="1hj-Nh-e7y"/>
+                        <outlet property="menuItemSelectPlayList" destination="a99-Ev-73l" id="aoU-Nr-pyE"/>
+                        <outlet property="menuItemSelectSearchField" destination="Esl-sH-SIM" id="aFe-JP-RS5"/>
+                    </connections>
+                </customObject>
+                <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="86" y="-342"/>
+        </scene>
+        <!--Window Controller-->
+        <scene sceneID="R2V-B0-nI4">
+            <objects>
+                <windowController id="B8D-0N-5wS" sceneMemberID="viewController">
+                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" unifiedTitleAndToolbar="YES"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="196" y="240" width="854" height="480"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
+                        <toolbar key="toolbar" implicitIdentifier="D17E8311-9E99-49C6-9A72-3E7B04E50E1A" autosavesConfiguration="NO" allowsUserCustomization="NO" showsBaselineSeparator="NO" displayMode="iconOnly" sizeMode="small" id="EZ2-SP-8zq">
+                            <allowedToolbarItems>
+                                <toolbarItem implicitItemIdentifier="NSToolbarShowColorsItem" id="VCz-aS-AQr"/>
+                                <toolbarItem implicitItemIdentifier="NSToolbarShowFontsItem" id="xRw-Kt-WiE"/>
+                                <toolbarItem implicitItemIdentifier="NSToolbarPrintItem" id="Ngw-dk-kWU"/>
+                                <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="GLd-nr-78K"/>
+                                <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="TOO-kF-NUK"/>
+                            </allowedToolbarItems>
+                            <defaultToolbarItems/>
+                        </toolbar>
+                    </window>
+                    <connections>
+                        <segue destination="XfG-lQ-9wD" kind="relationship" relationship="window.shadowedContentViewController" id="cq2-FE-JQM"/>
+                    </connections>
+                </windowController>
+                <customObject id="Oky-zY-oP4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="86" y="47"/>
+        </scene>
+        <!--Music Browser Collection View Item-->
+        <scene sceneID="Qak-2R-Ys9">
+            <objects>
+                <collectionViewItem storyboardIdentifier="musicBrowserCollectionViewItem" id="dE2-Zq-h48" userLabel="Music Browser Collection View Item" customClass="SCMusicBrowserCollectionViewItem" customModule="Sudachi" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="muJ-GY-xv5">
+                        <rect key="frame" x="0.0" y="0.0" width="250" height="250"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="cjx-MO-cr2" userLabel="Selection Box" customClass="SCMusicBrowserCollectionViewSelectionBox" customModule="Sudachi" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="250" height="250"/>
+                                <connections>
+                                    <binding destination="dE2-Zq-h48" name="hidden" keyPath="selected" id="qbK-Cw-wHt">
+                                        <dictionary key="options">
+                                            <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                        </dictionary>
+                                    </binding>
+                                </connections>
+                            </customView>
+                            <customView wantsLayer="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kes-0s-1w7" userLabel="Content Container">
+                                <rect key="frame" x="0.0" y="0.0" width="250" height="250"/>
+                                <subviews>
+                                    <imageView wantsLayer="YES" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="LQy-ai-SRd" userLabel="Image View" customClass="SCRasterizedImageView" customModule="Sudachi" customModuleProvider="target">
+                                        <rect key="frame" x="10" y="37" width="230" height="203"/>
+                                        <shadow key="shadow" blurRadius="10">
+                                            <size key="offset" width="0.0" height="-8"/>
+                                            <color key="color" white="0.0" alpha="0.5" colorSpace="calibratedWhite"/>
+                                        </shadow>
+                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="Example Cover" id="oOX-3K-6Wo"/>
+                                        <connections>
+                                            <binding destination="dE2-Zq-h48" name="value" keyPath="representedObject.displayImage" id="jue-x5-bDu"/>
+                                        </connections>
+                                    </imageView>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="PPW-aL-4wS" userLabel="Label">
+                                        <rect key="frame" x="8" y="10" width="234" height="17"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="17" id="Xdh-89-FP4"/>
+                                        </constraints>
+                                        <textFieldCell key="cell" lineBreakMode="truncatingMiddle" sendsActionOnEndEditing="YES" alignment="center" title="Song/Artist/Folder" id="SQv-eS-aOV">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                        <connections>
+                                            <binding destination="dE2-Zq-h48" name="value" keyPath="representedObject.displayTitle" id="G5T-Jw-WhJ"/>
+                                        </connections>
+                                    </textField>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="LQy-ai-SRd" firstAttribute="top" secondItem="kes-0s-1w7" secondAttribute="top" constant="10" id="0T3-o4-4qI"/>
+                                    <constraint firstAttribute="trailing" secondItem="LQy-ai-SRd" secondAttribute="trailing" constant="10" id="3d9-eT-LHe"/>
+                                    <constraint firstAttribute="bottom" secondItem="PPW-aL-4wS" secondAttribute="bottom" constant="10" id="6Gv-D8-ctD"/>
+                                    <constraint firstItem="PPW-aL-4wS" firstAttribute="top" secondItem="LQy-ai-SRd" secondAttribute="bottom" constant="10" id="DZr-rg-A4R"/>
+                                    <constraint firstItem="LQy-ai-SRd" firstAttribute="leading" secondItem="kes-0s-1w7" secondAttribute="leading" constant="10" id="Mna-3p-iip"/>
+                                    <constraint firstItem="PPW-aL-4wS" firstAttribute="leading" secondItem="kes-0s-1w7" secondAttribute="leading" constant="10" id="Ron-hA-zoa"/>
+                                    <constraint firstAttribute="trailing" secondItem="PPW-aL-4wS" secondAttribute="trailing" constant="10" id="r3e-vf-NCe"/>
+                                    <constraint firstItem="PPW-aL-4wS" firstAttribute="top" secondItem="LQy-ai-SRd" secondAttribute="bottom" constant="10" id="woi-kA-9IT"/>
+                                </constraints>
+                            </customView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="cjx-MO-cr2" secondAttribute="bottom" id="0Br-2b-2Hc"/>
+                            <constraint firstItem="cjx-MO-cr2" firstAttribute="leading" secondItem="muJ-GY-xv5" secondAttribute="leading" id="5E1-wE-Vcn"/>
+                            <constraint firstAttribute="trailing" secondItem="cjx-MO-cr2" secondAttribute="trailing" id="Hdn-aS-d2j"/>
+                            <constraint firstAttribute="trailing" secondItem="kes-0s-1w7" secondAttribute="trailing" id="Ql2-Cv-7vb"/>
+                            <constraint firstItem="kes-0s-1w7" firstAttribute="top" secondItem="muJ-GY-xv5" secondAttribute="top" id="Vvg-CF-Ier"/>
+                            <constraint firstItem="kes-0s-1w7" firstAttribute="leading" secondItem="muJ-GY-xv5" secondAttribute="leading" id="w2d-5h-OpH"/>
+                            <constraint firstAttribute="bottom" secondItem="kes-0s-1w7" secondAttribute="bottom" id="xTP-vu-Twb"/>
+                            <constraint firstItem="cjx-MO-cr2" firstAttribute="top" secondItem="muJ-GY-xv5" secondAttribute="top" id="z1I-5t-bAc"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="LQy-ai-SRd" id="sWh-Iw-t4o"/>
+                        <outlet property="textField" destination="PPW-aL-4wS" id="xt4-mp-EoY"/>
+                    </connections>
+                </collectionViewItem>
+                <customObject id="2RD-RR-C8h" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <userDefaultsController representsSharedInstance="YES" id="tmB-Xk-BHU"/>
+            </objects>
+            <point key="canvasLocation" x="-532" y="734"/>
+        </scene>
+        <!--Main View Controller-->
+        <scene sceneID="hIz-AP-VOD">
+            <objects>
+                <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="Sudachi" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="m2S-Jp-Qdl">
+                        <rect key="frame" x="0.0" y="0.0" width="854" height="480"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <splitView wantsLayer="YES" dividerStyle="thin" vertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xYC-HK-D6L" userLabel="Master Split View" customClass="SCInvisibleDividerSplitView" customModule="Sudachi" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="854" height="480"/>
+                                <subviews>
+                                    <customView id="6rP-7d-YGz">
+                                        <rect key="frame" x="0.0" y="0.0" width="556" height="480"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <subviews>
+                                            <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="RJZ-m2-ktm" customClass="SCSearchTextField" customModule="Sudachi" customModuleProvider="target">
+                                                <rect key="frame" x="10" y="451" width="536" height="19"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="19" id="nKB-39-muM"/>
+                                                </constraints>
+                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" state="on" focusRingType="none" alignment="center" placeholderString="Search" drawsBackground="YES" id="Jgq-rm-KYD">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                                <connections>
+                                                    <action selector="searchFieldInteracted:" target="2Jc-q4-rLf" id="ZwB-Bs-4sZ"/>
+                                                </connections>
+                                            </textField>
+                                            <scrollView horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="noW-mk-K5m" userLabel="Scroll View - Browser Collection View">
+                                                <rect key="frame" x="10" y="0.0" width="536" height="441"/>
+                                                <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="zSf-xP-wHA">
+                                                    <rect key="frame" x="0.0" y="0.0" width="536" height="441"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                    <subviews>
+                                                        <collectionView selectable="YES" allowsMultipleSelection="YES" id="u7x-VR-s5I" userLabel="Browser Collection View">
+                                                            <rect key="frame" x="0.0" y="0.0" width="536" height="441"/>
+                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                            <color key="primaryBackgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>
+                                                            <connections>
+                                                                <binding destination="MKI-wj-Ntl" name="content" keyPath="arrangedObjects" id="5LO-DP-PIz"/>
+                                                            </connections>
+                                                        </collectionView>
+                                                    </subviews>
+                                                </clipView>
+                                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="wnd-Ql-01P">
+                                                    <rect key="frame" x="1" y="144" width="233" height="15"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </scroller>
+                                                <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="YH1-MS-oXc">
+                                                    <rect key="frame" x="520" y="0.0" width="16" height="430"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </scroller>
+                                            </scrollView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="noW-mk-K5m" firstAttribute="top" secondItem="RJZ-m2-ktm" secondAttribute="bottom" constant="10" id="2A2-le-saa"/>
+                                            <constraint firstItem="RJZ-m2-ktm" firstAttribute="top" secondItem="6rP-7d-YGz" secondAttribute="top" constant="10" id="LkP-eg-Y6w"/>
+                                            <constraint firstAttribute="trailing" secondItem="RJZ-m2-ktm" secondAttribute="trailing" constant="10" id="Yy7-oz-tkL"/>
+                                            <constraint firstItem="RJZ-m2-ktm" firstAttribute="leading" secondItem="6rP-7d-YGz" secondAttribute="leading" constant="10" id="ic3-nn-s4o"/>
+                                            <constraint firstAttribute="trailing" secondItem="noW-mk-K5m" secondAttribute="trailing" constant="10" id="kWr-Xh-kLD"/>
+                                            <constraint firstAttribute="bottom" secondItem="noW-mk-K5m" secondAttribute="bottom" id="vCE-Ta-Tau"/>
+                                            <constraint firstItem="noW-mk-K5m" firstAttribute="leading" secondItem="6rP-7d-YGz" secondAttribute="leading" constant="10" id="yhu-5I-v2L"/>
+                                        </constraints>
+                                    </customView>
+                                    <customView id="jAP-6H-eUt" userLabel="Playlist and Now Playing View">
+                                        <rect key="frame" x="557" y="0.0" width="297" height="480"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <subviews>
+                                            <splitView dividerStyle="paneSplitter" translatesAutoresizingMaskIntoConstraints="NO" id="i5B-1h-ZQL" userLabel="Right Panel Split View" customClass="SCInvisibleDividerSplitView" customModule="Sudachi" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="297" height="480"/>
+                                                <subviews>
+                                                    <customView wantsLayer="YES" id="X1B-Wo-1Se" userLabel="Now Playing Container">
+                                                        <rect key="frame" x="0.0" y="0.0" width="297" height="225"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <subviews>
+                                                            <imageView horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="4ap-5g-7nq" userLabel="Now Playing Cover Image View">
+                                                                <rect key="frame" x="0.0" y="0.0" width="297" height="225"/>
+                                                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageAlignment="top" imageScaling="proportionallyUpOrDown" id="Bw9-DZ-bXB"/>
+                                                            </imageView>
+                                                            <customView wantsLayer="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dKc-Jt-XyJ" userLabel="Cover Overlay Container">
+                                                                <rect key="frame" x="0.0" y="0.0" width="297" height="225"/>
+                                                                <subviews>
+                                                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="Xp8-eD-P5q" userLabel="Cover Overlay" customClass="NSBox">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="297" height="128"/>
+                                                                        <subviews>
+                                                                            <textField horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="K05-bZ-YkK">
+                                                                                <rect key="frame" x="18" y="89" width="261" height="19"/>
+                                                                                <textFieldCell key="cell" lineBreakMode="truncatingMiddle" sendsActionOnEndEditing="YES" alignment="center" title="Song Title 曲名" id="UcZ-9I-dI4">
+                                                                                    <font key="font" metaFont="systemSemibold" size="15"/>
+                                                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                                                </textFieldCell>
+                                                                            </textField>
+                                                                            <textField horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="Itj-2D-lJc" userLabel="Now Playing Artist Label">
+                                                                                <rect key="frame" x="18" y="64" width="261" height="17"/>
+                                                                                <constraints>
+                                                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="17" id="3PX-nN-LhB"/>
+                                                                                    <constraint firstAttribute="height" constant="17" id="fyc-es-ez9"/>
+                                                                                </constraints>
+                                                                                <textFieldCell key="cell" lineBreakMode="truncatingMiddle" sendsActionOnEndEditing="YES" alignment="center" title="by Artist アーティスト" id="vbr-xM-YWN">
+                                                                                    <font key="font" metaFont="system"/>
+                                                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                                                </textFieldCell>
+                                                                            </textField>
+                                                                            <button focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="y4c-9d-9mx" userLabel="Previous Button">
+                                                                                <rect key="frame" x="89" y="27" width="25" height="25"/>
+                                                                                <constraints>
+                                                                                    <constraint firstAttribute="width" constant="25" id="fkL-yq-z7k"/>
+                                                                                    <constraint firstAttribute="height" constant="25" id="oHD-Ak-E4Q"/>
+                                                                                </constraints>
+                                                                                <buttonCell key="cell" type="squareTextured" bezelStyle="texturedSquare" image="Skip Previous" imagePosition="only" alignment="center" focusRingType="none" imageScaling="proportionallyUpOrDown" inset="2" id="WVE-Oi-Hnp">
+                                                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                                                    <font key="font" metaFont="system"/>
+                                                                                </buttonCell>
+                                                                                <connections>
+                                                                                    <action selector="nowPlayingPreviousButtonInteracted:" target="WsD-6C-jNV" id="vGJ-o6-wRi"/>
+                                                                                </connections>
+                                                                            </button>
+                                                                            <button focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ihw-wE-33b" userLabel="Pause/Play Button">
+                                                                                <rect key="frame" x="134" y="24" width="30" height="30"/>
+                                                                                <constraints>
+                                                                                    <constraint firstAttribute="width" constant="30" id="cUS-Ld-kUu"/>
+                                                                                    <constraint firstAttribute="height" constant="30" id="sKd-0O-Ixl"/>
+                                                                                </constraints>
+                                                                                <buttonCell key="cell" type="squareTextured" bezelStyle="texturedSquare" image="Play" imagePosition="only" alignment="center" focusRingType="none" imageScaling="proportionallyUpOrDown" inset="2" id="vy5-HM-Smd">
+                                                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                                                    <font key="font" metaFont="system"/>
+                                                                                </buttonCell>
+                                                                                <connections>
+                                                                                    <action selector="nowPlayingPausePlayButtonInteracted:" target="WsD-6C-jNV" id="IUV-gc-dnG"/>
+                                                                                </connections>
+                                                                            </button>
+                                                                            <button focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="RhI-Ct-O2O" userLabel="Next Button">
+                                                                                <rect key="frame" x="184" y="27" width="25" height="25"/>
+                                                                                <constraints>
+                                                                                    <constraint firstAttribute="height" constant="25" id="bTO-pX-9F5"/>
+                                                                                    <constraint firstAttribute="width" constant="25" id="hb4-X0-dPq"/>
+                                                                                </constraints>
+                                                                                <buttonCell key="cell" type="squareTextured" bezelStyle="texturedSquare" image="Skip Next" imagePosition="only" alignment="center" focusRingType="none" imageScaling="proportionallyUpOrDown" inset="2" id="mBP-z2-Gtr">
+                                                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                                                    <font key="font" metaFont="system"/>
+                                                                                </buttonCell>
+                                                                                <connections>
+                                                                                    <action selector="nowPlayingNextButtonInteracted:" target="WsD-6C-jNV" id="nIy-vX-9e7"/>
+                                                                                </connections>
+                                                                            </button>
+                                                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="QCt-9L-q0R" userLabel="Current Position Label">
+                                                                                <rect key="frame" x="2" y="8" width="130" height="17"/>
+                                                                                <constraints>
+                                                                                    <constraint firstAttribute="width" constant="126" id="4UU-1B-owc"/>
+                                                                                    <constraint firstAttribute="height" constant="17" id="shA-DH-HC1"/>
+                                                                                </constraints>
+                                                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="00:00:00" id="SyD-kg-9oZ">
+                                                                                    <font key="font" metaFont="system"/>
+                                                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                                                </textFieldCell>
+                                                                            </textField>
+                                                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sUB-fJ-FQR" userLabel="Song Duration Label">
+                                                                                <rect key="frame" x="161" y="8" width="134" height="17"/>
+                                                                                <constraints>
+                                                                                    <constraint firstAttribute="height" constant="17" id="0b4-6C-1EE"/>
+                                                                                    <constraint firstAttribute="width" constant="130" id="WaB-SB-AfK"/>
+                                                                                </constraints>
+                                                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="00:00:00" id="vQ2-iM-CfA">
+                                                                                    <font key="font" metaFont="system"/>
+                                                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                                                </textFieldCell>
+                                                                            </textField>
+                                                                        </subviews>
+                                                                        <constraints>
+                                                                            <constraint firstItem="K05-bZ-YkK" firstAttribute="top" secondItem="Xp8-eD-P5q" secondAttribute="top" constant="20" id="1U3-hh-dE3"/>
+                                                                            <constraint firstAttribute="bottom" secondItem="QCt-9L-q0R" secondAttribute="bottom" constant="8" id="9Qv-JE-lYu"/>
+                                                                            <constraint firstAttribute="bottom" secondItem="sUB-fJ-FQR" secondAttribute="bottom" constant="8" id="Bdl-oJ-P6Y"/>
+                                                                            <constraint firstAttribute="trailing" secondItem="K05-bZ-YkK" secondAttribute="trailing" constant="20" id="EsW-G9-UIr"/>
+                                                                            <constraint firstItem="QCt-9L-q0R" firstAttribute="leading" secondItem="Xp8-eD-P5q" secondAttribute="leading" constant="4" id="FyW-6v-EfI"/>
+                                                                            <constraint firstItem="RhI-Ct-O2O" firstAttribute="centerY" secondItem="Xp8-eD-P5q" secondAttribute="centerY" constant="25" id="Ml5-GM-5eF"/>
+                                                                            <constraint firstAttribute="trailing" secondItem="Itj-2D-lJc" secondAttribute="trailing" constant="20" id="O2u-gU-rBF"/>
+                                                                            <constraint firstAttribute="trailing" secondItem="sUB-fJ-FQR" secondAttribute="trailing" constant="4" id="TfK-Mw-TSf"/>
+                                                                            <constraint firstItem="ihw-wE-33b" firstAttribute="centerX" secondItem="Xp8-eD-P5q" secondAttribute="centerX" id="Ugf-ml-D18"/>
+                                                                            <constraint firstItem="ihw-wE-33b" firstAttribute="leading" secondItem="y4c-9d-9mx" secondAttribute="trailing" constant="20" id="V8X-eZ-x8K"/>
+                                                                            <constraint firstItem="Itj-2D-lJc" firstAttribute="top" secondItem="K05-bZ-YkK" secondAttribute="bottom" constant="8" id="WUP-ax-QCV"/>
+                                                                            <constraint firstAttribute="height" constant="128" id="YGq-2T-kY4"/>
+                                                                            <constraint firstItem="ihw-wE-33b" firstAttribute="centerY" secondItem="Xp8-eD-P5q" secondAttribute="centerY" constant="25" id="akN-Ig-Hl1"/>
+                                                                            <constraint firstItem="Itj-2D-lJc" firstAttribute="top" secondItem="K05-bZ-YkK" secondAttribute="bottom" constant="8" id="bXY-HH-A4u"/>
+                                                                            <constraint firstItem="RhI-Ct-O2O" firstAttribute="leading" secondItem="ihw-wE-33b" secondAttribute="trailing" constant="20" id="dDI-6d-Gp4"/>
+                                                                            <constraint firstItem="y4c-9d-9mx" firstAttribute="centerY" secondItem="Xp8-eD-P5q" secondAttribute="centerY" constant="25" id="dap-RW-9bo"/>
+                                                                            <constraint firstItem="Itj-2D-lJc" firstAttribute="leading" secondItem="Xp8-eD-P5q" secondAttribute="leading" constant="20" id="j0Q-lJ-Jgd"/>
+                                                                            <constraint firstItem="K05-bZ-YkK" firstAttribute="leading" secondItem="Xp8-eD-P5q" secondAttribute="leading" constant="20" id="jCR-31-h6J"/>
+                                                                        </constraints>
+                                                                        <shadow key="shadow" blurRadius="2">
+                                                                            <color key="color" white="0.0" alpha="0.5" colorSpace="calibratedWhite"/>
+                                                                        </shadow>
+                                                                    </customView>
+                                                                </subviews>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="bottom" secondItem="Xp8-eD-P5q" secondAttribute="bottom" id="8vE-gM-cpb"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="Xp8-eD-P5q" secondAttribute="trailing" id="mUE-FF-Hhb"/>
+                                                                    <constraint firstItem="Xp8-eD-P5q" firstAttribute="leading" secondItem="dKc-Jt-XyJ" secondAttribute="leading" id="yFL-9h-2wI"/>
+                                                                </constraints>
+                                                            </customView>
+                                                            <slider focusRingType="none" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="zVM-wN-qQB" userLabel="Progress Slider" customClass="SCNowPlayingProgressSlider" customModule="Sudachi" customModuleProvider="target">
+                                                                <rect key="frame" x="-1" y="-6" width="299" height="18"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="17" id="taE-1C-gPe"/>
+                                                                </constraints>
+                                                                <sliderCell key="cell" controlSize="mini" continuous="YES" state="on" focusRingType="none" alignment="left" maxValue="100" tickMarkPosition="above" sliderType="linear" id="QYg-7E-9lN" customClass="SCNowPlayingProgressSliderCell" customModule="Sudachi" customModuleProvider="target"/>
+                                                                <connections>
+                                                                    <action selector="nowPlayingProgressSliderInteracted:" target="WsD-6C-jNV" id="igD-ws-qTo"/>
+                                                                </connections>
+                                                            </slider>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstAttribute="bottom" secondItem="zVM-wN-qQB" secondAttribute="bottom" constant="-5" id="0jP-T9-lDP"/>
+                                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="128" id="Fbe-Me-2N7"/>
+                                                            <constraint firstAttribute="trailing" secondItem="dKc-Jt-XyJ" secondAttribute="trailing" id="Mbp-8U-0U4"/>
+                                                            <constraint firstItem="zVM-wN-qQB" firstAttribute="leading" secondItem="X1B-Wo-1Se" secondAttribute="leading" constant="-1" id="NzM-2W-4PK"/>
+                                                            <constraint firstItem="dKc-Jt-XyJ" firstAttribute="leading" secondItem="X1B-Wo-1Se" secondAttribute="leading" id="Qww-y0-2GS"/>
+                                                            <constraint firstItem="dKc-Jt-XyJ" firstAttribute="top" secondItem="X1B-Wo-1Se" secondAttribute="top" id="S7K-xf-C5M"/>
+                                                            <constraint firstAttribute="trailing" secondItem="zVM-wN-qQB" secondAttribute="trailing" constant="-1" id="SFG-Xd-F5f"/>
+                                                            <constraint firstItem="4ap-5g-7nq" firstAttribute="leading" secondItem="X1B-Wo-1Se" secondAttribute="leading" id="XFC-S4-ymg"/>
+                                                            <constraint firstAttribute="bottom" secondItem="4ap-5g-7nq" secondAttribute="bottom" id="Xi2-Pz-8H5"/>
+                                                            <constraint firstAttribute="trailing" secondItem="4ap-5g-7nq" secondAttribute="trailing" id="gy7-Q0-V9u"/>
+                                                            <constraint firstAttribute="bottom" secondItem="dKc-Jt-XyJ" secondAttribute="bottom" id="sOE-Jj-zPF"/>
+                                                            <constraint firstItem="4ap-5g-7nq" firstAttribute="top" secondItem="X1B-Wo-1Se" secondAttribute="top" id="utW-4Q-rwn"/>
+                                                        </constraints>
+                                                    </customView>
+                                                    <scrollView fixedFrame="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="84" horizontalPageScroll="10" verticalLineScroll="84" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="I3D-qo-mrY">
+                                                        <rect key="frame" x="0.0" y="235" width="297" height="245"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="wUs-27-u3d">
+                                                            <rect key="frame" x="0.0" y="0.0" width="297" height="245"/>
+                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                            <subviews>
+                                                                <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="none" alternatingRowBackgroundColors="YES" autosaveColumns="NO" typeSelect="NO" rowHeight="84" viewBased="YES" id="KVJ-dE-ztQ" customClass="SCPlaylistTableView" customModule="Sudachi" customModuleProvider="target">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="297" height="0.0"/>
+                                                                    <autoresizingMask key="autoresizingMask"/>
+                                                                    <color key="backgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>
+                                                                    <color key="gridColor" white="0.80000000000000004" alpha="0.0" colorSpace="deviceWhite"/>
+                                                                    <tableColumns>
+                                                                        <tableColumn identifier="Main Column" width="297" minWidth="40" maxWidth="100000000000" id="Tjg-V7-S0O">
+                                                                            <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
+                                                                                <font key="font" metaFont="smallSystem"/>
+                                                                                <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                                                                <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                                                            </tableHeaderCell>
+                                                                            <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" title="Text Cell" id="gHC-5b-e4C">
+                                                                                <font key="font" metaFont="system"/>
+                                                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                                                <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                            </textFieldCell>
+                                                                            <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                                                            <prototypeCellViews>
+                                                                                <tableCellView id="MLc-0M-cYz" customClass="SCPlaylistTableCellView" customModule="Sudachi" customModuleProvider="target">
+                                                                                    <rect key="frame" x="0.0" y="0.0" width="297" height="84"/>
+                                                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                                                    <subviews>
+                                                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1rY-Nd-zac" userLabel="Artist Label">
+                                                                                            <rect key="frame" x="14" y="22" width="272" height="17"/>
+                                                                                            <constraints>
+                                                                                                <constraint firstAttribute="height" constant="17" id="2Xr-Tc-SMn"/>
+                                                                                            </constraints>
+                                                                                            <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="left" title="by Artist アーティスト" id="D58-yJ-zeI">
+                                                                                                <font key="font" metaFont="system"/>
+                                                                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                                                            </textFieldCell>
+                                                                                        </textField>
+                                                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="OUw-ao-4sl" userLabel="Song Title Label">
+                                                                                            <rect key="frame" x="14" y="43" width="272" height="19"/>
+                                                                                            <constraints>
+                                                                                                <constraint firstAttribute="height" constant="19" id="B5S-4V-yVx"/>
+                                                                                            </constraints>
+                                                                                            <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="left" title="Song Title 曲名" id="w56-du-Wit">
+                                                                                                <font key="font" metaFont="system" size="16"/>
+                                                                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                                                            </textFieldCell>
+                                                                                        </textField>
+                                                                                    </subviews>
+                                                                                    <constraints>
+                                                                                        <constraint firstAttribute="trailing" secondItem="OUw-ao-4sl" secondAttribute="trailing" constant="13" id="BMJ-sc-ISf"/>
+                                                                                        <constraint firstAttribute="bottom" secondItem="1rY-Nd-zac" secondAttribute="bottom" constant="22" id="WiN-qi-dj2"/>
+                                                                                        <constraint firstAttribute="trailing" secondItem="1rY-Nd-zac" secondAttribute="trailing" constant="13" id="XCf-kp-jt6"/>
+                                                                                        <constraint firstItem="OUw-ao-4sl" firstAttribute="leading" secondItem="MLc-0M-cYz" secondAttribute="leading" constant="16" id="efg-fe-GFQ"/>
+                                                                                        <constraint firstItem="OUw-ao-4sl" firstAttribute="top" secondItem="MLc-0M-cYz" secondAttribute="top" constant="22" id="keT-jb-GAf"/>
+                                                                                        <constraint firstItem="1rY-Nd-zac" firstAttribute="leading" secondItem="MLc-0M-cYz" secondAttribute="leading" constant="16" id="tEJ-H2-wfx"/>
+                                                                                    </constraints>
+                                                                                    <connections>
+                                                                                        <outlet property="artistLabel" destination="1rY-Nd-zac" id="jXg-Sm-upp"/>
+                                                                                        <outlet property="titleLabel" destination="OUw-ao-4sl" id="7vz-b1-s0z"/>
+                                                                                    </connections>
+                                                                                </tableCellView>
+                                                                            </prototypeCellViews>
+                                                                        </tableColumn>
+                                                                    </tableColumns>
+                                                                    <connections>
+                                                                        <outlet property="dataSource" destination="u4q-bL-b3Z" id="DP1-K2-hqc"/>
+                                                                        <outlet property="delegate" destination="u4q-bL-b3Z" id="Rbi-e6-Ef1"/>
+                                                                    </connections>
+                                                                </tableView>
+                                                            </subviews>
+                                                            <nil key="backgroundColor"/>
+                                                        </clipView>
+                                                        <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="eyo-z2-XLP">
+                                                            <rect key="frame" x="0.0" y="229" width="297" height="16"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                        </scroller>
+                                                        <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="Fa1-D4-zZO">
+                                                            <rect key="frame" x="-16" y="0.0" width="16" height="0.0"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                        </scroller>
+                                                    </scrollView>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="250" id="5YJ-to-FZC"/>
+                                                </constraints>
+                                                <holdingPriorities>
+                                                    <real value="250"/>
+                                                    <real value="250"/>
+                                                </holdingPriorities>
+                                            </splitView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="i5B-1h-ZQL" secondAttribute="bottom" id="38a-Od-obi"/>
+                                            <constraint firstItem="i5B-1h-ZQL" firstAttribute="top" secondItem="jAP-6H-eUt" secondAttribute="top" id="Egr-tf-nJ2"/>
+                                            <constraint firstItem="i5B-1h-ZQL" firstAttribute="leading" secondItem="jAP-6H-eUt" secondAttribute="leading" id="Oex-yH-79r"/>
+                                            <constraint firstAttribute="trailing" secondItem="i5B-1h-ZQL" secondAttribute="trailing" id="dfZ-Sg-swh"/>
+                                        </constraints>
+                                        <shadow key="shadow" blurRadius="5">
+                                            <size key="offset" width="-5" height="0.0"/>
+                                            <color key="color" white="0.0" alpha="0.4488712615030675" colorSpace="calibratedWhite"/>
+                                        </shadow>
+                                    </customView>
+                                </subviews>
+                                <holdingPriorities>
+                                    <real value="250"/>
+                                    <real value="250"/>
+                                </holdingPriorities>
+                            </splitView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="xYC-HK-D6L" secondAttribute="trailing" id="DUz-S1-9Eh"/>
+                            <constraint firstAttribute="bottom" secondItem="xYC-HK-D6L" secondAttribute="bottom" id="bf5-a0-Pd3"/>
+                            <constraint firstItem="xYC-HK-D6L" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="heI-Lj-k3F"/>
+                            <constraint firstItem="xYC-HK-D6L" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="oxh-Cw-0h4"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="musicBrowserController" destination="2Jc-q4-rLf" id="Q94-OX-qEa"/>
+                        <outlet property="nowPlayingController" destination="WsD-6C-jNV" id="XcX-Ok-9wL"/>
+                        <outlet property="playlistController" destination="u4q-bL-b3Z" id="e2I-MX-Cm4"/>
+                    </connections>
+                </viewController>
+                <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <customObject id="WsD-6C-jNV" customClass="SCNowPlayingController" customModule="Sudachi" customModuleProvider="target">
+                    <connections>
+                        <outlet property="mainViewController" destination="XfG-lQ-9wD" id="rJZ-ey-kkZ"/>
+                        <outlet property="nowPlayingArtistLabel" destination="Itj-2D-lJc" id="w3q-sm-3lz"/>
+                        <outlet property="nowPlayingContainer" destination="X1B-Wo-1Se" id="sRE-uA-gqf"/>
+                        <outlet property="nowPlayingCoverImageView" destination="4ap-5g-7nq" id="UA3-ay-NaQ"/>
+                        <outlet property="nowPlayingCoverOverlayView" destination="Xp8-eD-P5q" id="46k-0U-W8H"/>
+                        <outlet property="nowPlayingNextButton" destination="RhI-Ct-O2O" id="VfP-Ux-aPZ"/>
+                        <outlet property="nowPlayingPausePlayButton" destination="ihw-wE-33b" id="lEK-v7-lgg"/>
+                        <outlet property="nowPlayingPreviousButton" destination="y4c-9d-9mx" id="lSD-Qw-6RY"/>
+                        <outlet property="nowPlayingProgressSlider" destination="zVM-wN-qQB" id="U2z-8m-PbH"/>
+                        <outlet property="nowPlayingSongDurationLabel" destination="sUB-fJ-FQR" id="nAt-Ub-YOu"/>
+                        <outlet property="nowPlayingSongPositionLabel" destination="QCt-9L-q0R" id="9Lb-YC-g4l"/>
+                        <outlet property="nowPlayingTitleLabel" destination="K05-bZ-YkK" id="eod-yQ-R6v"/>
+                    </connections>
+                </customObject>
+                <customObject id="u4q-bL-b3Z" customClass="SCPlaylistController" customModule="Sudachi" customModuleProvider="target">
+                    <connections>
+                        <outlet property="mainViewController" destination="XfG-lQ-9wD" id="B8W-9c-32E"/>
+                        <outlet property="playlistTableView" destination="KVJ-dE-ztQ" id="pcJ-fc-Jhm"/>
+                    </connections>
+                </customObject>
+                <customObject id="2Jc-q4-rLf" customClass="SCMusicBrowserController" customModule="Sudachi" customModuleProvider="target">
+                    <connections>
+                        <outlet property="arrayController" destination="MKI-wj-Ntl" id="iMn-7V-mre"/>
+                        <outlet property="mainViewController" destination="XfG-lQ-9wD" id="mRV-4g-iHq"/>
+                        <outlet property="musicBrowserCollectionView" destination="u7x-VR-s5I" id="2X8-9J-1nG"/>
+                        <outlet property="musicBrowserCollectionViewScrollView" destination="noW-mk-K5m" id="9AV-gh-6TW"/>
+                        <outlet property="searchField" destination="RJZ-m2-ktm" id="e5G-dp-RyX"/>
+                    </connections>
+                </customObject>
+                <arrayController objectClassName="SCMusicBrowserItem" id="MKI-wj-Ntl" userLabel="Music Browser Array Controller">
+                    <declaredKeys>
+                        <string>displayImage</string>
+                        <string>displayTitle</string>
+                    </declaredKeys>
+                    <connections>
+                        <binding destination="2Jc-q4-rLf" name="contentArray" keyPath="browserItems" id="z6F-fX-LSh"/>
+                    </connections>
+                </arrayController>
+            </objects>
+            <point key="canvasLocation" x="86" y="734"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Example Cover" width="1400" height="1400"/>
+        <image name="Play" width="128" height="128"/>
+        <image name="Skip Next" width="128" height="128"/>
+        <image name="Skip Previous" width="128" height="128"/>
+    </resources>
+</document>
