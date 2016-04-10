@@ -47,9 +47,7 @@ class SCMusicBrowserCollectionViewItem: NSCollectionViewItem {
         // Set the label colors
         self.textField?.textColor = SCThemingEngine().defaultEngine().musicBrowserItemTextColor;
         
-        // Round the image view
-        self.imageView?.wantsLayer = true;
-        self.imageView?.layer?.cornerRadius = 5;
-        self.imageView?.layer?.masksToBounds = true;
+        // Set the fonts
+        self.textField?.font = SCThemingEngine().defaultEngine().setFontFamily((self.textField?.font!)!);
     }
 }

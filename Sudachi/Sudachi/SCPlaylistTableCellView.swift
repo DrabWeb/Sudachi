@@ -122,6 +122,10 @@ class SCPlaylistTableCellView: NSTableCellView {
         // Set the label colors
         titleLabel.textColor = SCThemingEngine().defaultEngine().playlistTextColor;
         artistLabel.textColor = SCThemingEngine().defaultEngine().playlistSecondaryTextColor;
+        
+        // Set the fonts
+        titleLabel.font = SCThemingEngine().defaultEngine().setFontFamily(titleLabel.font!);
+        artistLabel.font = SCThemingEngine().defaultEngine().setFontFamily(artistLabel.font!);
     }
     
     required init?(coder: NSCoder) {

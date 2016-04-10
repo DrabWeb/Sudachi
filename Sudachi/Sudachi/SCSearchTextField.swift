@@ -43,6 +43,9 @@ class SCSearchTextField: NSTextField {
         // Set the corners to be rounded
         self.layer?.cornerRadius = SCThemingEngine().defaultEngine().searchFieldCornerRadius;
         
+        // Set the font
+        self.font = SCThemingEngine().defaultEngine().setFontFamily(self.font!);
+        
         // If this isnt being called from init...
         if(!initLoadTheme) {
             // Change the caret color(Cursor)
@@ -61,7 +64,7 @@ class SCSearchTextField: NSTextField {
         placeholderParagraphStyle.alignment = .Center;
         
         /// The attributed placeholder string
-        let placeholder = NSMutableAttributedString(string: "Search", attributes: [NSFontAttributeName: NSFont.systemFontOfSize(13), NSForegroundColorAttributeName: SCThemingEngine().defaultEngine().searchFieldPlaceholderTextColor, NSParagraphStyleAttributeName: placeholderParagraphStyle]);
+        let placeholder = NSMutableAttributedString(string: "Search", attributes: [NSFontAttributeName: NSFont.systemFontOfSize(self.font!.pointSize), NSForegroundColorAttributeName: SCThemingEngine().defaultEngine().searchFieldPlaceholderTextColor, NSParagraphStyleAttributeName: placeholderParagraphStyle, NSFontFamilyAttribute: self.font!.familyName!]);
         
         // Set the placeholder string
         (self.cell as! NSTextFieldCell).placeholderAttributedString = placeholder;

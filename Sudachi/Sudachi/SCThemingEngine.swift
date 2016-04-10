@@ -15,6 +15,12 @@ class SCThemingEngine {
     /// The background color of any window in the app
     var backgroundColor : NSColor = NSColor(hexString: "#211D26")!;
     
+    /// The name of the font family to use for the application
+    var fontFamily : String = "";
+    
+    /// Should the application font be antialiased?
+    var antialiasFont : Bool = true;
+    
     /// The caret color for text fields
     var caretColor : NSColor = NSColor(hexString: "#665F6E")!;
     
@@ -142,6 +148,7 @@ class SCThemingEngine {
                 }
                 
                 // Load the theme
+                // Load colors
                 // If there is a colors.json...
                 if(NSFileManager.defaultManager().fileExistsAtPath(folderPath + "/colors.json")) {
                     /// The JSON object for the colors JSON
@@ -213,30 +220,87 @@ class SCThemingEngine {
                     if(NSColor(hexString: colorsJson["now-playing-media-panel-background-color"].stringValue) != nil) {
                         self.nowPlayingCoverOverlayBackgroundColor = NSColor(hexString: colorsJson["now-playing-media-panel-background-color"].stringValue)!;
                     }
+                    
+                    if(NSColor(hexString: colorsJson["search-field-background-color"].stringValue) != nil) {
+                        self.searchFieldBackgroundColor = NSColor(hexString: colorsJson["search-field-background-color"].stringValue)!;
+                    }
+                    
+                    if(NSColor(hexString: colorsJson["search-field-placeholder-text-color"].stringValue) != nil) {
+                        self.searchFieldPlaceholderTextColor = NSColor(hexString: colorsJson["search-field-placeholder-text-color"].stringValue)!;
+                    }
+                    
+                    if(NSColor(hexString: colorsJson["search-field-text-color"].stringValue) != nil) {
+                        self.searchFieldTextColor = NSColor(hexString: colorsJson["search-field-text-color"].stringValue)!;
+                    }
+                    
+                    if(NSColor(hexString: colorsJson["music-browser-item-text-color"].stringValue) != nil) {
+                        self.musicBrowserItemTextColor = NSColor(hexString: colorsJson["music-browser-item-text-color"].stringValue)!;
+                    }
+                    
+                    if(NSColor(hexString: colorsJson["music-browser-selection-background-color"].stringValue) != nil) {
+                        self.musicBrowserSelectionColor = NSColor(hexString: colorsJson["music-browser-selection-background-color"].stringValue)!;
+                    }
+                    
+                    if(NSColor(hexString: colorsJson["playlist-actions-background-color"].stringValue) != nil) {
+                        self.playlistActionsBackgroundColor = NSColor(hexString: colorsJson["playlist-actions-background-color"].stringValue)!;
+                    }
                 }
                 
+                // Load images
                 // If there is a pause image...
                 if(NSFileManager.defaultManager().fileExistsAtPath(folderPath + "/pause.png")) {
                     // Load the pause image
                     self.pauseImage = NSImage(contentsOfFile: folderPath + "/pause.png")!;
                 }
                 
-                // If there is a play image...
+                // Im not commenting the rest of this, the above explains how it works
+                
                 if(NSFileManager.defaultManager().fileExistsAtPath(folderPath + "/play.png")) {
-                    // Load the play image
                     self.playImage = NSImage(contentsOfFile: folderPath + "/play.png")!;
                 }
                 
-                // If there is a skip next image...
                 if(NSFileManager.defaultManager().fileExistsAtPath(folderPath + "/skip-next.png")) {
-                    // Load the skip next image
                     self.skipNextImage = NSImage(contentsOfFile: folderPath + "/skip-next.png")!;
                 }
                 
-                // If there is a skip previous image...
                 if(NSFileManager.defaultManager().fileExistsAtPath(folderPath + "/skip-previous.png")) {
-                    // Load the skip previous image
                     self.skipPreviousImage = NSImage(contentsOfFile: folderPath + "/skip-previous.png")!;
+                }
+                
+                if(NSFileManager.defaultManager().fileExistsAtPath(folderPath + "/music-file-icon.png")) {
+                    self.musicFileIcon = NSImage(contentsOfFile: folderPath + "/music-file-icon.png")!;
+                }
+                
+                if(NSFileManager.defaultManager().fileExistsAtPath(folderPath + "/folder-icon.png")) {
+                    self.folderIcon = NSImage(contentsOfFile: folderPath + "/folder-icon.png")!;
+                }
+                
+                if(NSFileManager.defaultManager().fileExistsAtPath(folderPath + "/folder-back-icon.png")) {
+                    self.folderBackIcon = NSImage(contentsOfFile: folderPath + "/folder-back-icon.png")!;
+                }
+                
+                if(NSFileManager.defaultManager().fileExistsAtPath(folderPath + "/repeat-off.png")) {
+                    self.playlistActionsRepeatOffImage = NSImage(contentsOfFile: folderPath + "/repeat-off.png")!;
+                }
+                
+                if(NSFileManager.defaultManager().fileExistsAtPath(folderPath + "/repeat-playlist.png")) {
+                    self.playlistActionsRepeatPlaylistImage = NSImage(contentsOfFile: folderPath + "/repeat-playlist.png")!;
+                }
+                
+                if(NSFileManager.defaultManager().fileExistsAtPath(folderPath + "/repeat-song.png")) {
+                    self.playlistActionsRepeatSongImage = NSImage(contentsOfFile: folderPath + "/repeat-song.png")!;
+                }
+                
+                if(NSFileManager.defaultManager().fileExistsAtPath(folderPath + "/shuffle.png")) {
+                    self.playlistActionsShuffleImage = NSImage(contentsOfFile: folderPath + "/shuffle.png")!;
+                }
+                
+                if(NSFileManager.defaultManager().fileExistsAtPath(folderPath + "/random-off.png")) {
+                    self.playlistActionsRandomOffImage = NSImage(contentsOfFile: folderPath + "/repeat-off.png")!;
+                }
+                
+                if(NSFileManager.defaultManager().fileExistsAtPath(folderPath + "/random-on.png")) {
+                    self.playlistActionsRandomOnImage = NSImage(contentsOfFile: folderPath + "/repeat-on.png")!;
                 }
             }
             // If the extension isnt .sctheme...
@@ -251,7 +315,38 @@ class SCThemingEngine {
             print("SCThemingEngine: Sudachi theme folder doesnt exist at path \"\(folderPath)\"");
         }
     }
-        
+    
+    /// Sets the family of the given font to the theme's font family while retaining previous values like size and weight, and returns the font
+    func setFontFamily(font : NSFont) -> NSFont {
+        // If the theme font family is set...
+        if(fontFamily != "") {
+            /// The given font with the modified font family
+            var newFont : NSFont? = NSFont(name: fontFamily, size: font.pointSize);
+            
+            // If we said not to antialias the font...
+            if(!antialiasFont) {
+                // Disable font antialiasing on the font
+                newFont = newFont?.screenFontWithRenderingMode(NSFontRenderingMode.IntegerAdvancementsRenderingMode);
+            }
+            
+            // If the new font isnt nil...
+            if(newFont != nil) {
+                // Return the new font
+                return newFont!;
+            }
+            // If the new font is nil...
+            else {
+                // Return the unmodified font
+                return font;
+            }
+        }
+        // If the theme font family isnt set...
+        else {
+            // Return the unmodified font
+            return font;
+        }
+    }
+    
     /// Returns the default theming engine
     func defaultEngine() -> SCThemingEngine {
         return SCThemingEngineStruct.defaultEngine;
