@@ -25,6 +25,7 @@ A simple and customizable MPD front end for OSX
 > * Jump to song in playlist
 > * Highlight current song
 > * Clear playlist
+> * Drag songs in from Finder
 
 * Music Browser
 

@@ -564,8 +564,8 @@ DQ
                                                             <rect key="frame" x="0.0" y="0.0" width="297" height="227"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
-                                                                <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="none" alternatingRowBackgroundColors="YES" autosaveColumns="NO" typeSelect="NO" rowHeight="84" viewBased="YES" id="KVJ-dE-ztQ" customClass="SCPlaylistTableView" customModule="Sudachi" customModuleProvider="target">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="297" height="227"/>
+                                                                <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="none" alternatingRowBackgroundColors="YES" autosaveColumns="NO" rowHeight="84" viewBased="YES" id="KVJ-dE-ztQ" customClass="SCPlaylistTableView" customModule="Sudachi" customModuleProvider="target">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="297" height="0.0"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <color key="backgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>
                                                                     <color key="gridColor" white="0.80000000000000004" alpha="0.0" colorSpace="deviceWhite"/>

@@ -14,6 +14,12 @@ class SCMPD {
     /// The path to the user's MPD music folder
     var mpdFolderPath : String = "";
     
+    /// Moves the playlist item at the given index to the second index
+    func movePlaylistItem(from : Int, to : Int) {
+        // Do the "mpc mv from to" command
+        runMpcCommand(["mv", String(from), String(to)], waitUntilExit: true, log: true);
+    }
+    
     /// Switches between No Repeat, Playlist Repeat and Single Repeat mode
     func repeatModeSwitch() {
         // If we are in repeat mode...

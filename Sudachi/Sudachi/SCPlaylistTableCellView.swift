@@ -24,7 +24,7 @@ class SCPlaylistTableCellView: NSTableCellView {
     
     override func drawRect(dirtyRect: NSRect) {
         super.drawRect(dirtyRect)
-
+        
         // Drawing code here.
         // Make the background of the row clear so we get the custom alternating row colors
         (self.superview as? NSTableRowView)?.backgroundColor = NSColor.clearColor();
