@@ -14,6 +14,134 @@ class SCMPD {
     /// The path to the user's MPD music folder
     var mpdFolderPath : String = "";
     
+    /// Switches between No Repeat, Playlist Repeat and Single Repeat mode
+    func repeatModeSwitch() {
+        // If we are in repeat mode...
+        if(getRepeatState()) {
+            // If we are in single repeat mode...
+            if(getSingleState()) {
+                // Toggle single repeat mode and repeat mode
+                toggleSingleMode();
+                toggleRepeatMode();
+            }
+            // If we arent in single repeat mode...
+            else {
+                // Toggle single repeat mode
+                toggleSingleMode();
+            }
+        }
+        // If we arent in repeat mode...
+        else {
+            // Toggle repeat mode
+            toggleRepeatMode();
+        }
+    }
+    
+    /// Returns if single repeat mode is on
+    func getSingleState() -> Bool {
+        /// Is single repeat mode on?
+        var singleRepeatModeOn : Bool = false;
+        
+        /// The raw output of "mpc status"
+        let statusOutput : String = runMpcCommand(["status"], waitUntilExit: true, log: false);
+        
+        // For every line in statusOutput...
+        for(_, currentLine) in statusOutput.componentsSeparatedByString("\n").enumerate() {
+            // If the current line contains "single: "(Meaning its the line with the single repeat state info)...
+            if(currentLine.containsString("single: ")) {
+                // Get the string between "single: " and the next " "
+                let singleRepeatValue : String = currentLine.componentsSeparatedByString("single: ")[1].componentsSeparatedByString(" ")[0];
+                
+                // If singleRepeatValue equals "on"...
+                if(singleRepeatValue == "on") {
+                    // Set singleRepeatModeOn to true
+                    singleRepeatModeOn = true;
+                }
+            }
+        }
+        
+        // Return if single repeat mode is on
+        return singleRepeatModeOn;
+    }
+    
+    /// Returns if repeat mode is on
+    func getRepeatState() -> Bool {
+        /// Is repeat mode on?
+        var repeatModeOn : Bool = false;
+        
+        /// The raw output of "mpc status"
+        let statusOutput : String = runMpcCommand(["status"], waitUntilExit: true, log: false);
+        
+        // For every line in statusOutput...
+        for(_, currentLine) in statusOutput.componentsSeparatedByString("\n").enumerate() {
+            // If the current line contains "repeat: "(Meaning its the line with the repeat state info)...
+            if(currentLine.containsString("repeat: ")) {
+                // Get the string between "repeat: " and the next " "
+                let repeatValue : String = currentLine.componentsSeparatedByString("repeat: ")[1].componentsSeparatedByString(" ")[0];
+                
+                // If repeatValue equals "on"...
+                if(repeatValue == "on") {
+                    // Set repeatModeOn to true
+                    repeatModeOn = true;
+                }
+            }
+        }
+        
+        // Return if repeat mode is on
+        return repeatModeOn;
+    }
+    
+    /// Returns if random mode is on
+    func getRandomState() -> Bool {
+        /// Is random mode on?
+        var randomModeOn : Bool = false;
+        
+        /// The raw output of "mpc status"
+        let statusOutput : String = runMpcCommand(["status"], waitUntilExit: true, log: false);
+        
+        // For every line in statusOutput...
+        for(_, currentLine) in statusOutput.componentsSeparatedByString("\n").enumerate() {
+            // If the current line contains "random: "(Meaning its the line with the random state info)...
+            if(currentLine.containsString("random: ")) {
+                // Get the string between "random: " and the next " "
+                let randomValue : String = currentLine.componentsSeparatedByString("random: ")[1].componentsSeparatedByString(" ")[0];
+                
+                // If randomValue equals "on"...
+                if(randomValue == "on") {
+                    // Set randomModeOn to true
+                    randomModeOn = true;
+                }
+            }
+        }
+        
+        // Return if random mode is on
+        return randomModeOn;
+    }
+    
+    /// Toggles single repeat mode
+    func toggleSingleMode() {
+        // Run the "mpc single" command
+        runMpcCommand(["single"], waitUntilExit: true, log: true);
+    }
+    
+    /// Toggles repeat mode
+    func toggleRepeatMode() {
+        // Run the "mpc repeat" function
+        runMpcCommand(["repeat"], waitUntilExit: true, log: true);
+    }
+    
+    /// Toggles random mode
+    func toggleRandomMode() {
+        // Run the "mpc random" function
+        runMpcCommand(["random"], waitUntilExit: true, log: true);
+    }
+    
+    /// Shuffles the current playlist
+    func shufflePlaylist() {
+        // Run the "mpc shuffle" command
+        runMpcCommand(["shuffle"], waitUntilExit: true, log: true);
+    }
+    
     /// Clears the current playlist
     func clearCurrentPlaylist() {
         // Run the "mpc clear" command

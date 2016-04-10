@@ -108,6 +108,27 @@ class SCThemingEngine {
     /// The corner radius for the selection box for music browser items
     var musicBrowserSelectionBoxCornerRadius : CGFloat = 5.0;
     
+    /// The color for the background of the playlist actions view
+    var playlistActionsBackgroundColor : NSColor = NSColor(hexString: "#37333B")!;
+    
+    /// The image for the repeat button when repeat mode is off in the playlist actions view
+    var playlistActionsRepeatOffImage : NSImage = NSImage(named: "Not Looping")!;
+    
+    /// The image for the repeat button when playlist repeat mode is on in the playlist actions view
+    var playlistActionsRepeatPlaylistImage : NSImage = NSImage(named: "Playlist Looping")!;
+    
+    /// The image for the repeat button when song repeat mode is on in the playlist actions view
+    var playlistActionsRepeatSongImage : NSImage = NSImage(named: "Song Looping")!;
+    
+    /// The image for the shuffle button in the playlist actions view
+    var playlistActionsShuffleImage : NSImage = NSImage(named: "Playlist Shuffle")!;
+    
+    /// The image for the random button when random mode is on in the playlist actions view
+    var playlistActionsRandomOnImage : NSImage = NSImage(named: "Playlist Random On")!;
+    
+    /// The image for the random button when random mode is off in the playlist actions view
+    var playlistActionsRandomOffImage : NSImage = NSImage(named: "Playlist Random Off")!;
+    
     /// Loads the theme from the given Sudachi theme folder(Extension must be .sctheme)
     func loadFromThemeFolder(var folderPath : String) {
         // If the folder exists...

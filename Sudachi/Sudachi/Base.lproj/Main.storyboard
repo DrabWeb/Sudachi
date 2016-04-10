@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9531"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -132,6 +133,12 @@ CA
 DQ
 </string>
                                         </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="SpD-wG-uKn"/>
+                                        <menuItem title="Switch Repeat Mode" keyEquivalent="R" id="RrU-wG-DbZ"/>
+                                        <menuItem title="Shuffle Playlist" keyEquivalent="S" id="5ee-y9-jpd"/>
+                                        <menuItem title="Toggle Random Mode" keyEquivalent="R" id="sir-qg-RXE">
+                                            <modifierMask key="keyEquivalentModifierMask" control="YES" command="YES"/>
+                                        </menuItem>
                                         <menuItem isSeparatorItem="YES" id="Bqw-8m-bhJ"/>
                                         <menuItem title="Select Playlist" keyEquivalent="P" id="a99-Ev-73l"/>
                                     </items>
@@ -203,6 +210,9 @@ DQ
                         <outlet property="menuItemSelectMusicBrowser" destination="ijE-Ys-YYE" id="1hj-Nh-e7y"/>
                         <outlet property="menuItemSelectPlayList" destination="a99-Ev-73l" id="aoU-Nr-pyE"/>
                         <outlet property="menuItemSelectSearchField" destination="Esl-sH-SIM" id="aFe-JP-RS5"/>
+                        <outlet property="menuItemShufflePlaylist" destination="5ee-y9-jpd" id="PoK-7A-R7a"/>
+                        <outlet property="menuItemSwitchRepeatMode" destination="RrU-wG-DbZ" id="0aB-rD-gif"/>
+                        <outlet property="menuItemToggleRandomMode" destination="sir-qg-RXE" id="fnh-OE-Pfg"/>
                     </connections>
                 </customObject>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -328,7 +338,7 @@ DQ
                             <splitView wantsLayer="YES" dividerStyle="thin" vertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xYC-HK-D6L" userLabel="Master Split View" customClass="SCInvisibleDividerSplitView" customModule="Sudachi" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="854" height="480"/>
                                 <subviews>
-                                    <customView id="6rP-7d-YGz">
+                                    <customView id="6rP-7d-YGz" userLabel="Music Browser">
                                         <rect key="frame" x="0.0" y="0.0" width="556" height="480"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <subviews>
@@ -393,12 +403,12 @@ DQ
                                                         <rect key="frame" x="0.0" y="0.0" width="297" height="183"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <subviews>
-                                                            <imageView horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4ap-5g-7nq" userLabel="Now Playing Cover Image View">
-                                                                <rect key="frame" x="0.0" y="-42" width="297" height="225"/>
+                                                            <imageView horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="4ap-5g-7nq" userLabel="Now Playing Cover Image View">
+                                                                <rect key="frame" x="0.0" y="0.0" width="297" height="183"/>
                                                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageAlignment="top" imageScaling="proportionallyUpOrDown" id="Bw9-DZ-bXB"/>
                                                             </imageView>
-                                                            <customView wantsLayer="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dKc-Jt-XyJ" userLabel="Cover Overlay Container">
-                                                                <rect key="frame" x="0.0" y="-42" width="297" height="225"/>
+                                                            <customView wantsLayer="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dKc-Jt-XyJ" userLabel="Cover Overlay Container">
+                                                                <rect key="frame" x="0.0" y="0.0" width="297" height="183"/>
                                                                 <subviews>
                                                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="Xp8-eD-P5q" userLabel="Cover Overlay" customClass="NSBox">
                                                                         <rect key="frame" x="0.0" y="0.0" width="297" height="128"/>
@@ -521,8 +531,8 @@ DQ
                                                                     <constraint firstItem="Xp8-eD-P5q" firstAttribute="leading" secondItem="dKc-Jt-XyJ" secondAttribute="leading" id="yFL-9h-2wI"/>
                                                                 </constraints>
                                                             </customView>
-                                                            <slider focusRingType="none" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zVM-wN-qQB" userLabel="Progress Slider" customClass="SCNowPlayingProgressSlider" customModule="Sudachi" customModuleProvider="target">
-                                                                <rect key="frame" x="-1" y="-48" width="299" height="18"/>
+                                                            <slider focusRingType="none" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="zVM-wN-qQB" userLabel="Progress Slider" customClass="SCNowPlayingProgressSlider" customModule="Sudachi" customModuleProvider="target">
+                                                                <rect key="frame" x="-1" y="-6" width="299" height="18"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="17" id="taE-1C-gPe"/>
                                                                 </constraints>
@@ -548,14 +558,14 @@ DQ
                                                         </constraints>
                                                     </customView>
                                                     <scrollView fixedFrame="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="84" horizontalPageScroll="10" verticalLineScroll="84" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="I3D-qo-mrY">
-                                                        <rect key="frame" x="0.0" y="193" width="297" height="199"/>
+                                                        <rect key="frame" x="0.0" y="193" width="297" height="227"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="wUs-27-u3d">
-                                                            <rect key="frame" x="0.0" y="0.0" width="297" height="199"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="297" height="227"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="none" alternatingRowBackgroundColors="YES" autosaveColumns="NO" typeSelect="NO" rowHeight="84" viewBased="YES" id="KVJ-dE-ztQ" customClass="SCPlaylistTableView" customModule="Sudachi" customModuleProvider="target">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="297" height="199"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="297" height="227"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <color key="backgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>
                                                                     <color key="gridColor" white="0.80000000000000004" alpha="0.0" colorSpace="deviceWhite"/>
@@ -633,9 +643,62 @@ DQ
                                                             <autoresizingMask key="autoresizingMask"/>
                                                         </scroller>
                                                     </scrollView>
-                                                    <customView fixedFrame="YES" id="tro-05-FzH">
-                                                        <rect key="frame" x="0.0" y="402" width="297" height="78"/>
+                                                    <customView id="tro-05-FzH" userLabel="Playlist Actions" customClass="NSBox">
+                                                        <rect key="frame" x="0.0" y="430" width="297" height="50"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <subviews>
+                                                            <button toolTip="Loop Mode" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="w5f-so-8z7" userLabel="Loop Button">
+                                                                <rect key="frame" x="63" y="0.0" width="50" height="50"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" secondItem="w5f-so-8z7" secondAttribute="height" multiplier="1:1" id="cmm-s0-RF8"/>
+                                                                </constraints>
+                                                                <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="Not Looping" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="1Po-Qb-kZ6">
+                                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                                    <font key="font" metaFont="system"/>
+                                                                </buttonCell>
+                                                                <connections>
+                                                                    <action selector="loopButtonPressed:" target="YDX-u9-zYP" id="9En-Nh-yO8"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button toolTip="Shuffle" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="iFb-Rd-UxM" userLabel="Shuffle Button">
+                                                                <rect key="frame" x="123" y="0.0" width="50" height="50"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" secondItem="iFb-Rd-UxM" secondAttribute="height" multiplier="1:1" id="o5H-Hw-yeI"/>
+                                                                </constraints>
+                                                                <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="Playlist Shuffle" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="6p8-ch-A2h">
+                                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                                    <font key="font" metaFont="system"/>
+                                                                </buttonCell>
+                                                                <connections>
+                                                                    <action selector="shuffleButtonPressed:" target="YDX-u9-zYP" id="jAl-fE-puy"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button toolTip="Random Mode" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="JZU-O1-SbV" userLabel="Random Button">
+                                                                <rect key="frame" x="183" y="0.0" width="50" height="50"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" secondItem="JZU-O1-SbV" secondAttribute="height" multiplier="1:1" id="WHW-Oe-HSy"/>
+                                                                </constraints>
+                                                                <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="Playlist Random Off" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="GCZ-kE-nkn">
+                                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                                    <font key="font" metaFont="system"/>
+                                                                </buttonCell>
+                                                                <connections>
+                                                                    <action selector="randomButtonPressed:" target="YDX-u9-zYP" id="8zk-u5-rpu"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstItem="iFb-Rd-UxM" firstAttribute="centerX" secondItem="tro-05-FzH" secondAttribute="centerX" id="2gv-jb-f0J"/>
+                                                            <constraint firstAttribute="bottom" secondItem="w5f-so-8z7" secondAttribute="bottom" id="Fvk-cQ-4PI"/>
+                                                            <constraint firstAttribute="height" relation="lessThanOrEqual" constant="50" id="Ip2-Br-w9D"/>
+                                                            <constraint firstItem="JZU-O1-SbV" firstAttribute="top" secondItem="tro-05-FzH" secondAttribute="top" id="ZVN-gg-JjJ"/>
+                                                            <constraint firstItem="w5f-so-8z7" firstAttribute="top" secondItem="tro-05-FzH" secondAttribute="top" id="cOo-1A-vAv"/>
+                                                            <constraint firstItem="JZU-O1-SbV" firstAttribute="leading" secondItem="iFb-Rd-UxM" secondAttribute="trailing" constant="10" id="k7J-j0-9Il"/>
+                                                            <constraint firstItem="iFb-Rd-UxM" firstAttribute="top" secondItem="tro-05-FzH" secondAttribute="top" id="lrS-gd-0aP"/>
+                                                            <constraint firstItem="iFb-Rd-UxM" firstAttribute="leading" secondItem="w5f-so-8z7" secondAttribute="trailing" constant="10" id="t5L-HF-m7J"/>
+                                                            <constraint firstAttribute="bottom" secondItem="iFb-Rd-UxM" secondAttribute="bottom" id="uEy-zD-2YP"/>
+                                                            <constraint firstAttribute="bottom" secondItem="JZU-O1-SbV" secondAttribute="bottom" id="wlg-KL-Roe"/>
+                                                        </constraints>
                                                     </customView>
                                                 </subviews>
                                                 <constraints>
@@ -676,6 +739,7 @@ DQ
                     <connections>
                         <outlet property="musicBrowserController" destination="2Jc-q4-rLf" id="Q94-OX-qEa"/>
                         <outlet property="nowPlayingController" destination="WsD-6C-jNV" id="XcX-Ok-9wL"/>
+                        <outlet property="playlistActionsController" destination="YDX-u9-zYP" id="vKX-EQ-dos"/>
                         <outlet property="playlistController" destination="u4q-bL-b3Z" id="e2I-MX-Cm4"/>
                     </connections>
                 </viewController>
@@ -720,13 +784,25 @@ DQ
                         <binding destination="2Jc-q4-rLf" name="contentArray" keyPath="browserItems" id="z6F-fX-LSh"/>
                     </connections>
                 </arrayController>
+                <customObject id="YDX-u9-zYP" customClass="SCPlaylistActionsController" customModule="Sudachi" customModuleProvider="target">
+                    <connections>
+                        <outlet property="loopButton" destination="w5f-so-8z7" id="FaY-0I-O5p"/>
+                        <outlet property="mainViewController" destination="XfG-lQ-9wD" id="tMT-OH-uKd"/>
+                        <outlet property="playlistActionsContainerView" destination="tro-05-FzH" id="4YU-wi-EaU"/>
+                        <outlet property="randomButton" destination="JZU-O1-SbV" id="PGS-Sz-mUv"/>
+                        <outlet property="shuffleButton" destination="iFb-Rd-UxM" id="gbS-Qo-skm"/>
+                    </connections>
+                </customObject>
             </objects>
             <point key="canvasLocation" x="86" y="734"/>
         </scene>
     </scenes>
     <resources>
         <image name="Example Cover" width="1400" height="1400"/>
+        <image name="Not Looping" width="128" height="128"/>
         <image name="Play" width="128" height="128"/>
+        <image name="Playlist Random Off" width="128" height="128"/>
+        <image name="Playlist Shuffle" width="128" height="128"/>
         <image name="Skip Next" width="128" height="128"/>
         <image name="Skip Previous" width="128" height="128"/>
     </resources>

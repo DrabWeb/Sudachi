@@ -38,6 +38,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     /// Playlist/Play Selected Item (⌘↩︎)
     @IBOutlet weak var menuItemPlaySelectedPlaylistItem: NSMenuItem!
     
+    /// Playlist/Switch Repeat Mode (⌘⇧R)
+    @IBOutlet weak var menuItemSwitchRepeatMode: NSMenuItem!
+    
+    /// Playlist/Shuffle Playlist (⌘⇧S)
+    @IBOutlet weak var menuItemShufflePlaylist: NSMenuItem!
+    
+    /// Playlist/Toggle Random Mode (⌘⌃⇧R)
+    @IBOutlet weak var menuItemToggleRandomMode: NSMenuItem!
+    
     /// Playlist/Select Playlist (⌘⇧P)
     @IBOutlet weak var menuItemSelectPlayList: NSMenuItem!
     

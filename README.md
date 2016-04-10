@@ -17,6 +17,7 @@ A simple and customizable MPD front end for OSX
 > * Time scrubbing
 > * Current position/duration
 > * Title and artist display
+> * Loop/Shuffle/Random buttons and keybinds
 
 * Playlist
 
@@ -56,7 +57,7 @@ A simple and customizable MPD front end for OSX
 
 * Player
 
-> * Add Loop/Shuffle/Random buttons and keybinds
+> * 
 
 * Playlist
 

@@ -22,6 +22,9 @@ class ViewController: NSViewController, NSWindowDelegate {
     /// The controller for the music browser for adding items to the playlist
     @IBOutlet var musicBrowserController: SCMusicBrowserController!
     
+    /// The controller for the playlist actions view
+    @IBOutlet var playlistActionsController: SCPlaylistActionsController!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -45,6 +48,7 @@ class ViewController: NSViewController, NSWindowDelegate {
         nowPlayingController.initialize();
         playlistController.initialize();
         musicBrowserController.initialize();
+        playlistActionsController.initialize();
         
         // Select the music browser
         window.makeFirstResponder(musicBrowserController.musicBrowserCollectionView);

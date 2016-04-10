@@ -10,6 +10,7 @@
 		5D226F4C1CB8339D00791276 /* SCRasterizedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D226F4B1CB8339D00791276 /* SCRasterizedImageView.swift */; };
 		5D226F4E1CB846A300791276 /* SCFileUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D226F4D1CB846A300791276 /* SCFileUtilities.swift */; };
 		5D226F501CB848FD00791276 /* SCConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D226F4F1CB848FD00791276 /* SCConstants.swift */; };
+		5D2ED68B1CBAC46D00D4269F /* SCPlaylistActionsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2ED68A1CBAC46D00D4269F /* SCPlaylistActionsController.swift */; };
 		5D4A1F491CB03F32003BA720 /* NSColorFromHex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4A1F481CB03F32003BA720 /* NSColorFromHex.swift */; };
 		5D4A1F521CB0455B003BA720 /* SCNowPlayingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4A1F511CB0455B003BA720 /* SCNowPlayingController.swift */; };
 		5D4A1F541CB04885003BA720 /* SCNowPlayingProgressSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4A1F531CB04885003BA720 /* SCNowPlayingProgressSlider.swift */; };
@@ -58,6 +59,7 @@
 		5D226F4B1CB8339D00791276 /* SCRasterizedImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCRasterizedImageView.swift; sourceTree = "<group>"; };
 		5D226F4D1CB846A300791276 /* SCFileUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCFileUtilities.swift; sourceTree = "<group>"; };
 		5D226F4F1CB848FD00791276 /* SCConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCConstants.swift; sourceTree = "<group>"; };
+		5D2ED68A1CBAC46D00D4269F /* SCPlaylistActionsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCPlaylistActionsController.swift; sourceTree = "<group>"; };
 		5D4A1F481CB03F32003BA720 /* NSColorFromHex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSColorFromHex.swift; sourceTree = "<group>"; };
 		5D4A1F511CB0455B003BA720 /* SCNowPlayingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNowPlayingController.swift; sourceTree = "<group>"; };
 		5D4A1F531CB04885003BA720 /* SCNowPlayingProgressSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNowPlayingProgressSlider.swift; sourceTree = "<group>"; };
@@ -117,6 +119,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5D2ED6891CBAC45B00D4269F /* Playlist Actions */ = {
+			isa = PBXGroup;
+			children = (
+				5D2ED68A1CBAC46D00D4269F /* SCPlaylistActionsController.swift */,
+			);
+			name = "Playlist Actions";
+			sourceTree = "<group>";
+		};
 		5D4A1F461CB03F16003BA720 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
@@ -137,6 +147,7 @@
 		5D4A1F4A1CB04499003BA720 /* Controllers and Views */ = {
 			isa = PBXGroup;
 			children = (
+				5D2ED6891CBAC45B00D4269F /* Playlist Actions */,
 				5D7B989D1CB6E974005F323E /* Music Browser */,
 				5D4A1F501CB0450A003BA720 /* Now Playing */,
 				5D4A1F4F1CB044EA003BA720 /* Playlist */,
@@ -444,6 +455,7 @@
 				5D7B98A51CB6EE86005F323E /* SCMusicBrowserCollectionViewItem.swift in Sources */,
 				5D4C489B1CAF07D900258D95 /* AppDelegate.swift in Sources */,
 				5DC2C7101CB0364A00D3F649 /* SCExtensions.swift in Sources */,
+				5D2ED68B1CBAC46D00D4269F /* SCPlaylistActionsController.swift in Sources */,
 				5DC1EC671CB470CF0012A4FF /* SCThemingEngine.swift in Sources */,
 				5D4A1F571CB05E26003BA720 /* SCSong.swift in Sources */,
 				5D500C6C1CB5B1E30091B3FD /* SCSearchTextField.swift in Sources */,
