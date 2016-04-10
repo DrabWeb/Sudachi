@@ -390,15 +390,15 @@ DQ
                                                 <rect key="frame" x="0.0" y="0.0" width="297" height="480"/>
                                                 <subviews>
                                                     <customView wantsLayer="YES" id="X1B-Wo-1Se" userLabel="Now Playing Container">
-                                                        <rect key="frame" x="0.0" y="0.0" width="297" height="225"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="297" height="183"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <subviews>
-                                                            <imageView horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="4ap-5g-7nq" userLabel="Now Playing Cover Image View">
-                                                                <rect key="frame" x="0.0" y="0.0" width="297" height="225"/>
+                                                            <imageView horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4ap-5g-7nq" userLabel="Now Playing Cover Image View">
+                                                                <rect key="frame" x="0.0" y="-42" width="297" height="225"/>
                                                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageAlignment="top" imageScaling="proportionallyUpOrDown" id="Bw9-DZ-bXB"/>
                                                             </imageView>
-                                                            <customView wantsLayer="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dKc-Jt-XyJ" userLabel="Cover Overlay Container">
-                                                                <rect key="frame" x="0.0" y="0.0" width="297" height="225"/>
+                                                            <customView wantsLayer="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dKc-Jt-XyJ" userLabel="Cover Overlay Container">
+                                                                <rect key="frame" x="0.0" y="-42" width="297" height="225"/>
                                                                 <subviews>
                                                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="Xp8-eD-P5q" userLabel="Cover Overlay" customClass="NSBox">
                                                                         <rect key="frame" x="0.0" y="0.0" width="297" height="128"/>
@@ -521,8 +521,8 @@ DQ
                                                                     <constraint firstItem="Xp8-eD-P5q" firstAttribute="leading" secondItem="dKc-Jt-XyJ" secondAttribute="leading" id="yFL-9h-2wI"/>
                                                                 </constraints>
                                                             </customView>
-                                                            <slider focusRingType="none" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="zVM-wN-qQB" userLabel="Progress Slider" customClass="SCNowPlayingProgressSlider" customModule="Sudachi" customModuleProvider="target">
-                                                                <rect key="frame" x="-1" y="-6" width="299" height="18"/>
+                                                            <slider focusRingType="none" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zVM-wN-qQB" userLabel="Progress Slider" customClass="SCNowPlayingProgressSlider" customModule="Sudachi" customModuleProvider="target">
+                                                                <rect key="frame" x="-1" y="-48" width="299" height="18"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="17" id="taE-1C-gPe"/>
                                                                 </constraints>
@@ -548,14 +548,14 @@ DQ
                                                         </constraints>
                                                     </customView>
                                                     <scrollView fixedFrame="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="84" horizontalPageScroll="10" verticalLineScroll="84" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="I3D-qo-mrY">
-                                                        <rect key="frame" x="0.0" y="235" width="297" height="245"/>
+                                                        <rect key="frame" x="0.0" y="193" width="297" height="199"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="wUs-27-u3d">
-                                                            <rect key="frame" x="0.0" y="0.0" width="297" height="245"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="297" height="199"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="none" alternatingRowBackgroundColors="YES" autosaveColumns="NO" typeSelect="NO" rowHeight="84" viewBased="YES" id="KVJ-dE-ztQ" customClass="SCPlaylistTableView" customModule="Sudachi" customModuleProvider="target">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="297" height="0.0"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="297" height="199"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <color key="backgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>
                                                                     <color key="gridColor" white="0.80000000000000004" alpha="0.0" colorSpace="deviceWhite"/>
@@ -633,11 +633,16 @@ DQ
                                                             <autoresizingMask key="autoresizingMask"/>
                                                         </scroller>
                                                     </scrollView>
+                                                    <customView fixedFrame="YES" id="tro-05-FzH">
+                                                        <rect key="frame" x="0.0" y="402" width="297" height="78"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    </customView>
                                                 </subviews>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="250" id="5YJ-to-FZC"/>
                                                 </constraints>
                                                 <holdingPriorities>
+                                                    <real value="250"/>
                                                     <real value="250"/>
                                                     <real value="250"/>
                                                 </holdingPriorities>

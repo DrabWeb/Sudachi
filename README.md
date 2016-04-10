@@ -62,6 +62,7 @@ A simple and customizable MPD front end for OSX
 
 > * Add drag reordering of playlist items
 > * Fix keyboard playlist editing
+> * Otions to set the display format of playlist items
 
 * Music Browser
 

@@ -53,6 +53,9 @@ class SCMusicBrowserController: NSObject {
         
         // Enable updating on the playlist
         mainViewController.playlistController.canUpdate = true;
+        
+        // Update the playlist
+        mainViewController.playlistController.update();
     }
     
     /// The current path the music browser is at
