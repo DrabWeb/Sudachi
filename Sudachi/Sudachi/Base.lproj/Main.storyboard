@@ -148,6 +148,8 @@ DQ
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="View" id="HyV-fh-RgO">
                                     <items>
+                                        <menuItem title="Toggle Music Browser" keyEquivalent="b" id="zmj-Zm-j4c"/>
+                                        <menuItem isSeparatorItem="YES" id="7bO-Hh-mSv"/>
                                         <menuItem title="Show Toolbar" keyEquivalent="t" id="snW-S8-Cw5">
                                             <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
                                             <connections>
@@ -212,6 +214,7 @@ DQ
                         <outlet property="menuItemSelectSearchField" destination="Esl-sH-SIM" id="aFe-JP-RS5"/>
                         <outlet property="menuItemShufflePlaylist" destination="5ee-y9-jpd" id="PoK-7A-R7a"/>
                         <outlet property="menuItemSwitchRepeatMode" destination="RrU-wG-DbZ" id="0aB-rD-gif"/>
+                        <outlet property="menuItemToggleMusicBrowser" destination="zmj-Zm-j4c" id="duG-ht-JFR"/>
                         <outlet property="menuItemToggleRandomMode" destination="sir-qg-RXE" id="fnh-OE-Pfg"/>
                     </connections>
                 </customObject>
@@ -737,6 +740,7 @@ DQ
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="mainSplitView" destination="xYC-HK-D6L" id="k27-dh-Rpr"/>
                         <outlet property="musicBrowserController" destination="2Jc-q4-rLf" id="Q94-OX-qEa"/>
                         <outlet property="nowPlayingController" destination="WsD-6C-jNV" id="XcX-Ok-9wL"/>
                         <outlet property="playlistActionsController" destination="YDX-u9-zYP" id="vKX-EQ-dos"/>

@@ -25,6 +25,9 @@ class ViewController: NSViewController, NSWindowDelegate {
     /// The controller for the playlist actions view
     @IBOutlet var playlistActionsController: SCPlaylistActionsController!
     
+    /// The split view that holds the Player, Playlist, Playlist Controls and Music Browser
+    @IBOutlet var mainSplitView: SCInvisibleDividerSplitView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -60,6 +63,65 @@ class ViewController: NSViewController, NSWindowDelegate {
         NSThread.detachNewThreadSelector(Selector("updateLoopThread"), toTarget: self, withObject: nil);
         
 //        NSThread.detachNewThreadSelector(Selector("nowPlayingNotificationLoopThread"), toTarget: self, withObject: nil);
+    }
+    
+    /// Is the music browser open?
+    var musicBrowserOpen : Bool = true;
+    
+    /// The size of the right panel in mainSplitView before the music browser was hidden
+    var rightPanelOriginalSize : CGFloat = 0;
+    
+    /// Toggles the visibility of the music browser
+    func toggleMusicBrowser() {
+        // Toggle musicBrowserOpen
+        musicBrowserOpen = !musicBrowserOpen;
+        
+        // If the music browser is now open...
+        if(musicBrowserOpen) {
+            // Show the music browser
+            showMusicBrowser();
+        }
+        // If the music browser is now closed...
+        else {
+            // Hide the music browser
+            hideMusicBrowser();
+        }
+    }
+    
+    /// Hides the music browser
+    func hideMusicBrowser() {
+        // If the music browser isnt already hidden...
+        if(musicBrowserOpen) {
+            // Set the right panel size
+            rightPanelOriginalSize = mainSplitView.subviews[1].frame.width;
+        }
+        
+        // Hide the music browser
+        mainSplitView.subviews[0].hidden = true;
+        
+        // Adjust the split views
+        mainSplitView.adjustSubviews();
+        
+        // Adjust the music browser size
+        mainSplitView.setPosition(0, ofDividerAtIndex: 0);
+        
+        // Say the music browser is closed
+        musicBrowserOpen = false;
+    }
+    
+    /// Shows the music browser
+    func showMusicBrowser() {
+        // Show the music browser
+        mainSplitView.subviews[0].hidden = false;
+        
+        // Adjust the split views
+        mainSplitView.adjustSubviews();
+        
+        // Adjust the music browser size
+        mainSplitView.setPosition(mainSplitView.frame.width - rightPanelOriginalSize, ofDividerAtIndex: 0);
+        
+        // Say the music browser is open
+        musicBrowserOpen = true;
     }
     
     /// The thread that updates the playlist and now playing controllers with "mpc idle"
@@ -141,6 +203,16 @@ class ViewController: NSViewController, NSWindowDelegate {
         window.toolbar?.visible = toolbarVisible;
     }
     
+    /// Sets up the menu items for this controller
+    func setupMenuItems() {
+        // Setup the menu items
+        // Set the targets
+        (NSApplication.sharedApplication().delegate as! AppDelegate).menuItemToggleMusicBrowser.target = self;
+        
+        // Set the actions
+        (NSApplication.sharedApplication().delegate as! AppDelegate).menuItemToggleMusicBrowser.action = Selector("toggleMusicBrowser");
+    }
+    
     /// Styles the window
     func styleWindow() {
         // Get the window
@@ -152,6 +224,9 @@ class ViewController: NSViewController, NSWindowDelegate {
         // Style the window
         window.titleVisibility = .Hidden;
         window.titlebarAppearsTransparent = true;
+        
+        // Setup the menu items
+        setupMenuItems();
     }
     
     /// Loads in the theme variables from SCThemingEngine

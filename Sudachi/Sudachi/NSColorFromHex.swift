@@ -16,8 +16,14 @@ extension NSColor {
         self.init(hexString: hexString, alpha: 1.0)
     }
     
-    public convenience init?(hexString: String, alpha: Float) {
+    public convenience init?(hexString: String, var alpha: Float) {
         var hex = hexString
+        
+        /// hex split at every ","
+        let hexSplit : [String] = hex.componentsSeparatedByString(",");
+        
+        // Set hex to the first value in hexSplit
+        hex = hexSplit[0];
         
         // Check for hash and remove the hash
         if hex.hasPrefix("#") {
@@ -46,6 +52,12 @@ extension NSColor {
             NSScanner(string: redHex).scanHexInt(&redInt)
             NSScanner(string: greenHex).scanHexInt(&greenInt)
             NSScanner(string: blueHex).scanHexInt(&blueInt)
+            
+            // If there is a second value in hexSplit...
+            if(hexSplit.count > 1) {
+                // Set the alpha to the second value
+                alpha = NSString(string: hexSplit[1]).floatValue;
+            }
             
             self.init(red: CGFloat(redInt) / 255.0, green: CGFloat(greenInt) / 255.0, blue: CGFloat(blueInt) / 255.0, alpha: CGFloat(alpha))
         }
