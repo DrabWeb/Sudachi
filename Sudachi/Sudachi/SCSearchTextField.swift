@@ -44,7 +44,7 @@ class SCSearchTextField: NSTextField {
         self.layer?.cornerRadius = SCThemingEngine().defaultEngine().searchFieldCornerRadius;
         
         // Set the font
-        self.font = SCThemingEngine().defaultEngine().setFontFamily(self.font!);
+        self.font = SCThemingEngine().defaultEngine().setFontFamily(self.font!, size: SCThemingEngine().defaultEngine().searchFieldFontSize);
         
         // If this isnt being called from init...
         if(!initLoadTheme) {

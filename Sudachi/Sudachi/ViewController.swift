@@ -32,17 +32,20 @@ class ViewController: NSViewController, NSWindowDelegate {
         // Initialize the application
         (NSApplication.sharedApplication().delegate as! AppDelegate).initialize();
         
-        // An example theme on my machine for testing
-//        SCThemingEngine().defaultEngine().loadFromThemeFolder(NSHomeDirectory() + "/Library/Application Support/Sudachi/themes/Material Pink.sctheme/");
-        
         // Style the window
         styleWindow();
         
         // Set the main window
         (NSApplication.sharedApplication().delegate as! AppDelegate).mainWindow = window;
         
+        // An example theme on my machine for testing
+        SCThemingEngine().defaultEngine().loadFromThemeFolder(NSHomeDirectory() + "/Library/Application Support/Sudachi/themes/Material Pink.sctheme/");
+        
         // Load the theme
         loadTheme();
+        
+        // Tell the search field to load its theme
+        musicBrowserController.searchField.loadTheme();
         
         // Initialize everything else
         nowPlayingController.initialize();

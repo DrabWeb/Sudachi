@@ -54,6 +54,12 @@ class SCThemingEngine {
     /// The default secondary text color for the current playlist item
     var playlistCurrentSongSecondaryTextColor : NSColor = NSColor(hexString: "#9F97A5")!;
     
+    /// The font size for the title label in playlist items(In points)
+    var playlistTitleFontSize : CGFloat = 16;
+    
+    /// The font size for the artist label in playlist items(In points)
+    var playlistArtistFontSize : CGFloat = 13;
+    
     /// The default text color
     var textColor : NSColor = NSColor(hexString: "#887F90")!;
     
@@ -74,6 +80,15 @@ class SCThemingEngine {
     
     /// The color for the cover overlay in the now playing view(The panel that holds the media controls)
     var nowPlayingCoverOverlayBackgroundColor : NSColor = NSColor(hexString: "#37333B")!;
+    
+    /// The font size for the now playing title(In points)
+    var nowPlayingTitleFontSize : CGFloat = 15;
+    
+    /// The font size for the now playing artist(In points)
+    var nowPlayingArtistFontSize : CGFloat = 13;
+    
+    /// The font size for the times(position and duration) labels in the now playing panel(In points)
+    var nowPlayingTimesFontSize : CGFloat = 13;
     
     /// The image for the skip previous media icon
     var skipPreviousImage : NSImage = NSImage(named: "Skip Previous")!;
@@ -99,6 +114,9 @@ class SCThemingEngine {
     /// The corner radius for search fields
     var searchFieldCornerRadius : CGFloat = 4.0;
     
+    /// The font size for search fields(In points)
+    var searchFieldFontSize : CGFloat = 13;
+    
     /// The text color for the music browser item's text
     var musicBrowserItemTextColor : NSColor = NSColor(hexString: "#887F90")!;
     
@@ -113,6 +131,9 @@ class SCThemingEngine {
     
     /// The corner radius for the selection box for music browser items
     var musicBrowserSelectionBoxCornerRadius : CGFloat = 5.0;
+    
+    /// The font size for the title of music browser items(In points)
+    var musicBrowserItemTitleFontSize : CGFloat = 13;
     
     /// The color for the background of the playlist actions view
     var playlistActionsBackgroundColor : NSColor = NSColor(hexString: "#37333B")!;
@@ -246,6 +267,60 @@ class SCThemingEngine {
                     }
                 }
                 
+                // Load the font and size settings
+                // If there is a fonts.json...
+                if(NSFileManager.defaultManager().fileExistsAtPath(folderPath + "/fonts.json")) {
+                    /// The JSON object for the fonts JSON
+                    let fontsJson : JSON = JSON(data: NSFileManager.defaultManager().contentsAtPath(folderPath + "/fonts.json")!);
+                    
+                    // Load the font and font values
+                    
+                    // Load basic appearance settings
+                    // Set the font family
+                    if(fontsJson["font-family"].exists()) {
+                        fontFamily = fontsJson["font-family"].stringValue;
+                    }
+                    
+                    // Set if the font is antialiased
+                    if(fontsJson["antialiased"].exists()) {
+                        antialiasFont = fontsJson["antialiased"].boolValue;
+                    }
+                    
+                    // Update the font antialiasing
+                    setFontAntialiasing();
+                    
+                    // Load the font sizes
+                    // For each one it checks if the value exists and then if it does loads it into it's respective value
+                    
+                    if(fontsJson["playlist-item-primary-font-size"].exists()) {
+                        playlistTitleFontSize = CGFloat(fontsJson["playlist-item-primary-font-size"].floatValue);
+                    }
+                    
+                    if(fontsJson["playlist-item-secondary-font-size"].exists()) {
+                        playlistArtistFontSize = CGFloat(fontsJson["playlist-item-secondary-font-size"].floatValue);
+                    }
+                    
+                    if(fontsJson["now-playing-title-font-size"].exists()) {
+                        nowPlayingTitleFontSize = CGFloat(fontsJson["now-playing-title-font-size"].floatValue);
+                    }
+                    
+                    if(fontsJson["now-playing-artist-font-size"].exists()) {
+                        nowPlayingArtistFontSize = CGFloat(fontsJson["now-playing-artist-font-size"].floatValue);
+                    }
+                    
+                    if(fontsJson["now-playing-times-font-size"].exists()) {
+                        nowPlayingTimesFontSize = CGFloat(fontsJson["now-playing-times-font-size"].floatValue);
+                    }
+                    
+                    if(fontsJson["search-field-font-size"].exists()) {
+                        searchFieldFontSize = CGFloat(fontsJson["search-field-font-size"].floatValue);
+                    }
+                    
+                    if(fontsJson["music-browser-item-title-font-size"].exists()) {
+                        musicBrowserItemTitleFontSize = CGFloat(fontsJson["music-browser-item-title-font-size"].floatValue);
+                    }
+                }
+                
                 // Load images
                 // If there is a pause image...
                 if(NSFileManager.defaultManager().fileExistsAtPath(folderPath + "/pause.png")) {
@@ -316,18 +391,15 @@ class SCThemingEngine {
         }
     }
     
-    /// Sets the family of the given font to the theme's font family while retaining previous values like size and weight, and returns the font
-    func setFontFamily(font : NSFont) -> NSFont {
+    /// Sets the family of the given font to the theme's font family while retaining previous values like weight, and returns the font
+    func setFontFamily(font : NSFont, size : CGFloat) -> NSFont {
+        // Update the font antialiasing
+        setFontAntialiasing();
+        
         // If the theme font family is set...
         if(fontFamily != "") {
-            /// The given font with the modified font family
-            var newFont : NSFont? = NSFont(name: fontFamily, size: font.pointSize);
-            
-            // If we said not to antialias the font...
-            if(!antialiasFont) {
-                // Disable font antialiasing on the font
-                newFont = newFont?.screenFontWithRenderingMode(NSFontRenderingMode.IntegerAdvancementsRenderingMode);
-            }
+            /// The given font with the modified font family and size
+            let newFont : NSFont? = NSFont(name: fontFamily, size: size);
             
             // If the new font isnt nil...
             if(newFont != nil) {
@@ -345,6 +417,23 @@ class SCThemingEngine {
             // Return the unmodified font
             return font;
         }
+    }
+    
+    /// Updates the application's font antialiasing based on antialiasFont
+    func setFontAntialiasing() {
+        // If we said not to antialias the font...
+        if(!antialiasFont) {
+            // Disable font antialiasing on the font(And the whole application)(This has to be dont so the font smoothing is disabled and we can get a non-antialiased font)
+            NSUserDefaults.standardUserDefaults().setValue(0, forKey: "AppleFontSmoothing");
+        }
+            // If we said to antialias the font...
+        else {
+            // Set the font smoothing to default
+            NSUserDefaults.standardUserDefaults().setValue(3, forKey: "AppleFontSmoothing");
+        }
+        
+        // Synchronize the user defaults
+        NSUserDefaults.standardUserDefaults().synchronize();
     }
     
     /// Returns the default theming engine

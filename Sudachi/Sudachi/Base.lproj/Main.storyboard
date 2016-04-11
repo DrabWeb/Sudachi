@@ -592,7 +592,7 @@ DQ
                                                                                             <constraints>
                                                                                                 <constraint firstAttribute="height" constant="17" id="2Xr-Tc-SMn"/>
                                                                                             </constraints>
-                                                                                            <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="left" title="by Artist アーティスト" id="D58-yJ-zeI">
+                                                                                            <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="left" title="by Artist アーティスト" usesSingleLineMode="YES" id="D58-yJ-zeI">
                                                                                                 <font key="font" metaFont="system"/>
                                                                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -603,7 +603,7 @@ DQ
                                                                                             <constraints>
                                                                                                 <constraint firstAttribute="height" constant="19" id="B5S-4V-yVx"/>
                                                                                             </constraints>
-                                                                                            <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="left" title="Song Title 曲名" id="w56-du-Wit">
+                                                                                            <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="left" title="Song Title 曲名" usesSingleLineMode="YES" id="w56-du-Wit">
                                                                                                 <font key="font" metaFont="system" size="16"/>
                                                                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -690,7 +690,7 @@ DQ
                                                         <constraints>
                                                             <constraint firstItem="iFb-Rd-UxM" firstAttribute="centerX" secondItem="tro-05-FzH" secondAttribute="centerX" id="2gv-jb-f0J"/>
                                                             <constraint firstAttribute="bottom" secondItem="w5f-so-8z7" secondAttribute="bottom" id="Fvk-cQ-4PI"/>
-                                                            <constraint firstAttribute="height" relation="lessThanOrEqual" constant="50" id="Ip2-Br-w9D"/>
+                                                            <constraint firstAttribute="height" constant="50" id="Ip2-Br-w9D"/>
                                                             <constraint firstItem="JZU-O1-SbV" firstAttribute="top" secondItem="tro-05-FzH" secondAttribute="top" id="ZVN-gg-JjJ"/>
                                                             <constraint firstItem="w5f-so-8z7" firstAttribute="top" secondItem="tro-05-FzH" secondAttribute="top" id="cOo-1A-vAv"/>
                                                             <constraint firstItem="JZU-O1-SbV" firstAttribute="leading" secondItem="iFb-Rd-UxM" secondAttribute="trailing" constant="10" id="k7J-j0-9Il"/>

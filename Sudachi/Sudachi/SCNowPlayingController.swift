@@ -203,10 +203,10 @@ class SCNowPlayingController: NSObject {
         nowPlayingPausePlayButton.image = SCThemingEngine().defaultEngine().playImage;
         
         // Set the fonts
-        nowPlayingTitleLabel.font = SCThemingEngine().defaultEngine().setFontFamily(nowPlayingTitleLabel.font!);
-        nowPlayingArtistLabel.font = SCThemingEngine().defaultEngine().setFontFamily(nowPlayingArtistLabel.font!);
-        nowPlayingSongPositionLabel.font = SCThemingEngine().defaultEngine().setFontFamily(nowPlayingSongPositionLabel.font!);
-        nowPlayingSongDurationLabel.font = SCThemingEngine().defaultEngine().setFontFamily(nowPlayingSongDurationLabel.font!);
+        nowPlayingTitleLabel.font = SCThemingEngine().defaultEngine().setFontFamily(nowPlayingTitleLabel.font!, size: SCThemingEngine().defaultEngine().nowPlayingTitleFontSize);
+        nowPlayingArtistLabel.font = SCThemingEngine().defaultEngine().setFontFamily(nowPlayingArtistLabel.font!, size: SCThemingEngine().defaultEngine().nowPlayingArtistFontSize);
+        nowPlayingSongPositionLabel.font = SCThemingEngine().defaultEngine().setFontFamily(nowPlayingSongPositionLabel.font!, size: SCThemingEngine().defaultEngine().nowPlayingTimesFontSize);
+        nowPlayingSongDurationLabel.font = SCThemingEngine().defaultEngine().setFontFamily(nowPlayingSongDurationLabel.font!, size: SCThemingEngine().defaultEngine().nowPlayingTimesFontSize);
     }
     
     func initialize() {

@@ -48,6 +48,6 @@ class SCMusicBrowserCollectionViewItem: NSCollectionViewItem {
         self.textField?.textColor = SCThemingEngine().defaultEngine().musicBrowserItemTextColor;
         
         // Set the fonts
-        self.textField?.font = SCThemingEngine().defaultEngine().setFontFamily((self.textField?.font!)!);
+        self.textField?.font = SCThemingEngine().defaultEngine().setFontFamily((self.textField?.font!)!, size: SCThemingEngine().defaultEngine().musicBrowserItemTitleFontSize);
     }
 }
