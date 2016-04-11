@@ -166,7 +166,6 @@ class SCMPD {
         runMpcCommand(["del", String(index)], waitUntilExit: true, log: false);
     }
     
-    /// TODO: Fix an odd bug where when you jump to a track and it finishes, it plays the one after the one you jumped from
     /// Plays the song at the given index in the current playlist(Index starts at 1, not 0)
     func playSongInCurrentPlaylistAtIndex(index : Int) {
         // Run the play command with the given index

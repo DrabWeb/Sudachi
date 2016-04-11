@@ -207,6 +207,7 @@ class SCPlaylistController: NSObject {
         // Scroll to the current song
         scrollToCurrentSong();
         
+        // Allow dragged files into the playlist table view
         playlistTableView.registerForDraggedTypes(["public.data"]);
     }
 }

@@ -326,6 +326,16 @@ class SCMusicBrowserController: NSObject {
         
         // Add all the objects in musicBrowserItems to arrayController
         arrayController.addObjects(musicBrowserItems);
+        
+        // TODO: Fix this so it also works on the first load(Currently on the first load the layer is nil, and setting it hides the image)
+        // If we said to hide shadows on music browser items...
+        if(!SCThemingEngine().defaultEngine().musicBrowserItemShadowEnabled) {
+            // For every grid item...
+            for currentIndex in 0...((arrayController.arrangedObjects as! [AnyObject]).count - 1) {
+                // Remove the current grid item's layer
+                musicBrowserCollectionView.itemAtIndex(currentIndex)?.imageView!.layer?.shadowOpacity = 0;
+            }
+        }
     }
     
     /// Clears arrayController, also clears musicBrowserItems if you set alsoMusicBrowserItems to true

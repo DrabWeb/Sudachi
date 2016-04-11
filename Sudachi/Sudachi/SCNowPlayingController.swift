@@ -185,6 +185,15 @@ class SCNowPlayingController: NSObject {
     
     /// Loads in the theme variables from SCThemingEngine
     func loadTheme() {
+        // If we said to hide the cover overlay's shadow...
+        if(!SCThemingEngine().defaultEngine().nowPlayingCoverOverlayShadowEnabled) {
+            // Disable the cover overlay shadow
+            nowPlayingCoverOverlayView.layer = CALayer();
+            
+            // Set the overlay color(Its transparent when the layer resets)
+            nowPlayingCoverOverlayView.layer?.backgroundColor = SCThemingEngine().defaultEngine().nowPlayingCoverOverlayBackgroundColor.CGColor;
+        }
+        
         // Set the now playing view's background color
         nowPlayingContainer.layer?.backgroundColor = SCThemingEngine().defaultEngine().nowPlayingViewBackgroundColor.CGColor;
         

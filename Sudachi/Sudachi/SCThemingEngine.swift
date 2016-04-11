@@ -33,6 +33,15 @@ class SCThemingEngine {
     /// The icon for representing the parent folder
     var folderBackIcon : NSImage = NSImage(named: "Folder Back")!;
     
+    /// Does the right panel(Now Playing, Playlist and Playlist Controls) have a shadow?
+    var rightPanelShadowEnabled : Bool = true;
+    
+    /// Does the now playing cover overlay have a shadow?
+    var nowPlayingCoverOverlayShadowEnabled : Bool = true;
+    
+    /// Do music browser items have shadows?
+    var musicBrowserItemShadowEnabled : Bool = true;
+    
     /// The first alternating color for the playlist table view
     var playlistFirstAlternatingColor : NSColor = NSColor(hexString: "#37333B")!;
     
@@ -318,6 +327,28 @@ class SCThemingEngine {
                     
                     if(fontsJson["music-browser-item-title-font-size"].exists()) {
                         musicBrowserItemTitleFontSize = CGFloat(fontsJson["music-browser-item-title-font-size"].floatValue);
+                    }
+                }
+                
+                // Load the shadow settings
+                // If there is a shadows.json...
+                if(NSFileManager.defaultManager().fileExistsAtPath(folderPath + "/shadows.json")) {
+                    /// The JSON object for the shadows JSON
+                    let shadowsJson : JSON = JSON(data: NSFileManager.defaultManager().contentsAtPath(folderPath + "/shadows.json")!);
+                    
+                    // Load the font and font values
+                    // Same procedure, if exists load
+                    
+                    if(shadowsJson["right-panel-shadow-enabled"].exists()) {
+                        rightPanelShadowEnabled = shadowsJson["right-panel-shadow-enabled"].boolValue;
+                    }
+                    
+                    if(shadowsJson["now-playing-media-panel-shadow-enabled"].exists()) {
+                        nowPlayingCoverOverlayShadowEnabled = shadowsJson["now-playing-media-panel-shadow-enabled"].boolValue;
+                    }
+                    
+                    if(shadowsJson["music-browser-item-shadow-enabled"].exists()) {
+                        musicBrowserItemShadowEnabled = shadowsJson["music-browser-item-shadow-enabled"].boolValue;
                     }
                 }
                 

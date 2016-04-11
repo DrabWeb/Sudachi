@@ -42,7 +42,7 @@ class ViewController: NSViewController, NSWindowDelegate {
         (NSApplication.sharedApplication().delegate as! AppDelegate).mainWindow = window;
         
         // An example theme on my machine for testing
-        SCThemingEngine().defaultEngine().loadFromThemeFolder(NSHomeDirectory() + "/Library/Application Support/Sudachi/themes/Material Pink.sctheme/");
+//        SCThemingEngine().defaultEngine().loadFromThemeFolder(NSHomeDirectory() + "/Library/Application Support/Sudachi/themes/Material Pink.sctheme/");
         
         // Load the theme
         loadTheme();
@@ -239,5 +239,11 @@ class ViewController: NSViewController, NSWindowDelegate {
         // Allow the window to be transparent and set the background color
         window.opaque = false;
         window.backgroundColor = SCThemingEngine().defaultEngine().backgroundColor;
+        
+        // If we said to hide the now right panel's shadow...
+        if(!SCThemingEngine().defaultEngine().rightPanelShadowEnabled) {
+            // Hide the shadow for the right panel(By resetting the layer - for some reason when this loads the CALayer is blank)
+            mainSplitView.subviews[1].layer = CALayer();
+        }
     }
 }
