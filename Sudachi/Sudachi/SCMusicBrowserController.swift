@@ -180,6 +180,24 @@ class SCMusicBrowserController: NSObject {
         musicBrowserCollectionView.selectionIndexes = NSIndexSet(index: 0);
     }
     
+    /// Updates the music database and once finished reloads the current directory and shows a notification saying the update is done
+    func updateDatabse() {
+        // Update the database
+        (NSApplication.sharedApplication().delegate as! AppDelegate).SudachiMPD.updateDatabase();
+        
+        /// The notification to say the database update finished
+        let finishedNotification : NSUserNotification = NSUserNotification();
+        
+        // Set the informative text
+        finishedNotification.informativeText = "Database update finished";
+        
+        // Deliver the notification
+        NSUserNotificationCenter.defaultUserNotificationCenter().deliverNotification(finishedNotification);
+        
+        // Reload the current directory
+        displayItemsFromRelativePath(currentFolder);
+    }
+    
     /// The last entered search
     var lastSearch : String = "";
     
@@ -377,12 +395,14 @@ class SCMusicBrowserController: NSObject {
         (NSApplication.sharedApplication().delegate as! AppDelegate).menuItemSelectSearchField.target = self;
         (NSApplication.sharedApplication().delegate as! AppDelegate).menuItemSelectMusicBrowser.target = self;
         (NSApplication.sharedApplication().delegate as! AppDelegate).menuItemEnclosingFolder.target = self;
+        (NSApplication.sharedApplication().delegate as! AppDelegate).menuItemUpdateMpdDatabase.target = self;
         
         // Set the actions
         (NSApplication.sharedApplication().delegate as! AppDelegate).menuItemOpenSelectedItem.action = Selector("openSelectedItems");
         (NSApplication.sharedApplication().delegate as! AppDelegate).menuItemSelectSearchField.action = Selector("selectSearchField");
         (NSApplication.sharedApplication().delegate as! AppDelegate).menuItemSelectMusicBrowser.action = Selector("selectMusicBrowser");
         (NSApplication.sharedApplication().delegate as! AppDelegate).menuItemEnclosingFolder.action = Selector("openParentFolder");
+        (NSApplication.sharedApplication().delegate as! AppDelegate).menuItemUpdateMpdDatabase.action = Selector("updateDatabse");
     }
     
     /// Loads in the theme variables from SCThemingEngine

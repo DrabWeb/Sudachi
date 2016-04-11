@@ -25,6 +25,8 @@
                                         <menuItem isSeparatorItem="YES" id="VOq-y0-SEH"/>
                                         <menuItem title="Preferences…" keyEquivalent="," id="BOF-NM-1cW"/>
                                         <menuItem isSeparatorItem="YES" id="wFC-TO-SCJ"/>
+                                        <menuItem title="Update MPD Database" keyEquivalent="U" id="zl0-r7-LAY"/>
+                                        <menuItem isSeparatorItem="YES" id="iBT-BF-A6m"/>
                                         <menuItem title="Services" id="NMo-om-nkz">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <menu key="submenu" title="Services" systemMenu="services" id="hz9-B4-Xy5"/>
@@ -216,6 +218,7 @@ DQ
                         <outlet property="menuItemSwitchRepeatMode" destination="RrU-wG-DbZ" id="0aB-rD-gif"/>
                         <outlet property="menuItemToggleMusicBrowser" destination="zmj-Zm-j4c" id="duG-ht-JFR"/>
                         <outlet property="menuItemToggleRandomMode" destination="sir-qg-RXE" id="fnh-OE-Pfg"/>
+                        <outlet property="menuItemUpdateMpdDatabase" destination="zl0-r7-LAY" id="kTj-ee-SxJ"/>
                     </connections>
                 </customObject>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

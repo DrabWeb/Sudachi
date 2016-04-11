@@ -30,6 +30,7 @@ A simple and customizable MPD front end for OSX
 * Music Browser
 
 > * Browse collection in a Finder-like browser
+> * Update MPD database with keybind
 
 * Search
 
@@ -66,4 +67,4 @@ A simple and customizable MPD front end for OSX
 
 * Music Browser
 
-> * Add a database update button and keybind
+> * 

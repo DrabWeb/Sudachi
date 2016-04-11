@@ -14,6 +14,12 @@ class SCMPD {
     /// The path to the user's MPD music folder
     var mpdFolderPath : String = "";
     
+    /// Updates the music database to match the music directory
+    func updateDatabase() {
+        // Do the "mpc update" command
+        runMpcCommand(["update"], waitUntilExit: true, log: true);
+    }
+    
     /// Moves the playlist item at the given index to the second index
     func movePlaylistItem(from : Int, to : Int) {
         // Do the "mpc mv from to" command

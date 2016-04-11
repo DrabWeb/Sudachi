@@ -17,6 +17,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     /// The main window of the application
     var mainWindow : NSWindow? = nil;
     
+    /// Sudachi/Update MPD Database (⌘⇧U)
+    @IBOutlet weak var menuItemUpdateMpdDatabase: NSMenuItem!
+    
     /// Browser/Open Selected Item(s) (⌘O)
     @IBOutlet weak var menuItemOpenSelectedItem: NSMenuItem!
     
