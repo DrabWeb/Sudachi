@@ -1,0 +1,11 @@
+{
+	"font-family": "Helvetica Light",
+	"antialiased": true,
+	"playlist-item-primary-font-size": 16,
+	"playlist-item-secondary-font-size": 13,
+	"now-playing-title-font-size": 15,
+	"now-playing-artist-font-size": 13,
+	"now-playing-times-font-size": 13,
+	"search-field-font-size": 13,
+	"music-browser-item-title-font-size": 13,
+}
