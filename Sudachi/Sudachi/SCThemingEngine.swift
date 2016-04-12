@@ -12,6 +12,9 @@ class SCThemingEngine {
     /// The titlebar color of any window in the app
     var titlebarColor : NSColor = NSColor(hexString: "#1D1921")!;
     
+    /// Should window titlebars be hidden?
+    var titlebarsHidden : Bool = false;
+    
     /// The background color of any window in the app
     var backgroundColor : NSColor = NSColor(hexString: "#211D26")!;
     
@@ -352,61 +355,74 @@ class SCThemingEngine {
                     }
                 }
                 
+                // Load the widnow appearance settings
+                // If there is a window-appearance.json...
+                if(NSFileManager.defaultManager().fileExistsAtPath(folderPath + "/window-appearance.json")) {
+                    /// The JSON object for the window appearance JSON
+                    let windowAppearanceJson : JSON = JSON(data: NSFileManager.defaultManager().contentsAtPath(folderPath + "/window-appearance.json")!);
+                    
+                    // Load thw window appearance values
+                    
+                    if(windowAppearanceJson["titlebar-visible"].exists()) {
+                        titlebarsHidden = !windowAppearanceJson["titlebar-visible"].boolValue;
+                    }
+                }
+                
                 // Load images
                 // If there is a pause image...
-                if(NSFileManager.defaultManager().fileExistsAtPath(folderPath + "/pause.png")) {
+                if(NSFileManager.defaultManager().fileExistsAtPath(folderPath + "/images/pause.png")) {
                     // Load the pause image
-                    self.pauseImage = NSImage(contentsOfFile: folderPath + "/pause.png")!;
+                    self.pauseImage = NSImage(contentsOfFile: folderPath + "/images/pause.png")!;
                 }
                 
                 // Im not commenting the rest of this, the above explains how it works
                 
-                if(NSFileManager.defaultManager().fileExistsAtPath(folderPath + "/play.png")) {
-                    self.playImage = NSImage(contentsOfFile: folderPath + "/play.png")!;
+                if(NSFileManager.defaultManager().fileExistsAtPath(folderPath + "/images/play.png")) {
+                    self.playImage = NSImage(contentsOfFile: folderPath + "/images/play.png")!;
                 }
                 
-                if(NSFileManager.defaultManager().fileExistsAtPath(folderPath + "/skip-next.png")) {
-                    self.skipNextImage = NSImage(contentsOfFile: folderPath + "/skip-next.png")!;
+                if(NSFileManager.defaultManager().fileExistsAtPath(folderPath + "/images/skip-next.png")) {
+                    self.skipNextImage = NSImage(contentsOfFile: folderPath + "/images/skip-next.png")!;
                 }
                 
-                if(NSFileManager.defaultManager().fileExistsAtPath(folderPath + "/skip-previous.png")) {
-                    self.skipPreviousImage = NSImage(contentsOfFile: folderPath + "/skip-previous.png")!;
+                if(NSFileManager.defaultManager().fileExistsAtPath(folderPath + "/images/skip-previous.png")) {
+                    self.skipPreviousImage = NSImage(contentsOfFile: folderPath + "/images/skip-previous.png")!;
                 }
                 
-                if(NSFileManager.defaultManager().fileExistsAtPath(folderPath + "/music-file-icon.png")) {
-                    self.musicFileIcon = NSImage(contentsOfFile: folderPath + "/music-file-icon.png")!;
+                if(NSFileManager.defaultManager().fileExistsAtPath(folderPath + "/images/music-file-icon.png")) {
+                    self.musicFileIcon = NSImage(contentsOfFile: folderPath + "/images/music-file-icon.png")!;
                 }
                 
-                if(NSFileManager.defaultManager().fileExistsAtPath(folderPath + "/folder-icon.png")) {
-                    self.folderIcon = NSImage(contentsOfFile: folderPath + "/folder-icon.png")!;
+                if(NSFileManager.defaultManager().fileExistsAtPath(folderPath + "/images/folder-icon.png")) {
+                    self.folderIcon = NSImage(contentsOfFile: folderPath + "/images/folder-icon.png")!;
                 }
                 
-                if(NSFileManager.defaultManager().fileExistsAtPath(folderPath + "/folder-back-icon.png")) {
-                    self.folderBackIcon = NSImage(contentsOfFile: folderPath + "/folder-back-icon.png")!;
+                if(NSFileManager.defaultManager().fileExistsAtPath(folderPath + "/images/folder-back-icon.png")) {
+                    self.folderBackIcon = NSImage(contentsOfFile: folderPath + "/images/folder-back-icon.png")!;
                 }
                 
-                if(NSFileManager.defaultManager().fileExistsAtPath(folderPath + "/repeat-off.png")) {
-                    self.playlistActionsRepeatOffImage = NSImage(contentsOfFile: folderPath + "/repeat-off.png")!;
+                if(NSFileManager.defaultManager().fileExistsAtPath(folderPath + "/images/repeat-off.png")) {
+                    self.playlistActionsRepeatOffImage = NSImage(contentsOfFile: folderPath + "/images/repeat-off.png")!;
                 }
                 
-                if(NSFileManager.defaultManager().fileExistsAtPath(folderPath + "/repeat-playlist.png")) {
-                    self.playlistActionsRepeatPlaylistImage = NSImage(contentsOfFile: folderPath + "/repeat-playlist.png")!;
+                if(NSFileManager.defaultManager().fileExistsAtPath(folderPath + "/images/repeat-playlist.png")) {
+                    self.playlistActionsRepeatPlaylistImage = NSImage(contentsOfFile: folderPath + "/images/repeat-playlist.png")!;
                 }
                 
-                if(NSFileManager.defaultManager().fileExistsAtPath(folderPath + "/repeat-song.png")) {
-                    self.playlistActionsRepeatSongImage = NSImage(contentsOfFile: folderPath + "/repeat-song.png")!;
+                if(NSFileManager.defaultManager().fileExistsAtPath(folderPath + "/images/repeat-song.png")) {
+                    self.playlistActionsRepeatSongImage = NSImage(contentsOfFile: folderPath + "/images/repeat-song.png")!;
                 }
                 
-                if(NSFileManager.defaultManager().fileExistsAtPath(folderPath + "/shuffle.png")) {
-                    self.playlistActionsShuffleImage = NSImage(contentsOfFile: folderPath + "/shuffle.png")!;
+                if(NSFileManager.defaultManager().fileExistsAtPath(folderPath + "/images/shuffle.png")) {
+                    self.playlistActionsShuffleImage = NSImage(contentsOfFile: folderPath + "/images/shuffle.png")!;
                 }
                 
-                if(NSFileManager.defaultManager().fileExistsAtPath(folderPath + "/random-off.png")) {
-                    self.playlistActionsRandomOffImage = NSImage(contentsOfFile: folderPath + "/repeat-off.png")!;
+                if(NSFileManager.defaultManager().fileExistsAtPath(folderPath + "/images/random-off.png")) {
+                    self.playlistActionsRandomOffImage = NSImage(contentsOfFile: folderPath + "/images/repeat-off.png")!;
                 }
                 
-                if(NSFileManager.defaultManager().fileExistsAtPath(folderPath + "/random-on.png")) {
-                    self.playlistActionsRandomOnImage = NSImage(contentsOfFile: folderPath + "/repeat-on.png")!;
+                if(NSFileManager.defaultManager().fileExistsAtPath(folderPath + "/images/random-on.png")) {
+                    self.playlistActionsRandomOnImage = NSImage(contentsOfFile: folderPath + "/images/repeat-on.png")!;
                 }
             }
             // If the extension isnt .sctheme...

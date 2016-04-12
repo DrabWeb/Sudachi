@@ -28,6 +28,9 @@ class ViewController: NSViewController, NSWindowDelegate {
     /// The split view that holds the Player, Playlist, Playlist Controls and Music Browser
     @IBOutlet var mainSplitView: SCInvisibleDividerSplitView!
     
+    /// The split view for the right panel(Now Playing, Playlist and Playlist Actions)
+    @IBOutlet var rightPanelSplitView: SCInvisibleDividerSplitView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -42,7 +45,7 @@ class ViewController: NSViewController, NSWindowDelegate {
         (NSApplication.sharedApplication().delegate as! AppDelegate).mainWindow = window;
         
         // An example theme on my machine for testing
-//        SCThemingEngine().defaultEngine().loadFromThemeFolder(NSHomeDirectory() + "/Library/Application Support/Sudachi/themes/Material Pink.sctheme/");
+        SCThemingEngine().defaultEngine().loadFromThemeFolder(NSHomeDirectory() + "/Library/Application Support/Sudachi/themes/Bright and Light.sctheme/");
         
         // Load the theme
         loadTheme();
@@ -63,6 +66,47 @@ class ViewController: NSViewController, NSWindowDelegate {
         NSThread.detachNewThreadSelector(Selector("updateLoopThread"), toTarget: self, withObject: nil);
         
 //        NSThread.detachNewThreadSelector(Selector("nowPlayingNotificationLoopThread"), toTarget: self, withObject: nil);
+    }
+    
+    /// Are the playlist actions open?
+    var playlistActionsOpen : Bool = true;
+    
+    /// Toggles the visibility of the playlist actions
+    func togglePlaylistActions() {
+        // Toggle playlistActionsOpen
+        playlistActionsOpen = !playlistActionsOpen;
+        
+        // If the playlist actions are now open...
+        if(playlistActionsOpen) {
+            // Show the playlist actions
+            showPlaylistActions();
+        }
+        // If the playlist actions are now closed...
+        else {
+            // Hide the playlist actions
+            hidePlaylistActions();
+        }
+    }
+    
+    /// Hides the playlist actions
+    func hidePlaylistActions() {
+        // Hide the playlist actions
+        rightPanelSplitView.subviews[2].hidden = true;
+        
+        // Adjust the split views
+        rightPanelSplitView.adjustSubviews();
+        
+        // Adjust the playlist controls size
+        rightPanelSplitView.setPosition(0, ofDividerAtIndex: 2);
+    }
+    
+    /// Shows the playlist actions
+    func showPlaylistActions() {
+        // Show the playlist actions
+        rightPanelSplitView.subviews[2].hidden = false;
+        
+        // Adjust the split views
+        rightPanelSplitView.adjustSubviews();
     }
     
     /// Is the music browser open?
@@ -208,9 +252,11 @@ class ViewController: NSViewController, NSWindowDelegate {
         // Setup the menu items
         // Set the targets
         (NSApplication.sharedApplication().delegate as! AppDelegate).menuItemToggleMusicBrowser.target = self;
+        (NSApplication.sharedApplication().delegate as! AppDelegate).menuItemTogglePlaylistActions.target = self;
         
         // Set the actions
         (NSApplication.sharedApplication().delegate as! AppDelegate).menuItemToggleMusicBrowser.action = Selector("toggleMusicBrowser");
+        (NSApplication.sharedApplication().delegate as! AppDelegate).menuItemTogglePlaylistActions.action = Selector("togglePlaylistActions");
     }
     
     /// Styles the window
@@ -244,6 +290,15 @@ class ViewController: NSViewController, NSWindowDelegate {
         if(!SCThemingEngine().defaultEngine().rightPanelShadowEnabled) {
             // Hide the shadow for the right panel(By resetting the layer - for some reason when this loads the CALayer is blank)
             mainSplitView.subviews[1].layer = CALayer();
+        }
+        
+        // If we said to hide window titlebars...
+        if(SCThemingEngine().defaultEngine().titlebarsHidden) {
+            // Hide the titlebar of the window
+            window.standardWindowButton(.CloseButton)?.superview?.superview?.removeFromSuperview();
+            
+            // Set the content view to be full size
+            window.styleMask |= NSFullSizeContentViewWindowMask;
         }
     }
 }
