@@ -442,10 +442,10 @@ DQ
                                                                                 </textFieldCell>
                                                                             </textField>
                                                                             <button focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="y4c-9d-9mx" userLabel="Previous Button">
-                                                                                <rect key="frame" x="89" y="27" width="25" height="25"/>
+                                                                                <rect key="frame" x="84" y="24" width="30" height="30"/>
                                                                                 <constraints>
-                                                                                    <constraint firstAttribute="width" constant="25" id="fkL-yq-z7k"/>
-                                                                                    <constraint firstAttribute="height" constant="25" id="oHD-Ak-E4Q"/>
+                                                                                    <constraint firstAttribute="width" constant="30" id="fkL-yq-z7k"/>
+                                                                                    <constraint firstAttribute="height" constant="30" id="oHD-Ak-E4Q"/>
                                                                                 </constraints>
                                                                                 <buttonCell key="cell" type="squareTextured" bezelStyle="texturedSquare" image="Skip Previous" imagePosition="only" alignment="center" focusRingType="none" imageScaling="proportionallyUpOrDown" inset="2" id="WVE-Oi-Hnp">
                                                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -470,10 +470,10 @@ DQ
                                                                                 </connections>
                                                                             </button>
                                                                             <button focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="RhI-Ct-O2O" userLabel="Next Button">
-                                                                                <rect key="frame" x="184" y="27" width="25" height="25"/>
+                                                                                <rect key="frame" x="184" y="24" width="30" height="30"/>
                                                                                 <constraints>
-                                                                                    <constraint firstAttribute="height" constant="25" id="bTO-pX-9F5"/>
-                                                                                    <constraint firstAttribute="width" constant="25" id="hb4-X0-dPq"/>
+                                                                                    <constraint firstAttribute="height" constant="30" id="bTO-pX-9F5"/>
+                                                                                    <constraint firstAttribute="width" constant="30" id="hb4-X0-dPq"/>
                                                                                 </constraints>
                                                                                 <buttonCell key="cell" type="squareTextured" bezelStyle="texturedSquare" image="Skip Next" imagePosition="only" alignment="center" focusRingType="none" imageScaling="proportionallyUpOrDown" inset="2" id="mBP-z2-Gtr">
                                                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>

@@ -418,11 +418,11 @@ class SCThemingEngine {
                 }
                 
                 if(NSFileManager.defaultManager().fileExistsAtPath(folderPath + "/images/random-off.png")) {
-                    self.playlistActionsRandomOffImage = NSImage(contentsOfFile: folderPath + "/images/repeat-off.png")!;
+                    self.playlistActionsRandomOffImage = NSImage(contentsOfFile: folderPath + "/images/random-off.png")!;
                 }
                 
                 if(NSFileManager.defaultManager().fileExistsAtPath(folderPath + "/images/random-on.png")) {
-                    self.playlistActionsRandomOnImage = NSImage(contentsOfFile: folderPath + "/images/repeat-on.png")!;
+                    self.playlistActionsRandomOnImage = NSImage(contentsOfFile: folderPath + "/images/random-on.png")!;
                 }
             }
             // If the extension isnt .sctheme...

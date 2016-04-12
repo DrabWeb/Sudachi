@@ -245,6 +245,15 @@ class ViewController: NSViewController, NSWindowDelegate {
     func windowDidExitFullScreen(notification: NSNotification) {
         // Restore the toolbar's visibility
         window.toolbar?.visible = toolbarVisible;
+        
+        // If we said to hide window titlebars...
+        if(SCThemingEngine().defaultEngine().titlebarsHidden) {
+            // Hide the titlebar of the window
+            window.standardWindowButton(.CloseButton)?.superview?.superview?.removeFromSuperview();
+            
+            // Set the content view to be full size
+            window.styleMask |= NSFullSizeContentViewWindowMask;
+        }
     }
     
     /// Sets up the menu items for this controller
