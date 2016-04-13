@@ -375,7 +375,7 @@ class SCMusicBrowserController: NSObject {
             // For every grid item...
             for currentIndex in 0...((arrayController.arrangedObjects as! [AnyObject]).count - 1) {
                 // Remove the current grid item's layer
-                musicBrowserCollectionView.itemAtIndex(currentIndex)?.imageView!.layer?.shadowOpacity = 0;
+                musicBrowserCollectionView.itemAtIndex(currentIndex)!.imageView!.layer?.shadowOpacity = 0;
             }
         }
     }

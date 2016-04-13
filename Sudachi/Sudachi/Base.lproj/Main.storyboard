@@ -273,7 +273,7 @@ DQ
         <!--Music Browser Collection View Item-->
         <scene sceneID="Qak-2R-Ys9">
             <objects>
-                <collectionViewItem storyboardIdentifier="musicBrowserCollectionViewItem" id="dE2-Zq-h48" userLabel="Music Browser Collection View Item" customClass="SCMusicBrowserCollectionViewItem" customModule="Sudachi" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewItem storyboardIdentifier="musicBrowserCollectionViewItem" showSeguePresentationStyle="single" id="dE2-Zq-h48" userLabel="Music Browser Collection View Item" customClass="SCMusicBrowserCollectionViewItem" customModule="Sudachi" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="muJ-GY-xv5">
                         <rect key="frame" x="0.0" y="0.0" width="250" height="250"/>
                         <autoresizingMask key="autoresizingMask"/>
