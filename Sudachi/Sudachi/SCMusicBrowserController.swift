@@ -490,7 +490,7 @@ class SCMusicBrowserItem: NSObject {
                     let currentFilePath : String = currentFile.absoluteString.stringByReplacingOccurrencesOfString("file://", withString: "").stringByRemovingPercentEncoding!;
                     
                     // If the current file is an image...
-                    if(NSImage.imageFileTypes().contains(NSString(string: currentFilePath).pathExtension)) {
+                    if(SCConstants().realisticImageFileTypes.contains(NSString(string: currentFilePath).pathExtension)) {
                         // Set the display image to this image
                         displayImage = NSImage(contentsOfFile: currentFilePath)!;
                         
