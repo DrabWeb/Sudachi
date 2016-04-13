@@ -1,4 +1,6 @@
 # Sudachi
+<img src="https://github.com/DrabWeb/Sudachi/blob/master/Sudachi/Sudachi/Assets.xcassets/AppIcon.appiconset/icon_512x512.png?raw=true" width="256px" height="256px">
+
 A simple and customizable MPD front end for OSX
 
 ## Requirements
