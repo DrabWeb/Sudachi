@@ -114,6 +114,7 @@
                                     <items>
                                         <menuItem title="Open Selected Item(s)" keyEquivalent="o" id="L23-YX-Ueq"/>
                                         <menuItem title="Enclosing Folder" keyEquivalent="" id="XbP-BF-V03"/>
+                                        <menuItem title="Add Listed Songs" keyEquivalent="O" id="D0s-8n-P8P"/>
                                         <menuItem isSeparatorItem="YES" id="Edh-KG-9Vc"/>
                                         <menuItem title="Select Search Field" keyEquivalent="f" id="Esl-sH-SIM"/>
                                         <menuItem title="Select Music Browser" keyEquivalent="B" id="ijE-Ys-YYE"/>
@@ -216,6 +217,7 @@ DQ
                 </application>
                 <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="Sudachi" customModuleProvider="target">
                     <connections>
+                        <outlet property="menuItemAddListedSongs" destination="D0s-8n-P8P" id="kfP-wT-RWR"/>
                         <outlet property="menuItemClearPlaylist" destination="mE6-AP-gJx" id="yAk-Ry-IgO"/>
                         <outlet property="menuItemEnclosingFolder" destination="XbP-BF-V03" id="w4H-nx-dOS"/>
                         <outlet property="menuItemOpenSelectedItem" destination="L23-YX-Ueq" id="xOq-HM-it4"/>

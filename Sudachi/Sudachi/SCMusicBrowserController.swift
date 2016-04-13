@@ -335,15 +335,6 @@ class SCMusicBrowserController: NSObject {
         
         // Add all the objects in browserItems to arrayController
         arrayController.addObjects(browserItems);
-    }
-    
-    /// Sets the grid to match musicBrowserItems
-    func setGridToBrowserItems() {
-        // Clear the current items
-        clearGrid(false);
-        
-        // Add all the objects in musicBrowserItems to arrayController
-        arrayController.addObjects(musicBrowserItems);
         
         // TODO: Fix this so it also works on the first load(Currently on the first load the layer is nil, and setting it hides the image)
         // If we said to hide shadows on music browser items...
@@ -354,6 +345,12 @@ class SCMusicBrowserController: NSObject {
                 musicBrowserCollectionView.itemAtIndex(currentIndex)?.imageView!.layer?.shadowOpacity = 0;
             }
         }
+    }
+    
+    /// Sets the grid to match musicBrowserItems
+    func setGridToBrowserItems() {
+        // Add all the items in musicBrowserItems to the grid
+        setGridToBrowserItems(musicBrowserItems);
     }
     
     /// Clears arrayController, also clears musicBrowserItems if you set alsoMusicBrowserItems to true
@@ -443,12 +440,18 @@ class SCMusicBrowserItem: NSObject {
         if(representedObjectPath != "") {
             // If this item is a folder...
             if(SCFileUtilities().isFolder((NSApplication.sharedApplication().delegate as! AppDelegate).SudachiMPD.mpdFolderPath + representedObjectPath)) {
-                // For every folder cover name in the possible folder cover names...
-                for(_, currentCoverName) in SCConstants().coverFileNames.enumerate() {
-                    // If this item's folder contains the current possible file cover name...
-                    if(NSFileManager.defaultManager().fileExistsAtPath((NSApplication.sharedApplication().delegate as! AppDelegate).SudachiMPD.mpdFolderPath + representedObjectPath + "/" + currentCoverName)) {
-                        // Set the display image to the folder cover
-                        displayImage = NSImage(contentsOfFile: (NSApplication.sharedApplication().delegate as! AppDelegate).SudachiMPD.mpdFolderPath + representedObjectPath + "/" + currentCoverName)!;
+                /// The NSURL of representedObjectPath
+                let folderUrl : NSURL = NSURL(fileURLWithPath: (NSApplication.sharedApplication().delegate as! AppDelegate).SudachiMPD.mpdFolderPath + representedObjectPath);
+                
+                // For every item in this folders contents...
+                for(_, currentFile) in NSFileManager.defaultManager().enumeratorAtURL(folderUrl, includingPropertiesForKeys: nil, options: [NSDirectoryEnumerationOptions.SkipsHiddenFiles, NSDirectoryEnumerationOptions.SkipsSubdirectoryDescendants], errorHandler: nil)!.enumerate() {
+                    /// The path of the current file
+                    let currentFilePath : String = currentFile.absoluteString.stringByReplacingOccurrencesOfString("file://", withString: "").stringByRemovingPercentEncoding!;
+                    
+                    // If the current file is an image...
+                    if(NSImage.imageFileTypes().contains(NSString(string: currentFilePath).pathExtension)) {
+                        // Set the display image to this image
+                        displayImage = NSImage(contentsOfFile: currentFilePath)!;
                         
                         // Mask the display image to the folder icon
                         displayImage = displayImage.maskWith(SCThemingEngine().defaultEngine().folderIcon);

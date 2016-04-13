@@ -26,6 +26,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     /// Browser/Enclosing Folder (⌘↑)
     @IBOutlet weak var menuItemEnclosingFolder: NSMenuItem!
     
+    /// Browser/Add Listed Songs (⌘⇧O)
+    @IBOutlet weak var menuItemAddListedSongs: NSMenuItem!
+    
     /// Browser/Select Search Field (⌘F)
     @IBOutlet weak var menuItemSelectSearchField: NSMenuItem!
     

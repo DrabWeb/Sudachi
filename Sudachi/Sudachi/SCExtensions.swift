@@ -17,8 +17,9 @@ extension NSImage {
         /// A clone of withImage
         let withImageClone : NSImage = withImage.copy() as! NSImage;
         
-        // Set the size of the mask to the result size
-        withImageClone.size = result.size;
+        // Set the sizes of the images so we dont get compression or anything like that
+        result.size = result.pixelSize;
+        withImageClone.size = result.pixelSize;
         
         // Lock drawing focus on the result
         result.lockFocus();
@@ -31,5 +32,17 @@ extension NSImage {
         
         // Return the result
         return result;
+    }
+    
+    /// The pixel size of this image
+    var pixelSize : NSSize {
+        /// The NSBitmapImageRep to this image
+        let imageRep : NSBitmapImageRep = (NSBitmapImageRep(data: self.TIFFRepresentation!))!;
+        
+        /// The size of this iamge
+        let imageSize : NSSize = NSSize(width: imageRep.pixelsWide, height: imageRep.pixelsHigh);
+        
+        // Return this image's size
+        return imageSize;
     }
 }
