@@ -68,6 +68,50 @@ class ViewController: NSViewController, NSWindowDelegate {
 //        NSThread.detachNewThreadSelector(Selector("nowPlayingNotificationLoopThread"), toTarget: self, withObject: nil);
     }
     
+    /// Sizes the window to fit the cover(Only sizes if the music browser and playlist are hidden)
+    func sizeWindowToCover() {
+        // If the now playing view is open...
+        if(nowPlayingOpen) {
+            /// The new size for the window
+            var newWindowSize : NSSize = window.frame.size;
+            
+            /// The aspect ratio of the current cover
+            let currentCoverAspectRatio : CGFloat = nowPlayingController.nowPlayingCoverImageView.image!.size.width / nowPlayingController.nowPlayingCoverImageView.image!.size.height;
+            
+            // If the music browser and playlist are hidden...
+            if(!playlistOpen && !musicBrowserOpen) {
+                // If the playlist actions are open...
+                if(playlistActionsOpen) {
+                    // Print to the log how we are sizing
+                    print("ViewController: Sizing window to cover with playlist actions open");
+                    
+                    // Set the window size
+                    newWindowSize = NSSize(width: newWindowSize.width, height: (currentCoverAspectRatio * newWindowSize.width) + playlistActionsController.playlistActionsContainerView.frame.height);
+                }
+                    // If the playlist actions are closed...
+                else {
+                    // Print to the log how we are sizing
+                    print("ViewController: Sizing window to cover with only cover visible");
+                    
+                    // Set the window size
+                    newWindowSize = NSSize(width: newWindowSize.width, height: currentCoverAspectRatio * newWindowSize.width);
+                }
+            }
+            else {
+                // Print that we cant size the window with these things open
+                print("ViewController: Not resizing window to cover because the playlist, music browser or both are open");
+            }
+            
+            // Size the window
+            window.setFrame(NSRect(x: window.frame.origin.x, y: window.frame.origin.y, width: newWindowSize.width, height: newWindowSize.height), display: false);
+        }
+        // If the now playing view is closed...
+        else {
+            // Print that were not sizing the window because the now playing view isnt open
+            print("ViewController: Not sizing window to cover because the now playing view isnt open");
+        }
+    }
+    
     /// Is the now playing open?
     var nowPlayingOpen : Bool = true;
     
@@ -410,6 +454,7 @@ class ViewController: NSViewController, NSWindowDelegate {
         (NSApplication.sharedApplication().delegate as! AppDelegate).menuItemToggleCoverOverlay.target = self;
         (NSApplication.sharedApplication().delegate as! AppDelegate).menuItemTogglePlaylist.target = self;
         (NSApplication.sharedApplication().delegate as! AppDelegate).menuItemTogglePlayer.target = self;
+        (NSApplication.sharedApplication().delegate as! AppDelegate).menuItemSizeWindowToCover.target = self;
         
         // Set the actions
         (NSApplication.sharedApplication().delegate as! AppDelegate).menuItemToggleMusicBrowser.action = Selector("toggleMusicBrowser");
@@ -417,6 +462,7 @@ class ViewController: NSViewController, NSWindowDelegate {
         (NSApplication.sharedApplication().delegate as! AppDelegate).menuItemToggleCoverOverlay.action = Selector("toggleNowPlayingCoverOverlayVisible");
         (NSApplication.sharedApplication().delegate as! AppDelegate).menuItemTogglePlaylist.action = Selector("togglePlaylist");
         (NSApplication.sharedApplication().delegate as! AppDelegate).menuItemTogglePlayer.action = Selector("toggleNowPlaying");
+        (NSApplication.sharedApplication().delegate as! AppDelegate).menuItemSizeWindowToCover.action = Selector("sizeWindowToCover");
     }
     
     /// Styles the window

@@ -184,6 +184,8 @@ DQ
                                                 <action selector="performZoom:" target="Ady-hI-5gd" id="DIl-cC-cCs"/>
                                             </connections>
                                         </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="vfy-zK-Vtl"/>
+                                        <menuItem title="Size Window To Cover" keyEquivalent="1" id="9v7-69-SWU"/>
                                         <menuItem isSeparatorItem="YES" id="eu3-7i-yIM"/>
                                         <menuItem title="Bring All to Front" id="LE2-aR-0XJ">
                                             <modifierMask key="keyEquivalentModifierMask"/>
@@ -223,6 +225,7 @@ DQ
                         <outlet property="menuItemSelectPlayList" destination="a99-Ev-73l" id="aoU-Nr-pyE"/>
                         <outlet property="menuItemSelectSearchField" destination="Esl-sH-SIM" id="aFe-JP-RS5"/>
                         <outlet property="menuItemShufflePlaylist" destination="5ee-y9-jpd" id="PoK-7A-R7a"/>
+                        <outlet property="menuItemSizeWindowToCover" destination="9v7-69-SWU" id="5Ly-1A-obv"/>
                         <outlet property="menuItemSwitchRepeatMode" destination="RrU-wG-DbZ" id="0aB-rD-gif"/>
                         <outlet property="menuItemToggleCoverOverlay" destination="lz3-mZ-K2f" id="wgW-6m-C1S"/>
                         <outlet property="menuItemToggleMusicBrowser" destination="zmj-Zm-j4c" id="duG-ht-JFR"/>

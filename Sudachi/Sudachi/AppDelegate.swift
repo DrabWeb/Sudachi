@@ -68,6 +68,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     /// View/Toggle Player (⌘⌃P)
     @IBOutlet weak var menuItemTogglePlayer: NSMenuItem!
     
+    /// Window/Size Window To Cover (⌘1)
+    @IBOutlet weak var menuItemSizeWindowToCover: NSMenuItem!
+    
     func initialize() {
         // Create the application support folder
         createApplicationSupportFolder();
