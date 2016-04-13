@@ -180,6 +180,39 @@ class SCMusicBrowserController: NSObject {
         musicBrowserCollectionView.selectionIndexes = NSIndexSet(index: 0);
     }
     
+    /// Adds the current songs in the music browser collection view to the playlist
+    func openListedSongs() {
+        // Disable updating on the playlist(For speed improvements so it doesnt update on every possible song add)
+        mainViewController.playlistController.canUpdate = false;
+        
+        /// The amount of songs we added to the playlist
+        var addedSongCount : Int = 0;
+        
+        // For every item in the music browser...
+        for currentIndex in 0...((arrayController.arrangedObjects as! [AnyObject]).count - 1) {
+            /// The collection item at the current index
+            let currentItem : SCMusicBrowserCollectionViewItem = musicBrowserCollectionView.itemAtIndex(currentIndex) as! SCMusicBrowserCollectionViewItem;
+            
+            // If the current item is not a folder...
+            if(!(currentItem.representedObject as! SCMusicBrowserItem).isFolder) {
+                // Call the open function for the current item
+                currentItem.open();
+                
+                // Add one to the added song count
+                addedSongCount++;
+            }
+        }
+        
+        // Enable updating on the playlist
+        mainViewController.playlistController.canUpdate = true;
+        
+        // If we added any songs...
+        if(addedSongCount > 0) {
+            // Update the playlist
+            mainViewController.playlistController.update();
+        }
+    }
+    
     /// Updates the music database and once finished reloads the current directory and shows a notification saying the update is done
     func updateDatabse() {
         // Update the database
@@ -393,6 +426,7 @@ class SCMusicBrowserController: NSObject {
         (NSApplication.sharedApplication().delegate as! AppDelegate).menuItemSelectMusicBrowser.target = self;
         (NSApplication.sharedApplication().delegate as! AppDelegate).menuItemEnclosingFolder.target = self;
         (NSApplication.sharedApplication().delegate as! AppDelegate).menuItemUpdateMpdDatabase.target = self;
+        (NSApplication.sharedApplication().delegate as! AppDelegate).menuItemAddListedSongs.target = self;
         
         // Set the actions
         (NSApplication.sharedApplication().delegate as! AppDelegate).menuItemOpenSelectedItem.action = Selector("openSelectedItems");
@@ -400,6 +434,7 @@ class SCMusicBrowserController: NSObject {
         (NSApplication.sharedApplication().delegate as! AppDelegate).menuItemSelectMusicBrowser.action = Selector("selectMusicBrowser");
         (NSApplication.sharedApplication().delegate as! AppDelegate).menuItemEnclosingFolder.action = Selector("openParentFolder");
         (NSApplication.sharedApplication().delegate as! AppDelegate).menuItemUpdateMpdDatabase.action = Selector("updateDatabse");
+        (NSApplication.sharedApplication().delegate as! AppDelegate).menuItemAddListedSongs.action = Selector("openListedSongs");
     }
     
     /// Loads in the theme variables from SCThemingEngine
@@ -434,12 +469,18 @@ class SCMusicBrowserItem: NSObject {
     /// The path of the file/folder this item represents
     var representedObjectPath : String = "";
     
+    /// Is this item a folder?
+    var isFolder : Bool {
+        // Return if the item at representedObjectPath is a folder
+        return SCFileUtilities().isFolder((NSApplication.sharedApplication().delegate as! AppDelegate).SudachiMPD.mpdFolderPath + representedObjectPath);
+    }
+    
     /// Sets the display image to the proper image
     func grabAndSetDisplayImage() {
         // If the represented path is set...
         if(representedObjectPath != "") {
             // If this item is a folder...
-            if(SCFileUtilities().isFolder((NSApplication.sharedApplication().delegate as! AppDelegate).SudachiMPD.mpdFolderPath + representedObjectPath)) {
+            if(isFolder) {
                 /// The NSURL of representedObjectPath
                 let folderUrl : NSURL = NSURL(fileURLWithPath: (NSApplication.sharedApplication().delegate as! AppDelegate).SudachiMPD.mpdFolderPath + representedObjectPath);
                 
