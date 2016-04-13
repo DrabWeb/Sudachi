@@ -151,11 +151,14 @@ DQ
                                 <menu key="submenu" title="View" id="HyV-fh-RgO">
                                     <items>
                                         <menuItem title="Toggle Music Browser" keyEquivalent="b" id="zmj-Zm-j4c"/>
-                                        <menuItem title="Toggle Playlist Actions" keyEquivalent="p" id="kUl-7U-4R4">
+                                        <menuItem title="Toggle Playlist Actions" keyEquivalent="g" id="kUl-7U-4R4">
                                             <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
                                         </menuItem>
                                         <menuItem title="Toggle Cover Overlay" keyEquivalent="r" id="lz3-mZ-K2f"/>
-                                        <menuItem title="Toggle Playlist" keyEquivalent="p" id="ESS-GX-K7m"/>
+                                        <menuItem title="Toggle Playlist" keyEquivalent="g" id="ESS-GX-K7m"/>
+                                        <menuItem title="Toggle Player" keyEquivalent="p" id="JGD-3e-aMB">
+                                            <modifierMask key="keyEquivalentModifierMask" control="YES" command="YES"/>
+                                        </menuItem>
                                         <menuItem isSeparatorItem="YES" id="7bO-Hh-mSv"/>
                                         <menuItem title="Show Toolbar" keyEquivalent="t" id="snW-S8-Cw5">
                                             <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
@@ -223,6 +226,7 @@ DQ
                         <outlet property="menuItemSwitchRepeatMode" destination="RrU-wG-DbZ" id="0aB-rD-gif"/>
                         <outlet property="menuItemToggleCoverOverlay" destination="lz3-mZ-K2f" id="wgW-6m-C1S"/>
                         <outlet property="menuItemToggleMusicBrowser" destination="zmj-Zm-j4c" id="duG-ht-JFR"/>
+                        <outlet property="menuItemTogglePlayer" destination="JGD-3e-aMB" id="B2c-O8-vt4"/>
                         <outlet property="menuItemTogglePlaylist" destination="ESS-GX-K7m" id="9wK-JX-5gv"/>
                         <outlet property="menuItemTogglePlaylistActions" destination="kUl-7U-4R4" id="XeL-le-hiZ"/>
                         <outlet property="menuItemToggleRandomMode" destination="sir-qg-RXE" id="fnh-OE-Pfg"/>
@@ -661,12 +665,12 @@ DQ
                                                         <rect key="frame" x="0.0" y="430" width="297" height="50"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <subviews>
-                                                            <button toolTip="Loop Mode" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="w5f-so-8z7" userLabel="Loop Button">
+                                                            <button toolTip="Loop Mode" focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="w5f-so-8z7" userLabel="Loop Button">
                                                                 <rect key="frame" x="63" y="0.0" width="50" height="50"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="w5f-so-8z7" secondAttribute="height" multiplier="1:1" id="cmm-s0-RF8"/>
                                                                 </constraints>
-                                                                <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="Not Looping" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="1Po-Qb-kZ6">
+                                                                <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="Not Looping" imagePosition="only" alignment="center" focusRingType="none" imageScaling="proportionallyUpOrDown" inset="2" id="1Po-Qb-kZ6">
                                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                                     <font key="font" metaFont="system"/>
                                                                 </buttonCell>
@@ -674,12 +678,12 @@ DQ
                                                                     <action selector="loopButtonPressed:" target="YDX-u9-zYP" id="9En-Nh-yO8"/>
                                                                 </connections>
                                                             </button>
-                                                            <button toolTip="Shuffle" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="iFb-Rd-UxM" userLabel="Shuffle Button">
+                                                            <button toolTip="Shuffle" focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="iFb-Rd-UxM" userLabel="Shuffle Button">
                                                                 <rect key="frame" x="123" y="0.0" width="50" height="50"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="iFb-Rd-UxM" secondAttribute="height" multiplier="1:1" id="o5H-Hw-yeI"/>
                                                                 </constraints>
-                                                                <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="Playlist Shuffle" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="6p8-ch-A2h">
+                                                                <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="Playlist Shuffle" imagePosition="only" alignment="center" focusRingType="none" imageScaling="proportionallyUpOrDown" inset="2" id="6p8-ch-A2h">
                                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                                     <font key="font" metaFont="system"/>
                                                                 </buttonCell>
@@ -687,12 +691,12 @@ DQ
                                                                     <action selector="shuffleButtonPressed:" target="YDX-u9-zYP" id="jAl-fE-puy"/>
                                                                 </connections>
                                                             </button>
-                                                            <button toolTip="Random Mode" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="JZU-O1-SbV" userLabel="Random Button">
+                                                            <button toolTip="Random Mode" focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="JZU-O1-SbV" userLabel="Random Button">
                                                                 <rect key="frame" x="183" y="0.0" width="50" height="50"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="JZU-O1-SbV" secondAttribute="height" multiplier="1:1" id="WHW-Oe-HSy"/>
                                                                 </constraints>
-                                                                <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="Playlist Random Off" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="GCZ-kE-nkn">
+                                                                <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="Playlist Random Off" imagePosition="only" alignment="center" focusRingType="none" imageScaling="proportionallyUpOrDown" inset="2" id="GCZ-kE-nkn">
                                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                                     <font key="font" metaFont="system"/>
                                                                 </buttonCell>

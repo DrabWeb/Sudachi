@@ -68,6 +68,56 @@ class ViewController: NSViewController, NSWindowDelegate {
 //        NSThread.detachNewThreadSelector(Selector("nowPlayingNotificationLoopThread"), toTarget: self, withObject: nil);
     }
     
+    /// Is the now playing open?
+    var nowPlayingOpen : Bool = true;
+    
+    /// The original height of now playing before it was hidden
+    var nowPlayingOriginalHeight : CGFloat = 0;
+    
+    /// Toggles the visibility of now playing
+    func toggleNowPlaying() {
+        // Toggle nowPlayingOpen
+        nowPlayingOpen = !nowPlayingOpen;
+        
+        // If now playing is now open...
+        if(nowPlayingOpen) {
+            // Show now playing
+            showNowPlaying();
+        }
+        // If now playing is now closed...
+        else {
+            // Hide now playing
+            hideNowPlaying();
+        }
+    }
+    
+    /// Hides now playing
+    func hideNowPlaying() {
+        // Store the now playing height
+        nowPlayingOriginalHeight = rightPanelSplitView.subviews[0].frame.height;
+        
+        // Hide the now playing view
+        rightPanelSplitView.subviews[0].hidden = true;
+        
+        // Adjust the split view
+        rightPanelSplitView.adjustSubviews();
+        
+        // Move the now playing divider to 0
+        rightPanelSplitView.setPosition(0, ofDividerAtIndex: 0);
+    }
+    
+    /// Shows now playing
+    func showNowPlaying() {
+        // Show the now playing view
+        rightPanelSplitView.subviews[0].hidden = false;
+        
+        // Adjust the split view
+        rightPanelSplitView.adjustSubviews();
+        
+        // Move the now playing divider back to its original position
+        rightPanelSplitView.setPosition(nowPlayingOriginalHeight, ofDividerAtIndex: 0);
+    }
+    
     /// Is the playlist open?
     var playlistOpen : Bool = true;
     
@@ -359,12 +409,14 @@ class ViewController: NSViewController, NSWindowDelegate {
         (NSApplication.sharedApplication().delegate as! AppDelegate).menuItemTogglePlaylistActions.target = self;
         (NSApplication.sharedApplication().delegate as! AppDelegate).menuItemToggleCoverOverlay.target = self;
         (NSApplication.sharedApplication().delegate as! AppDelegate).menuItemTogglePlaylist.target = self;
+        (NSApplication.sharedApplication().delegate as! AppDelegate).menuItemTogglePlayer.target = self;
         
         // Set the actions
         (NSApplication.sharedApplication().delegate as! AppDelegate).menuItemToggleMusicBrowser.action = Selector("toggleMusicBrowser");
         (NSApplication.sharedApplication().delegate as! AppDelegate).menuItemTogglePlaylistActions.action = Selector("togglePlaylistActions");
         (NSApplication.sharedApplication().delegate as! AppDelegate).menuItemToggleCoverOverlay.action = Selector("toggleNowPlayingCoverOverlayVisible");
         (NSApplication.sharedApplication().delegate as! AppDelegate).menuItemTogglePlaylist.action = Selector("togglePlaylist");
+        (NSApplication.sharedApplication().delegate as! AppDelegate).menuItemTogglePlayer.action = Selector("toggleNowPlaying");
     }
     
     /// Styles the window
