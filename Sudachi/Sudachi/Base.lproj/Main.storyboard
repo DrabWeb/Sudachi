@@ -151,7 +151,11 @@ DQ
                                 <menu key="submenu" title="View" id="HyV-fh-RgO">
                                     <items>
                                         <menuItem title="Toggle Music Browser" keyEquivalent="b" id="zmj-Zm-j4c"/>
-                                        <menuItem title="Toggle Playlist Actions" keyEquivalent="p" id="kUl-7U-4R4"/>
+                                        <menuItem title="Toggle Playlist Actions" keyEquivalent="p" id="kUl-7U-4R4">
+                                            <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
+                                        </menuItem>
+                                        <menuItem title="Toggle Cover Overlay" keyEquivalent="r" id="lz3-mZ-K2f"/>
+                                        <menuItem title="Toggle Playlist" keyEquivalent="p" id="ESS-GX-K7m"/>
                                         <menuItem isSeparatorItem="YES" id="7bO-Hh-mSv"/>
                                         <menuItem title="Show Toolbar" keyEquivalent="t" id="snW-S8-Cw5">
                                             <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
@@ -217,7 +221,9 @@ DQ
                         <outlet property="menuItemSelectSearchField" destination="Esl-sH-SIM" id="aFe-JP-RS5"/>
                         <outlet property="menuItemShufflePlaylist" destination="5ee-y9-jpd" id="PoK-7A-R7a"/>
                         <outlet property="menuItemSwitchRepeatMode" destination="RrU-wG-DbZ" id="0aB-rD-gif"/>
+                        <outlet property="menuItemToggleCoverOverlay" destination="lz3-mZ-K2f" id="wgW-6m-C1S"/>
                         <outlet property="menuItemToggleMusicBrowser" destination="zmj-Zm-j4c" id="duG-ht-JFR"/>
+                        <outlet property="menuItemTogglePlaylist" destination="ESS-GX-K7m" id="9wK-JX-5gv"/>
                         <outlet property="menuItemTogglePlaylistActions" destination="kUl-7U-4R4" id="XeL-le-hiZ"/>
                         <outlet property="menuItemToggleRandomMode" destination="sir-qg-RXE" id="fnh-OE-Pfg"/>
                         <outlet property="menuItemUpdateMpdDatabase" destination="zl0-r7-LAY" id="kTj-ee-SxJ"/>
@@ -573,7 +579,7 @@ DQ
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="none" alternatingRowBackgroundColors="YES" autosaveColumns="NO" rowHeight="84" viewBased="YES" id="KVJ-dE-ztQ" customClass="SCPlaylistTableView" customModule="Sudachi" customModuleProvider="target">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="297" height="227"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="297" height="0.0"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <color key="backgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>
                                                                     <color key="gridColor" white="0.80000000000000004" alpha="0.0" colorSpace="deviceWhite"/>

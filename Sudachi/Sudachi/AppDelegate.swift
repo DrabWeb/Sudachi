@@ -56,8 +56,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     /// View/Toggle Music Browser (⌘B)
     @IBOutlet weak var menuItemToggleMusicBrowser: NSMenuItem!
     
-    /// View/Toggle Playlist Actions (⌘P)
+    /// View/Toggle Playlist Actions (⌘⌥P)
     @IBOutlet weak var menuItemTogglePlaylistActions: NSMenuItem!
+    
+    /// View/Toggle Cover Overlay (⌘R)
+    @IBOutlet weak var menuItemToggleCoverOverlay: NSMenuItem!
+    
+    /// View/Toggle Playlist (⌘P)
+    @IBOutlet weak var menuItemTogglePlaylist: NSMenuItem!
     
     func initialize() {
         // Create the application support folder
