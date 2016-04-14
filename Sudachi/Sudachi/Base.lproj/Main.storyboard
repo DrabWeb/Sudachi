@@ -785,8 +785,10 @@ DQ
                         <outlet property="nowPlayingCoverImageView" destination="4ap-5g-7nq" id="UA3-ay-NaQ"/>
                         <outlet property="nowPlayingCoverOverlayView" destination="Xp8-eD-P5q" id="46k-0U-W8H"/>
                         <outlet property="nowPlayingNextButton" destination="RhI-Ct-O2O" id="VfP-Ux-aPZ"/>
+                        <outlet property="nowPlayingNextButtonLeftSpacingConstraint" destination="dDI-6d-Gp4" id="vSv-MH-CPg"/>
                         <outlet property="nowPlayingPausePlayButton" destination="ihw-wE-33b" id="lEK-v7-lgg"/>
                         <outlet property="nowPlayingPreviousButton" destination="y4c-9d-9mx" id="lSD-Qw-6RY"/>
+                        <outlet property="nowPlayingPreviousButtonRightSpacingConstraint" destination="V8X-eZ-x8K" id="nqG-tD-s3k"/>
                         <outlet property="nowPlayingProgressSlider" destination="zVM-wN-qQB" id="U2z-8m-PbH"/>
                         <outlet property="nowPlayingSongDurationLabel" destination="sUB-fJ-FQR" id="nAt-Ub-YOu"/>
                         <outlet property="nowPlayingSongPositionLabel" destination="QCt-9L-q0R" id="9Lb-YC-g4l"/>

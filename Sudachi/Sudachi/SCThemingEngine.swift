@@ -96,6 +96,9 @@ class SCThemingEngine {
     /// The color for behind the cover in the now playing view
     var nowPlayingBehindCoverBackgroundColor : NSColor = NSColor(hexString: "#37333B")!;
     
+    /// How far the next/previous buttons should be from the pause/play button
+    var nowPlayingPreviousNextButtonSpacing : CGFloat = 20;
+    
     /// The font size for the now playing title(In points)
     var nowPlayingTitleFontSize : CGFloat = 15;
     
@@ -371,10 +374,23 @@ class SCThemingEngine {
                     /// The JSON object for the window appearance JSON
                     let windowAppearanceJson : JSON = JSON(data: NSFileManager.defaultManager().contentsAtPath(folderPath + "/window-appearance.json")!);
                     
-                    // Load thw window appearance values
+                    // Load the window appearance values
                     
                     if(windowAppearanceJson["titlebar-visible"].exists()) {
                         titlebarsHidden = !windowAppearanceJson["titlebar-visible"].boolValue;
+                    }
+                }
+                
+                // Load the layout settings
+                // If there is a layout.json...
+                if(NSFileManager.defaultManager().fileExistsAtPath(folderPath + "/layout.json")) {
+                    /// The JSON object for the layout JSON
+                    let layoutJson : JSON = JSON(data: NSFileManager.defaultManager().contentsAtPath(folderPath + "/layout.json")!);
+                    
+                    // Load the layout values
+                    
+                    if(layoutJson["now-playing-previous-next-spacing"].exists()) {
+                        nowPlayingPreviousNextButtonSpacing = CGFloat(layoutJson["now-playing-previous-next-spacing"].floatValue);
                     }
                 }
                 

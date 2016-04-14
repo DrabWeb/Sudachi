@@ -72,6 +72,9 @@ class SCNowPlayingController: NSObject {
     /// The skip previous button for going to the previous song
     @IBOutlet weak var nowPlayingPreviousButton: NSButton!
     
+    /// The constraint for the previous button for how much it is spaced from the pause/play button
+    @IBOutlet weak var nowPlayingPreviousButtonRightSpacingConstraint: NSLayoutConstraint!
+    
     /// When we interact with nowPlayingPreviousButton...
     @IBAction func nowPlayingPreviousButtonInteracted(sender: AnyObject) {
         // Skip to the previous song
@@ -95,6 +98,9 @@ class SCNowPlayingController: NSObject {
     
     /// The skip next button for going to the next song
     @IBOutlet weak var nowPlayingNextButton: NSButton!
+    
+    /// The constraint for the next button for how much it is spaced from the pause/play button
+    @IBOutlet weak var nowPlayingNextButtonLeftSpacingConstraint: NSLayoutConstraint!
     
     /// When we interact with nowPlayingNextButton...
     @IBAction func nowPlayingNextButtonInteracted(sender: AnyObject) {
@@ -220,6 +226,10 @@ class SCNowPlayingController: NSObject {
         nowPlayingArtistLabel.font = SCThemingEngine().defaultEngine().setFontFamily(nowPlayingArtistLabel.font!, size: SCThemingEngine().defaultEngine().nowPlayingArtistFontSize);
         nowPlayingSongPositionLabel.font = SCThemingEngine().defaultEngine().setFontFamily(nowPlayingSongPositionLabel.font!, size: SCThemingEngine().defaultEngine().nowPlayingTimesFontSize);
         nowPlayingSongDurationLabel.font = SCThemingEngine().defaultEngine().setFontFamily(nowPlayingSongDurationLabel.font!, size: SCThemingEngine().defaultEngine().nowPlayingTimesFontSize);
+        
+        // Set the constraints
+        nowPlayingPreviousButtonRightSpacingConstraint.constant = SCThemingEngine().defaultEngine().nowPlayingPreviousNextButtonSpacing;
+        nowPlayingNextButtonLeftSpacingConstraint.constant = SCThemingEngine().defaultEngine().nowPlayingPreviousNextButtonSpacing;
     }
     
     func initialize() {
