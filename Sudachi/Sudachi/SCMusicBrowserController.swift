@@ -544,6 +544,9 @@ class SCMusicBrowserItem: NSObject {
                 
                 // Set the display image to the song's cover image
                 displayImage = song.getCoverImage();
+                
+                // Mask the art
+                displayImage = displayImage.maskWith(SCThemingEngine().defaultEngine().musicBrowserArtMask);
             }
         }
     }

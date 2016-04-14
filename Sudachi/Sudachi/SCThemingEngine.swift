@@ -147,6 +147,9 @@ class SCThemingEngine {
     /// The font size for the title of music browser items(In points)
     var musicBrowserItemTitleFontSize : CGFloat = 13;
     
+    /// The optional mask for album art in the music browser
+    var musicBrowserArtMask : NSImage = NSImage();
+    
     /// The color for the background of the playlist actions view
     var playlistActionsBackgroundColor : NSColor = NSColor(hexString: "#37333B")!;
     
@@ -423,6 +426,10 @@ class SCThemingEngine {
                 
                 if(NSFileManager.defaultManager().fileExistsAtPath(folderPath + "/images/random-on.png")) {
                     self.playlistActionsRandomOnImage = NSImage(contentsOfFile: folderPath + "/images/random-on.png")!;
+                }
+                
+                if(NSFileManager.defaultManager().fileExistsAtPath(folderPath + "/images/browser-art-mask.png")) {
+                    self.musicBrowserArtMask = NSImage(contentsOfFile: folderPath + "/images/browser-art-mask.png")!;
                 }
             }
             // If the extension isnt .sctheme...
