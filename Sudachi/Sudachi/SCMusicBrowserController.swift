@@ -126,8 +126,16 @@ class SCMusicBrowserController: NSObject {
             // Load the item's display image
             currentBrowserItem.grabAndSetDisplayImage();
             
-            // Set the display title to the file's name without the extension
-            currentBrowserItem.displayTitle = NSString(string: (NSApplication.sharedApplication().delegate as! AppDelegate).SudachiMPD.mpdFolderPath + currentBrowserItem.representedObjectPath).lastPathComponent.stringByReplacingOccurrencesOfString("." + NSString(string: (NSApplication.sharedApplication().delegate as! AppDelegate).SudachiMPD.mpdFolderPath + currentBrowserItem.representedObjectPath).pathExtension, withString: "");
+            // If this item isnt a folder...
+            if(!currentBrowserItem.isFolder) {
+                // Set the display title to the file's name without the extension
+                currentBrowserItem.displayTitle = NSString(string: (NSApplication.sharedApplication().delegate as! AppDelegate).SudachiMPD.mpdFolderPath + currentBrowserItem.representedObjectPath).lastPathComponent.stringByReplacingOccurrencesOfString("." + NSString(string: (NSApplication.sharedApplication().delegate as! AppDelegate).SudachiMPD.mpdFolderPath + currentBrowserItem.representedObjectPath).pathExtension, withString: "");
+            }
+            // If this item is a folder...
+            else {
+                // Set the title to the folder's name
+                currentBrowserItem.displayTitle = NSString(string: (NSApplication.sharedApplication().delegate as! AppDelegate).SudachiMPD.mpdFolderPath + currentBrowserItem.representedObjectPath).lastPathComponent;
+            }
             
             // Add the browser item
             addBrowserItem(currentBrowserItem);
