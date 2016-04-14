@@ -206,6 +206,10 @@ class SCNowPlayingController: NSObject {
         // Set the cover overlay's color
         nowPlayingCoverOverlayView.fillColor = SCThemingEngine().defaultEngine().nowPlayingCoverOverlayBackgroundColor;
         
+        // Set the behind cover color
+        nowPlayingCoverOverlayView.superview!.layer = CALayer();
+        nowPlayingCoverOverlayView.superview!.layer!.backgroundColor = SCThemingEngine().defaultEngine().nowPlayingBehindCoverBackgroundColor.CGColor;
+        
         // Load the media button images
         nowPlayingPreviousButton.image = SCThemingEngine().defaultEngine().skipPreviousImage;
         nowPlayingNextButton.image = SCThemingEngine().defaultEngine().skipNextImage;

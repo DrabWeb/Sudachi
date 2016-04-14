@@ -15,6 +15,7 @@
 	"now-playing-time-text-color": "#000000,0",
 	"now-playing-background-color": "#000000,0",
 	"now-playing-media-panel-background-color": "#FBFEFB",
+	"now-playing-behind-cover-background-color": "#FFFFFF",
 	"search-field-background-color": "#FBFEFB,0",
 	"search-field-placeholder-text-color": "#000000,0.25",
 	"search-field-text-color": "#000000,0.5",

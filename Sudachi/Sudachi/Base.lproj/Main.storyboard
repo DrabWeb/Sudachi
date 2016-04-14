@@ -434,13 +434,13 @@ DQ
                                                         <rect key="frame" x="0.0" y="0.0" width="297" height="183"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <subviews>
-                                                            <imageView horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="4ap-5g-7nq" userLabel="Now Playing Cover Image View">
-                                                                <rect key="frame" x="0.0" y="0.0" width="297" height="183"/>
-                                                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageAlignment="top" imageScaling="proportionallyUpOrDown" id="Bw9-DZ-bXB"/>
-                                                            </imageView>
                                                             <customView wantsLayer="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dKc-Jt-XyJ" userLabel="Cover Overlay Container">
                                                                 <rect key="frame" x="0.0" y="0.0" width="297" height="183"/>
                                                                 <subviews>
+                                                                    <imageView horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="4ap-5g-7nq" userLabel="Now Playing Cover Image View">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="297" height="183"/>
+                                                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageAlignment="top" imageScaling="proportionallyUpOrDown" id="Bw9-DZ-bXB"/>
+                                                                    </imageView>
                                                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="Xp8-eD-P5q" userLabel="Cover Overlay" customClass="NSBox">
                                                                         <rect key="frame" x="0.0" y="0.0" width="297" height="128"/>
                                                                         <subviews>
@@ -557,8 +557,12 @@ DQ
                                                                     </customView>
                                                                 </subviews>
                                                                 <constraints>
+                                                                    <constraint firstAttribute="trailing" secondItem="4ap-5g-7nq" secondAttribute="trailing" id="72j-ux-aY1"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="4ap-5g-7nq" secondAttribute="bottom" id="82p-pR-HiX"/>
                                                                     <constraint firstAttribute="bottom" secondItem="Xp8-eD-P5q" secondAttribute="bottom" id="8vE-gM-cpb"/>
                                                                     <constraint firstAttribute="trailing" secondItem="Xp8-eD-P5q" secondAttribute="trailing" id="mUE-FF-Hhb"/>
+                                                                    <constraint firstItem="4ap-5g-7nq" firstAttribute="leading" secondItem="dKc-Jt-XyJ" secondAttribute="leading" id="nYc-zg-lJC"/>
+                                                                    <constraint firstItem="4ap-5g-7nq" firstAttribute="top" secondItem="dKc-Jt-XyJ" secondAttribute="top" id="oah-nc-wrt"/>
                                                                     <constraint firstItem="Xp8-eD-P5q" firstAttribute="leading" secondItem="dKc-Jt-XyJ" secondAttribute="leading" id="yFL-9h-2wI"/>
                                                                 </constraints>
                                                             </customView>
@@ -581,11 +585,7 @@ DQ
                                                             <constraint firstItem="dKc-Jt-XyJ" firstAttribute="leading" secondItem="X1B-Wo-1Se" secondAttribute="leading" id="Qww-y0-2GS"/>
                                                             <constraint firstItem="dKc-Jt-XyJ" firstAttribute="top" secondItem="X1B-Wo-1Se" secondAttribute="top" id="S7K-xf-C5M"/>
                                                             <constraint firstAttribute="trailing" secondItem="zVM-wN-qQB" secondAttribute="trailing" constant="-1" id="SFG-Xd-F5f"/>
-                                                            <constraint firstItem="4ap-5g-7nq" firstAttribute="leading" secondItem="X1B-Wo-1Se" secondAttribute="leading" id="XFC-S4-ymg"/>
-                                                            <constraint firstAttribute="bottom" secondItem="4ap-5g-7nq" secondAttribute="bottom" id="Xi2-Pz-8H5"/>
-                                                            <constraint firstAttribute="trailing" secondItem="4ap-5g-7nq" secondAttribute="trailing" id="gy7-Q0-V9u"/>
                                                             <constraint firstAttribute="bottom" secondItem="dKc-Jt-XyJ" secondAttribute="bottom" id="sOE-Jj-zPF"/>
-                                                            <constraint firstItem="4ap-5g-7nq" firstAttribute="top" secondItem="X1B-Wo-1Se" secondAttribute="top" id="utW-4Q-rwn"/>
                                                         </constraints>
                                                     </customView>
                                                     <scrollView fixedFrame="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="84" horizontalPageScroll="10" verticalLineScroll="84" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="I3D-qo-mrY">

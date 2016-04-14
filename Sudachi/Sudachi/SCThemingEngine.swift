@@ -93,6 +93,9 @@ class SCThemingEngine {
     /// The color for the cover overlay in the now playing view(The panel that holds the media controls)
     var nowPlayingCoverOverlayBackgroundColor : NSColor = NSColor(hexString: "#37333B")!;
     
+    /// The color for behind the cover in the now playing view
+    var nowPlayingBehindCoverBackgroundColor : NSColor = NSColor(hexString: "#37333B")!;
+    
     /// The font size for the now playing title(In points)
     var nowPlayingTitleFontSize : CGFloat = 15;
     
@@ -279,6 +282,10 @@ class SCThemingEngine {
                     
                     if(NSColor(hexString: colorsJson["playlist-actions-background-color"].stringValue) != nil) {
                         self.playlistActionsBackgroundColor = NSColor(hexString: colorsJson["playlist-actions-background-color"].stringValue)!;
+                    }
+                    
+                    if(NSColor(hexString: colorsJson["now-playing-behind-cover-background-color"].stringValue) != nil) {
+                        self.nowPlayingBehindCoverBackgroundColor = NSColor(hexString: colorsJson["now-playing-behind-cover-background-color"].stringValue)!;
                     }
                 }
                 
