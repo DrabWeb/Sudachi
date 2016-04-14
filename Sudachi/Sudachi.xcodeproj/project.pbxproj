@@ -11,6 +11,7 @@
 		5D226F4E1CB846A300791276 /* SCFileUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D226F4D1CB846A300791276 /* SCFileUtilities.swift */; };
 		5D226F501CB848FD00791276 /* SCConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D226F4F1CB848FD00791276 /* SCConstants.swift */; };
 		5D2ED68B1CBAC46D00D4269F /* SCPlaylistActionsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2ED68A1CBAC46D00D4269F /* SCPlaylistActionsController.swift */; };
+		5D43D5821CC021C500B02BAA /* SCMusicBrowserDropView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D43D5811CC021C500B02BAA /* SCMusicBrowserDropView.swift */; };
 		5D4A1F491CB03F32003BA720 /* NSColorFromHex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4A1F481CB03F32003BA720 /* NSColorFromHex.swift */; };
 		5D4A1F521CB0455B003BA720 /* SCNowPlayingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4A1F511CB0455B003BA720 /* SCNowPlayingController.swift */; };
 		5D4A1F541CB04885003BA720 /* SCNowPlayingProgressSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4A1F531CB04885003BA720 /* SCNowPlayingProgressSlider.swift */; };
@@ -60,6 +61,7 @@
 		5D226F4D1CB846A300791276 /* SCFileUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCFileUtilities.swift; sourceTree = "<group>"; };
 		5D226F4F1CB848FD00791276 /* SCConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCConstants.swift; sourceTree = "<group>"; };
 		5D2ED68A1CBAC46D00D4269F /* SCPlaylistActionsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCPlaylistActionsController.swift; sourceTree = "<group>"; };
+		5D43D5811CC021C500B02BAA /* SCMusicBrowserDropView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCMusicBrowserDropView.swift; sourceTree = "<group>"; };
 		5D4A1F481CB03F32003BA720 /* NSColorFromHex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSColorFromHex.swift; sourceTree = "<group>"; };
 		5D4A1F511CB0455B003BA720 /* SCNowPlayingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNowPlayingController.swift; sourceTree = "<group>"; };
 		5D4A1F531CB04885003BA720 /* SCNowPlayingProgressSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNowPlayingProgressSlider.swift; sourceTree = "<group>"; };
@@ -293,6 +295,7 @@
 			children = (
 				5D7B989E1CB6E98C005F323E /* SCMusicBrowserController.swift */,
 				5D7B98A41CB6EE86005F323E /* SCMusicBrowserCollectionViewItem.swift */,
+				5D43D5811CC021C500B02BAA /* SCMusicBrowserDropView.swift */,
 			);
 			name = "Music Browser";
 			sourceTree = "<group>";
@@ -462,6 +465,7 @@
 				5D6B24E01CB19C8C005E8321 /* SCPlaylistTableViewData.swift in Sources */,
 				5DC1EC6A1CB477B50012A4FF /* SwiftyJSON.swift in Sources */,
 				5DC2C70E1CB035A100D3F649 /* SCInvisibleDividerSplitView.swift in Sources */,
+				5D43D5821CC021C500B02BAA /* SCMusicBrowserDropView.swift in Sources */,
 				5DC2C7121CB0371B00D3F649 /* SCPlaylistTableView.swift in Sources */,
 				5D6B24E41CB19D76005E8321 /* SCPlaylistTableCellView.swift in Sources */,
 				5D226F4C1CB8339D00791276 /* SCRasterizedImageView.swift in Sources */,

@@ -25,6 +25,9 @@ class SCMusicBrowserController: NSObject {
     /// The collection view for displaying the music browser visually
     @IBOutlet weak var musicBrowserCollectionView: NSCollectionView!
     
+    /// The view for letting users drop files into the music browser and import them
+    @IBOutlet weak var musicBrowserDropView: SCMusicBrowserDropView!
+    
     /// The SCMusicBrowserItems that are kept in the background and pulled from for displaying
     var musicBrowserItems : [SCMusicBrowserItem] = [];
     
@@ -178,6 +181,27 @@ class SCMusicBrowserController: NSObject {
         
         // Select the first item in the music browser collection view
         musicBrowserCollectionView.selectionIndexes = NSIndexSet(index: 0);
+    }
+    
+    /// Called when the user drops files into the music browser. Moves the dropped files into the current directory, updates the database, and reloads the folder contents
+    func filesDroppedIntoMusicBrowser(files : [String]) {
+        // For every droppped file...
+        for(_, currentFile) in files.enumerate() {
+            do {
+                // Move the current file to the current folder
+                try NSFileManager.defaultManager().moveItemAtPath(currentFile, toPath: (NSApplication.sharedApplication().delegate as! AppDelegate).SudachiMPD.mpdFolderPath + currentFolder + "/" + NSString(string: currentFile).lastPathComponent);
+            }
+            catch let error as NSError {
+                // Print the error description
+                print("SCMusicBrowserController: Failed to move files to current folder, \(error.description)");
+            }
+        }
+        
+        // Update the database
+        (NSApplication.sharedApplication().delegate as! AppDelegate).SudachiMPD.updateDatabase();
+        
+        // Reload the folder contents
+        displayItemsFromRelativePath(currentFolder);
     }
     
     /// Adds the current songs in the music browser collection view to the playlist
@@ -453,6 +477,10 @@ class SCMusicBrowserController: NSObject {
         
         // Set the collection view's prototype item
         musicBrowserCollectionView.itemPrototype = NSStoryboard(name: "Main", bundle: NSBundle.mainBundle()).instantiateControllerWithIdentifier("musicBrowserCollectionViewItem") as! SCMusicBrowserCollectionViewItem;
+        
+        // Set the drop view's target and action
+        musicBrowserDropView.dropTarget = self;
+        musicBrowserDropView.dropAction = Selector("filesDroppedIntoMusicBrowser:");
         
         // Display the root of the music folder
         displayItemsFromRelativePath("");

@@ -395,22 +395,30 @@ DQ
                                                         </collectionView>
                                                     </subviews>
                                                 </clipView>
+                                                <edgeInsets key="contentInsets" left="0.0" right="0.0" top="0.0" bottom="10"/>
                                                 <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="wnd-Ql-01P">
                                                     <rect key="frame" x="1" y="144" width="233" height="15"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </scroller>
-                                                <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="YH1-MS-oXc">
-                                                    <rect key="frame" x="520" y="0.0" width="16" height="430"/>
+                                                <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="YH1-MS-oXc">
+                                                    <rect key="frame" x="520" y="0.0" width="16" height="431"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </scroller>
                                             </scrollView>
+                                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="UJh-ss-5Q0" userLabel="Drop View" customClass="SCMusicBrowserDropView" customModule="Sudachi" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="556" height="441"/>
+                                            </customView>
                                         </subviews>
                                         <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="UJh-ss-5Q0" secondAttribute="trailing" id="1Pd-qF-6rs"/>
                                             <constraint firstItem="noW-mk-K5m" firstAttribute="top" secondItem="RJZ-m2-ktm" secondAttribute="bottom" constant="10" id="2A2-le-saa"/>
+                                            <constraint firstItem="UJh-ss-5Q0" firstAttribute="top" secondItem="RJZ-m2-ktm" secondAttribute="bottom" constant="10" id="AmE-G0-fHi"/>
                                             <constraint firstItem="RJZ-m2-ktm" firstAttribute="top" secondItem="6rP-7d-YGz" secondAttribute="top" constant="10" id="LkP-eg-Y6w"/>
                                             <constraint firstAttribute="trailing" secondItem="RJZ-m2-ktm" secondAttribute="trailing" constant="10" id="Yy7-oz-tkL"/>
+                                            <constraint firstAttribute="bottom" secondItem="UJh-ss-5Q0" secondAttribute="bottom" id="hXX-EW-pqq"/>
                                             <constraint firstItem="RJZ-m2-ktm" firstAttribute="leading" secondItem="6rP-7d-YGz" secondAttribute="leading" constant="10" id="ic3-nn-s4o"/>
                                             <constraint firstAttribute="trailing" secondItem="noW-mk-K5m" secondAttribute="trailing" constant="10" id="kWr-Xh-kLD"/>
+                                            <constraint firstItem="UJh-ss-5Q0" firstAttribute="leading" secondItem="6rP-7d-YGz" secondAttribute="leading" id="lTe-W9-Fom"/>
                                             <constraint firstAttribute="bottom" secondItem="noW-mk-K5m" secondAttribute="bottom" id="vCE-Ta-Tau"/>
                                             <constraint firstItem="noW-mk-K5m" firstAttribute="leading" secondItem="6rP-7d-YGz" secondAttribute="leading" constant="10" id="yhu-5I-v2L"/>
                                         </constraints>
@@ -797,6 +805,7 @@ DQ
                         <outlet property="mainViewController" destination="XfG-lQ-9wD" id="mRV-4g-iHq"/>
                         <outlet property="musicBrowserCollectionView" destination="u7x-VR-s5I" id="2X8-9J-1nG"/>
                         <outlet property="musicBrowserCollectionViewScrollView" destination="noW-mk-K5m" id="9AV-gh-6TW"/>
+                        <outlet property="musicBrowserDropView" destination="UJh-ss-5Q0" id="Vzz-cu-rRc"/>
                         <outlet property="searchField" destination="RJZ-m2-ktm" id="e5G-dp-RyX"/>
                     </connections>
                 </customObject>
