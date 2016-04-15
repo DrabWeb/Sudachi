@@ -72,11 +72,11 @@ class SCThemingEngine {
     /// The font size for the artist label in playlist items(In points)
     var playlistArtistFontSize : CGFloat = 13;
     
-    /// The default text color
-    var textColor : NSColor = NSColor(hexString: "#887F90")!;
+    /// The text color for the title label in the now playing view
+    var nowPlayingTitleTextColor : NSColor = NSColor(hexString: "#887F90")!;
     
-    /// The default secondary text color
-    var secondaryTextColor : NSColor = NSColor(hexString: "#6C6473")!;
+    /// The text color for the artist labek in the now playing view
+    var nowPlayingArtistTextColor : NSColor = NSColor(hexString: "#6C6473")!;
     
     /// The color for the left of the now playing progress slider
     var nowPlayingProgressCompletedColor : NSColor = NSColor(hexString: "#887F90")!;
@@ -213,14 +213,6 @@ class SCThemingEngine {
                         self.backgroundColor = NSColor(hexString: colorsJson["window-background-color"].stringValue)!;
                     }
                     
-                    if(NSColor(hexString: colorsJson["regular-text-color"].stringValue) != nil) {
-                        self.textColor = NSColor(hexString: colorsJson["regular-text-color"].stringValue)!;
-                    }
-                    
-                    if(NSColor(hexString: colorsJson["secondary-text-color"].stringValue) != nil) {
-                        self.secondaryTextColor = NSColor(hexString: colorsJson["secondary-text-color"].stringValue)!;
-                    }
-                    
                     if(NSColor(hexString: colorsJson["playlist-first-alternation-color"].stringValue) != nil) {
                         self.playlistFirstAlternatingColor = NSColor(hexString: colorsJson["playlist-first-alternation-color"].stringValue)!;
                     }
@@ -247,6 +239,14 @@ class SCThemingEngine {
                     
                     if(NSColor(hexString: colorsJson["playlist-current-song-secondary-text-color"].stringValue) != nil) {
                         self.playlistCurrentSongSecondaryTextColor = NSColor(hexString: colorsJson["playlist-current-song-secondary-text-color"].stringValue)!;
+                    }
+                    
+                    if(NSColor(hexString: colorsJson["now-playing-title-text-color"].stringValue) != nil) {
+                        self.nowPlayingTitleTextColor = NSColor(hexString: colorsJson["now-playing-title-text-color"].stringValue)!;
+                    }
+                    
+                    if(NSColor(hexString: colorsJson["now-playing-artist-text-color"].stringValue) != nil) {
+                        self.nowPlayingArtistTextColor = NSColor(hexString: colorsJson["now-playing-artist-text-color"].stringValue)!;
                     }
                     
                     if(NSColor(hexString: colorsJson["now-playing-progress-bar-background-color"].stringValue) != nil) {

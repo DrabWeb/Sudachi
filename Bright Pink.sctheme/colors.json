@@ -1,8 +1,6 @@
 {
 	"titlebar-color": "#FBFEFB",
 	"window-background-color": "#FBFEFB",
-	"regular-text-color": "#BCBCBC",
-	"secondary-text-color": "#BCBCBC,0.5",
 	"playlist-first-alternation-color": "#FBFEFB",
 	"playlist-second-alternation-color": "#FBFEFB",
 	"playlist-regular-text-color": "#BCBCBC",
@@ -10,6 +8,8 @@
 	"playlist-current-song-background-color": "#FBFEFB",
 	"playlist-current-song-regular-text-color": "#F1ACC0",
 	"playlist-current-song-secondary-text-color": "F1ACC0,0.5",
+	"now-playing-title-text-color": "#BCBCBC",
+	"now-playing-artist-text-color": "#BCBCBC,0.5",
 	"now-playing-progress-bar-background-color": "#ECECEC",
 	"now-playing-progress-bar-completed-color": "#F1ACC0",
 	"now-playing-time-text-color": "#000000,0",

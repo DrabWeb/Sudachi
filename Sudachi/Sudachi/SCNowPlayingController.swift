@@ -207,8 +207,8 @@ class SCNowPlayingController: NSObject, MediaKeyTapDelegate {
         nowPlayingContainer.layer?.backgroundColor = SCThemingEngine().defaultEngine().nowPlayingViewBackgroundColor.CGColor;
         
         // Set the label colors
-        nowPlayingTitleLabel.textColor = SCThemingEngine().defaultEngine().textColor;
-        nowPlayingArtistLabel.textColor = SCThemingEngine().defaultEngine().secondaryTextColor;
+        nowPlayingTitleLabel.textColor = SCThemingEngine().defaultEngine().nowPlayingTitleTextColor;
+        nowPlayingArtistLabel.textColor = SCThemingEngine().defaultEngine().nowPlayingArtistTextColor;
         nowPlayingSongPositionLabel.textColor = SCThemingEngine().defaultEngine().nowPlayingTimesTextColor;
         nowPlayingSongDurationLabel.textColor = SCThemingEngine().defaultEngine().nowPlayingTimesTextColor;
         
