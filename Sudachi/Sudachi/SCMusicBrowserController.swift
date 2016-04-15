@@ -217,7 +217,10 @@ class SCMusicBrowserController: NSObject {
         // Update the database
         (NSApplication.sharedApplication().delegate as! AppDelegate).SudachiMPD.updateDatabase();
         
-        // Reload the folder contents
+        // Sleep for a second so the database can update
+        sleep(1);
+        
+        // Reload the current folder
         displayItemsFromRelativePath(currentFolder);
     }
     
