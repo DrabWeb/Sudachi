@@ -23,6 +23,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     /// Browser/Open Selected Item(s) (⌘O)
     @IBOutlet weak var menuItemOpenSelectedItem: NSMenuItem!
     
+    /// Browser/Open Selected Item(s) (↩︎)
+    @IBOutlet weak var menuItemOpenSelectedItemsEnter: NSMenuItem!
+    
     /// Browser/Enclosing Folder (⌘↑)
     @IBOutlet weak var menuItemEnclosingFolder: NSMenuItem!
     

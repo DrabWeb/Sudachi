@@ -19,6 +19,7 @@ A simple and customizable MPD front end for OSX
 > * Time scrubbing
 > * Current position/duration
 > * Title and artist display
+> * Use Apple media keys
 > * Loop/Shuffle/Random buttons and keybinds
 
 * Playlist

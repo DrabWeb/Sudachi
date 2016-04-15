@@ -24,6 +24,10 @@
 		5D4C48AD1CAF07D900258D95 /* SudachiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4C48AC1CAF07D900258D95 /* SudachiTests.swift */; };
 		5D4C48B81CAF07D900258D95 /* SudachiUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4C48B71CAF07D900258D95 /* SudachiUITests.swift */; };
 		5D500C6C1CB5B1E30091B3FD /* SCSearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D500C6B1CB5B1E30091B3FD /* SCSearchTextField.swift */; };
+		5D50B4A31CC151D300C72070 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D50B49E1CC151D300C72070 /* Extensions.swift */; };
+		5D50B4A41CC151D300C72070 /* MediaApplicationWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D50B49F1CC151D300C72070 /* MediaApplicationWatcher.swift */; };
+		5D50B4A51CC151D300C72070 /* MediaKeyTap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D50B4A11CC151D300C72070 /* MediaKeyTap.swift */; };
+		5D50B4A61CC151D300C72070 /* MediaKeyTapInternals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D50B4A21CC151D300C72070 /* MediaKeyTapInternals.swift */; };
 		5D6B24E01CB19C8C005E8321 /* SCPlaylistTableViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D6B24DF1CB19C8C005E8321 /* SCPlaylistTableViewData.swift */; };
 		5D6B24E21CB19CEB005E8321 /* SCPlaylistController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D6B24E11CB19CEB005E8321 /* SCPlaylistController.swift */; };
 		5D6B24E41CB19D76005E8321 /* SCPlaylistTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D6B24E31CB19D76005E8321 /* SCPlaylistTableCellView.swift */; };
@@ -81,6 +85,11 @@
 		5D4C48B71CAF07D900258D95 /* SudachiUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SudachiUITests.swift; sourceTree = "<group>"; };
 		5D4C48B91CAF07D900258D95 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5D500C6B1CB5B1E30091B3FD /* SCSearchTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCSearchTextField.swift; sourceTree = "<group>"; };
+		5D50B49E1CC151D300C72070 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		5D50B49F1CC151D300C72070 /* MediaApplicationWatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaApplicationWatcher.swift; sourceTree = "<group>"; };
+		5D50B4A01CC151D300C72070 /* MediaKeyTap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaKeyTap.h; sourceTree = "<group>"; };
+		5D50B4A11CC151D300C72070 /* MediaKeyTap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaKeyTap.swift; sourceTree = "<group>"; };
+		5D50B4A21CC151D300C72070 /* MediaKeyTapInternals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaKeyTapInternals.swift; sourceTree = "<group>"; };
 		5D6B24DF1CB19C8C005E8321 /* SCPlaylistTableViewData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCPlaylistTableViewData.swift; sourceTree = "<group>"; };
 		5D6B24E11CB19CEB005E8321 /* SCPlaylistController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCPlaylistController.swift; sourceTree = "<group>"; };
 		5D6B24E31CB19D76005E8321 /* SCPlaylistTableCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCPlaylistTableCellView.swift; sourceTree = "<group>"; };
@@ -134,6 +143,7 @@
 			children = (
 				5DC1EC681CB477A90012A4FF /* SwiftyJSON */,
 				5D4A1F471CB03F1F003BA720 /* NSColorFromHex */,
+				5D50B49D1CC151D300C72070 /* MediaKeyTap */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -288,6 +298,18 @@
 				5D4C48B91CAF07D900258D95 /* Info.plist */,
 			);
 			path = SudachiUITests;
+			sourceTree = "<group>";
+		};
+		5D50B49D1CC151D300C72070 /* MediaKeyTap */ = {
+			isa = PBXGroup;
+			children = (
+				5D50B49E1CC151D300C72070 /* Extensions.swift */,
+				5D50B49F1CC151D300C72070 /* MediaApplicationWatcher.swift */,
+				5D50B4A01CC151D300C72070 /* MediaKeyTap.h */,
+				5D50B4A11CC151D300C72070 /* MediaKeyTap.swift */,
+				5D50B4A21CC151D300C72070 /* MediaKeyTapInternals.swift */,
+			);
+			path = MediaKeyTap;
 			sourceTree = "<group>";
 		};
 		5D7B989D1CB6E974005F323E /* Music Browser */ = {
@@ -448,6 +470,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5D226F4E1CB846A300791276 /* SCFileUtilities.swift in Sources */,
+				5D50B4A61CC151D300C72070 /* MediaKeyTapInternals.swift in Sources */,
 				5DB0FC831CB083720034DB11 /* SCCommandUtilities.swift in Sources */,
 				5D4A1F591CB05E90003BA720 /* SCMPD.swift in Sources */,
 				5D4A1F541CB04885003BA720 /* SCNowPlayingProgressSlider.swift in Sources */,
@@ -461,13 +484,16 @@
 				5D2ED68B1CBAC46D00D4269F /* SCPlaylistActionsController.swift in Sources */,
 				5DC1EC671CB470CF0012A4FF /* SCThemingEngine.swift in Sources */,
 				5D4A1F571CB05E26003BA720 /* SCSong.swift in Sources */,
+				5D50B4A51CC151D300C72070 /* MediaKeyTap.swift in Sources */,
 				5D500C6C1CB5B1E30091B3FD /* SCSearchTextField.swift in Sources */,
 				5D6B24E01CB19C8C005E8321 /* SCPlaylistTableViewData.swift in Sources */,
 				5DC1EC6A1CB477B50012A4FF /* SwiftyJSON.swift in Sources */,
 				5DC2C70E1CB035A100D3F649 /* SCInvisibleDividerSplitView.swift in Sources */,
 				5D43D5821CC021C500B02BAA /* SCMusicBrowserDropView.swift in Sources */,
+				5D50B4A41CC151D300C72070 /* MediaApplicationWatcher.swift in Sources */,
 				5DC2C7121CB0371B00D3F649 /* SCPlaylistTableView.swift in Sources */,
 				5D6B24E41CB19D76005E8321 /* SCPlaylistTableCellView.swift in Sources */,
+				5D50B4A31CC151D300C72070 /* Extensions.swift in Sources */,
 				5D226F4C1CB8339D00791276 /* SCRasterizedImageView.swift in Sources */,
 				5D89A4FB1CB707AD00B4F979 /* SCMusicBrowserCollectionViewSelectionBox.swift in Sources */,
 				5D7B989F1CB6E98C005F323E /* SCMusicBrowserController.swift in Sources */,

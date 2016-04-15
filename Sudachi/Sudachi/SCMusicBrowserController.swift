@@ -466,6 +466,7 @@ class SCMusicBrowserController: NSObject {
         // Setup the menu items
         // Set the targets
         (NSApplication.sharedApplication().delegate as! AppDelegate).menuItemOpenSelectedItem.target = self;
+        (NSApplication.sharedApplication().delegate as! AppDelegate).menuItemOpenSelectedItemsEnter.target = self;
         (NSApplication.sharedApplication().delegate as! AppDelegate).menuItemSelectSearchField.target = self;
         (NSApplication.sharedApplication().delegate as! AppDelegate).menuItemSelectMusicBrowser.target = self;
         (NSApplication.sharedApplication().delegate as! AppDelegate).menuItemEnclosingFolder.target = self;
@@ -474,6 +475,7 @@ class SCMusicBrowserController: NSObject {
         
         // Set the actions
         (NSApplication.sharedApplication().delegate as! AppDelegate).menuItemOpenSelectedItem.action = Selector("openSelectedItems");
+        (NSApplication.sharedApplication().delegate as! AppDelegate).menuItemOpenSelectedItemsEnter.action = Selector("openSelectedItems");
         (NSApplication.sharedApplication().delegate as! AppDelegate).menuItemSelectSearchField.action = Selector("selectSearchField");
         (NSApplication.sharedApplication().delegate as! AppDelegate).menuItemSelectMusicBrowser.action = Selector("selectMusicBrowser");
         (NSApplication.sharedApplication().delegate as! AppDelegate).menuItemEnclosingFolder.action = Selector("openParentFolder");

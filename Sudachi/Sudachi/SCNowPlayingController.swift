@@ -9,7 +9,7 @@
 import Cocoa
 
 /// Controls the Now Playing/Media Controller view
-class SCNowPlayingController: NSObject {
+class SCNowPlayingController: NSObject, MediaKeyTapDelegate {
     /// The main view controller for the main window(The one this is in)
     @IBOutlet weak var mainViewController: ViewController!
     
@@ -232,6 +232,9 @@ class SCNowPlayingController: NSObject {
         nowPlayingNextButtonLeftSpacingConstraint.constant = SCThemingEngine().defaultEngine().nowPlayingPreviousNextButtonSpacing;
     }
     
+    /// The handler for the media key events
+    var mediaKeyTap: MediaKeyTap?
+    
     func initialize() {
         // Set the cover overlay box to allow fill colors
         nowPlayingCoverOverlayView.borderType = .LineBorder;
@@ -240,6 +243,10 @@ class SCNowPlayingController: NSObject {
         
         // Load the theme
         loadTheme();
+        
+        // Setup the media key listener
+        mediaKeyTap = MediaKeyTap(delegate: self);
+        mediaKeyTap?.start();
         
         // Update the status
         (NSApplication.sharedApplication().delegate as! AppDelegate).SudachiMPD.updateStatus();
@@ -252,5 +259,17 @@ class SCNowPlayingController: NSObject {
         
         // Set the loop for updating the song position label and progress slider(0.5 seconds just incase the app opens on a half second or something)
         NSTimer.scheduledTimerWithTimeInterval(NSTimeInterval(0.5), target: self, selector: Selector("updatePositionLabelAndProgressSlider"), userInfo: nil, repeats: true);
+    }
+    
+    func handleMediaKey(mediaKey: MediaKey, event: KeyEvent) {
+        // Switch on the key press and call the respective function
+        switch mediaKey {
+            case .PlayPause:
+                (NSApplication.sharedApplication().delegate as! AppDelegate).SudachiMPD.togglePlayPause();
+            case .Previous, .Rewind:
+                (NSApplication.sharedApplication().delegate as! AppDelegate).SudachiMPD.skipPrevious();
+            case .Next, .FastForward:
+                (NSApplication.sharedApplication().delegate as! AppDelegate).SudachiMPD.skipNext();
+        }
     }
 }

@@ -113,6 +113,12 @@
                                 <menu key="submenu" title="Browser" id="mP9-XX-buI">
                                     <items>
                                         <menuItem title="Open Selected Item(s)" keyEquivalent="o" id="L23-YX-Ueq"/>
+                                        <menuItem title="Open Selected Item(s)" alternate="YES" id="XDK-y4-jAZ">
+                                            <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
                                         <menuItem title="Enclosing Folder" keyEquivalent="" id="XbP-BF-V03"/>
                                         <menuItem title="Add Listed Songs" keyEquivalent="O" id="D0s-8n-P8P"/>
                                         <menuItem isSeparatorItem="YES" id="Edh-KG-9Vc"/>
@@ -224,6 +230,7 @@ DQ
                         <outlet property="menuItemClearPlaylist" destination="mE6-AP-gJx" id="yAk-Ry-IgO"/>
                         <outlet property="menuItemEnclosingFolder" destination="XbP-BF-V03" id="w4H-nx-dOS"/>
                         <outlet property="menuItemOpenSelectedItem" destination="L23-YX-Ueq" id="xOq-HM-it4"/>
+                        <outlet property="menuItemOpenSelectedItemsEnter" destination="XDK-y4-jAZ" id="iR8-Ij-9WG"/>
                         <outlet property="menuItemPlayFirstSong" destination="lPr-D3-cZO" id="ClA-tu-oh8"/>
                         <outlet property="menuItemPlaySelectedPlaylistItem" destination="d82-ZK-LKo" id="Xpg-FD-t5M"/>
                         <outlet property="menuItemRemoveSelectedPlaylistItem" destination="aqr-Qy-W1y" id="pfF-ua-LCY"/>
@@ -362,7 +369,7 @@ DQ
                         <rect key="frame" x="0.0" y="0.0" width="854" height="480"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <splitView dividerStyle="thin" vertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xYC-HK-D6L" userLabel="Master Split View" customClass="SCInvisibleDividerSplitView" customModule="Sudachi" customModuleProvider="target">
+                            <splitView wantsLayer="YES" dividerStyle="thin" vertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xYC-HK-D6L" userLabel="Master Split View" customClass="SCInvisibleDividerSplitView" customModule="Sudachi" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="854" height="480"/>
                                 <subviews>
                                     <customView id="6rP-7d-YGz" userLabel="Music Browser">
@@ -427,7 +434,7 @@ DQ
                                             <constraint firstItem="noW-mk-K5m" firstAttribute="leading" secondItem="6rP-7d-YGz" secondAttribute="leading" constant="10" id="yhu-5I-v2L"/>
                                         </constraints>
                                     </customView>
-                                    <customView id="jAP-6H-eUt" userLabel="Playlist and Now Playing View">
+                                    <customView wantsLayer="YES" id="jAP-6H-eUt" userLabel="Playlist and Now Playing View">
                                         <rect key="frame" x="557" y="0.0" width="297" height="480"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <subviews>
