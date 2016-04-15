@@ -97,7 +97,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     /// Starts the MPD server if it is not already running
     func launchMpdServer() {
-        /// TODO: Find out why the server crashes sometimes
+        /// TODO: Find out why the server crashes sometimes(Could just be my machine)
         // If the MPD server crashed...
         if(SudachiMPD.runMpcCommand(["status"], waitUntilExit: true, log: false) == "mpd error: Connection closed by the server") {
             // Kill the server

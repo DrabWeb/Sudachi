@@ -302,7 +302,7 @@ DQ
                             <customView wantsLayer="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kes-0s-1w7" userLabel="Content Container">
                                 <rect key="frame" x="0.0" y="0.0" width="250" height="250"/>
                                 <subviews>
-                                    <imageView wantsLayer="YES" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="LQy-ai-SRd" userLabel="Image View" customClass="SCRasterizedImageView" customModule="Sudachi" customModuleProvider="target">
+                                    <imageView wantsLayer="YES" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="LQy-ai-SRd" userLabel="Image View" customClass="SCMusicBrowserCollectionViewItemImageView" customModule="Sudachi" customModuleProvider="target">
                                         <rect key="frame" x="10" y="37" width="230" height="203"/>
                                         <shadow key="shadow" blurRadius="10">
                                             <size key="offset" width="0.0" height="-8"/>
