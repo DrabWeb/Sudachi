@@ -156,6 +156,12 @@ class SCThemingEngine {
     /// The optional mask for album art in the music browser
     var musicBrowserArtMask : NSImage = NSImage();
     
+    /// The text color for the "No Results" label that shows up when there are no search results
+    var musicBrowserNoResultsTextColor : NSColor = NSColor(hexString: "#887F90")!;
+    
+    /// The text color for the "Searching..." label that shows uo when a search is being processed
+    var musicBrowserSearchingTextColor : NSColor = NSColor(hexString: "#887F90")!;;
+    
     /// The color for the background of the playlist actions view
     var playlistActionsBackgroundColor : NSColor = NSColor(hexString: "#37333B")!;
     
@@ -289,6 +295,14 @@ class SCThemingEngine {
                     
                     if(NSColor(hexString: colorsJson["now-playing-behind-cover-background-color"].stringValue) != nil) {
                         self.nowPlayingBehindCoverBackgroundColor = NSColor(hexString: colorsJson["now-playing-behind-cover-background-color"].stringValue)!;
+                    }
+                    
+                    if(NSColor(hexString: colorsJson["music-browser-searching-text-color"].stringValue) != nil) {
+                        self.musicBrowserSearchingTextColor = NSColor(hexString: colorsJson["music-browser-searching-text-color"].stringValue)!;
+                    }
+                    
+                    if(NSColor(hexString: colorsJson["music-browser-no-results-text-color"].stringValue) != nil) {
+                        self.musicBrowserNoResultsTextColor = NSColor(hexString: colorsJson["music-browser-no-results-text-color"].stringValue)!;
                     }
                 }
                 

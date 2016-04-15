@@ -40,6 +40,18 @@ class SCMusicBrowserController: NSObject {
         searchFor(searchField.stringValue);
     }
     
+    /// The container view for anything to show when a search is being processed
+    @IBOutlet weak var searchingContainer: NSView!
+    
+    /// The label in searchingContainer that says "Searching..."
+    @IBOutlet weak var searchingLabel: NSTextField!
+    
+    /// The container view for anything to show when there are no results
+    @IBOutlet weak var noSearchResultsContainer: NSView!
+    
+    /// The label in noSearchResultsContainer that says "No Results"
+    @IBOutlet weak var noSearchResultsLabel: NSTextField!
+    
     /// Calls the same event as a double click on all the selected items in the music browser
     func openSelectedItems() {
         // Disable updating on the playlist(For speed improvements so it doesnt update on every possible song add)
@@ -292,6 +304,9 @@ class SCMusicBrowserController: NSObject {
         // Clear the results
         searchResultItems.removeAll();
         
+        // Make sure the no results container is hidden
+        noSearchResultsContainer.hidden = true;
+        
         // If the search string is blank...
         if(searchString == "") {
             // Go back to the directory the user was in
@@ -302,6 +317,9 @@ class SCMusicBrowserController: NSObject {
         }
         // If the search string has content...
         else {
+            // Show the searching container
+            searchingContainer.hidden = false;
+            
             /// The type that we will search by (any|Artist|Album|AlbumArtist|Title|Track|Name|Genre|Date|Composer|Performer|Comment|Disc)
             var searchType : String = "any";
             
@@ -324,7 +342,7 @@ class SCMusicBrowserController: NSObject {
             }
             
             // For every search result...
-            for(_, currentSearchResult) in (NSApplication.sharedApplication().delegate as! AppDelegate).SudachiMPD.runMpcCommand(["search", searchType, "\"" + searchString + "\""], waitUntilExit: true, log: true).componentsSeparatedByString("\n").enumerate() {
+            for(_, currentSearchResult) in (NSApplication.sharedApplication().delegate as! AppDelegate).SudachiMPD.runMpcCommand(["search", searchType, searchString], waitUntilExit: true, log: true).componentsSeparatedByString("\n").enumerate() {
                 // If the search result isnt blank(For some reason it puts an extra blank one on the end)...
                 if(currentSearchResult != "") {
                     // Clear the display grid
@@ -363,6 +381,15 @@ class SCMusicBrowserController: NSObject {
                     currentBrowserItemCollectionViewItem.openTarget = self;
                     currentBrowserItemCollectionViewItem.openAction = Selector("browserItemOpened:");
                 }
+            }
+            
+            // Hide the searching container
+            searchingContainer.hidden = true;
+            
+            // If searchResultItems is blank...
+            if(searchResultItems.isEmpty) {
+                // Show the no results container
+                noSearchResultsContainer.hidden = false;
             }
         }
     }
@@ -491,6 +518,12 @@ class SCMusicBrowserController: NSObject {
         // Set the minimum and maximum item sizes
         musicBrowserCollectionView.minItemSize = SCThemingEngine().defaultEngine().musicBrowserMinimumItemSize;
         musicBrowserCollectionView.maxItemSize = SCThemingEngine().defaultEngine().musicBrowserMaximumItemSize;
+        
+        // Set the searching labek color
+        searchingLabel.textColor = SCThemingEngine().defaultEngine().musicBrowserSearchingTextColor;
+        
+        // Set the no results label color
+        noSearchResultsLabel.textColor = SCThemingEngine().defaultEngine().musicBrowserNoResultsTextColor;
     }
     
     func initialize() {

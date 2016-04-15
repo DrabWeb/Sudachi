@@ -416,20 +416,70 @@ DQ
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </scroller>
                                             </scrollView>
-                                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="UJh-ss-5Q0" userLabel="Drop View" customClass="SCMusicBrowserDropView" customModule="Sudachi" customModuleProvider="target">
+                                            <customView hidden="YES" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="TCM-9I-ADd" userLabel="Searching Container">
+                                                <rect key="frame" x="10" y="10" width="536" height="431"/>
+                                                <subviews>
+                                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="iB9-cT-QEr" userLabel="Label">
+                                                        <rect key="frame" x="181" y="208" width="175" height="36"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="36" id="IKI-aN-M7X"/>
+                                                            <constraint firstAttribute="width" constant="171" id="mlk-OA-VaY"/>
+                                                        </constraints>
+                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Searching..." id="x4B-MM-CfL">
+                                                            <font key="font" metaFont="system" size="30"/>
+                                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                    </textField>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="iB9-cT-QEr" firstAttribute="centerX" secondItem="TCM-9I-ADd" secondAttribute="centerX" id="dqR-vG-dF0"/>
+                                                    <constraint firstItem="iB9-cT-QEr" firstAttribute="centerY" secondItem="TCM-9I-ADd" secondAttribute="centerY" constant="-10" id="nUy-3B-PS5"/>
+                                                </constraints>
+                                            </customView>
+                                            <customView hidden="YES" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="f2l-G6-dMo" userLabel="No Search Results Container">
+                                                <rect key="frame" x="10" y="10" width="536" height="431"/>
+                                                <subviews>
+                                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oK5-Pf-m21" userLabel="Label">
+                                                        <rect key="frame" x="192" y="208" width="152" height="36"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="148" id="TNp-ss-IoC"/>
+                                                            <constraint firstAttribute="height" constant="36" id="qfX-Ki-lOp"/>
+                                                        </constraints>
+                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="No Results" id="Pvz-Zo-kZB">
+                                                            <font key="font" metaFont="system" size="30"/>
+                                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                    </textField>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="oK5-Pf-m21" firstAttribute="centerX" secondItem="f2l-G6-dMo" secondAttribute="centerX" id="KAw-BQ-Ng8"/>
+                                                    <constraint firstItem="oK5-Pf-m21" firstAttribute="centerY" secondItem="f2l-G6-dMo" secondAttribute="centerY" constant="-10" id="nwe-UL-TsS"/>
+                                                </constraints>
+                                            </customView>
+                                            <customView horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="UJh-ss-5Q0" userLabel="Drop View" customClass="SCMusicBrowserDropView" customModule="Sudachi" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="556" height="441"/>
                                             </customView>
                                         </subviews>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="UJh-ss-5Q0" secondAttribute="trailing" id="1Pd-qF-6rs"/>
                                             <constraint firstItem="noW-mk-K5m" firstAttribute="top" secondItem="RJZ-m2-ktm" secondAttribute="bottom" constant="10" id="2A2-le-saa"/>
+                                            <constraint firstAttribute="bottom" secondItem="f2l-G6-dMo" secondAttribute="bottom" constant="10" id="3Wk-sd-XXD"/>
                                             <constraint firstItem="UJh-ss-5Q0" firstAttribute="top" secondItem="RJZ-m2-ktm" secondAttribute="bottom" constant="10" id="AmE-G0-fHi"/>
                                             <constraint firstItem="RJZ-m2-ktm" firstAttribute="top" secondItem="6rP-7d-YGz" secondAttribute="top" constant="10" id="LkP-eg-Y6w"/>
+                                            <constraint firstAttribute="trailing" secondItem="TCM-9I-ADd" secondAttribute="trailing" constant="10" id="Muf-9z-F7D"/>
+                                            <constraint firstItem="f2l-G6-dMo" firstAttribute="leading" secondItem="6rP-7d-YGz" secondAttribute="leading" constant="10" id="UBE-bB-dLt"/>
+                                            <constraint firstItem="TCM-9I-ADd" firstAttribute="top" secondItem="RJZ-m2-ktm" secondAttribute="bottom" constant="10" id="VtP-Uu-kV4"/>
                                             <constraint firstAttribute="trailing" secondItem="RJZ-m2-ktm" secondAttribute="trailing" constant="10" id="Yy7-oz-tkL"/>
+                                            <constraint firstAttribute="bottom" secondItem="TCM-9I-ADd" secondAttribute="bottom" constant="10" id="csx-1t-eUO"/>
+                                            <constraint firstItem="f2l-G6-dMo" firstAttribute="top" secondItem="RJZ-m2-ktm" secondAttribute="bottom" constant="10" id="e6S-nm-FWa"/>
+                                            <constraint firstItem="TCM-9I-ADd" firstAttribute="leading" secondItem="6rP-7d-YGz" secondAttribute="leading" constant="10" id="gJe-ug-9M9"/>
                                             <constraint firstAttribute="bottom" secondItem="UJh-ss-5Q0" secondAttribute="bottom" id="hXX-EW-pqq"/>
                                             <constraint firstItem="RJZ-m2-ktm" firstAttribute="leading" secondItem="6rP-7d-YGz" secondAttribute="leading" constant="10" id="ic3-nn-s4o"/>
                                             <constraint firstAttribute="trailing" secondItem="noW-mk-K5m" secondAttribute="trailing" constant="10" id="kWr-Xh-kLD"/>
                                             <constraint firstItem="UJh-ss-5Q0" firstAttribute="leading" secondItem="6rP-7d-YGz" secondAttribute="leading" id="lTe-W9-Fom"/>
+                                            <constraint firstAttribute="trailing" secondItem="f2l-G6-dMo" secondAttribute="trailing" constant="10" id="nLH-mw-QVg"/>
                                             <constraint firstAttribute="bottom" secondItem="noW-mk-K5m" secondAttribute="bottom" id="vCE-Ta-Tau"/>
                                             <constraint firstItem="noW-mk-K5m" firstAttribute="leading" secondItem="6rP-7d-YGz" secondAttribute="leading" constant="10" id="yhu-5I-v2L"/>
                                         </constraints>
@@ -829,7 +879,11 @@ DQ
                         <outlet property="musicBrowserCollectionView" destination="u7x-VR-s5I" id="2X8-9J-1nG"/>
                         <outlet property="musicBrowserCollectionViewScrollView" destination="noW-mk-K5m" id="9AV-gh-6TW"/>
                         <outlet property="musicBrowserDropView" destination="UJh-ss-5Q0" id="Vzz-cu-rRc"/>
+                        <outlet property="noSearchResultsContainer" destination="f2l-G6-dMo" id="tjY-9X-cDp"/>
+                        <outlet property="noSearchResultsLabel" destination="oK5-Pf-m21" id="bbl-lK-BKU"/>
                         <outlet property="searchField" destination="RJZ-m2-ktm" id="e5G-dp-RyX"/>
+                        <outlet property="searchingContainer" destination="TCM-9I-ADd" id="ly1-fI-3CG"/>
+                        <outlet property="searchingLabel" destination="iB9-cT-QEr" id="kKo-Bw-I3d"/>
                     </connections>
                 </customObject>
                 <arrayController objectClassName="SCMusicBrowserItem" id="MKI-wj-Ntl" userLabel="Music Browser Array Controller">
