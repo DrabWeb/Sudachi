@@ -111,6 +111,9 @@ class SCNowPlayingController: NSObject, MediaKeyTapDelegate {
         mainViewController.updatePlaylistAndNowPlaying();
     }
     
+    /// The view for managing hovering the now playing view and showing the cover overlay when it's set to hidden
+    @IBOutlet weak var nowPlayingHoverView: SCNowPlayingHoverView!
+    
     /// Updates the Next, Previous and Play/Pause buttons to match the current status
     func updateMediaButtons() {
         // Play/Pause button
@@ -248,6 +251,13 @@ class SCNowPlayingController: NSObject, MediaKeyTapDelegate {
         mediaKeyTap = MediaKeyTap(delegate: self);
         mediaKeyTap?.start();
         
+        // Setup the hover view
+        nowPlayingHoverView.enteredTarget = self;
+        nowPlayingHoverView.enteredAction = Selector("mouseEntered");
+        
+        nowPlayingHoverView.exitedTarget = self;
+        nowPlayingHoverView.exitedAction = Selector("mouseExited");
+        
         // Update the status
         (NSApplication.sharedApplication().delegate as! AppDelegate).SudachiMPD.updateStatus();
         
@@ -259,6 +269,24 @@ class SCNowPlayingController: NSObject, MediaKeyTapDelegate {
         
         // Set the loop for updating the song position label and progress slider(0.5 seconds just incase the app opens on a half second or something)
         NSTimer.scheduledTimerWithTimeInterval(NSTimeInterval(0.5), target: self, selector: Selector("updatePositionLabelAndProgressSlider"), userInfo: nil, repeats: true);
+    }
+    
+    func mouseEntered() {
+        // If the now playing view cover overlay is set to be hidden...
+        if(!mainViewController.nowPlayingCoverOverlayVisible) {
+            // Show the cover overlay and progress slider
+            nowPlayingCoverOverlayView.hidden = false;
+            nowPlayingProgressSlider.hidden = false;
+        }
+    }
+    
+    func mouseExited() {
+        // If the now playing view cover overlay is set to be hidden...
+        if(!mainViewController.nowPlayingCoverOverlayVisible) {
+            // Hide the cover overlay and progress slider
+            nowPlayingCoverOverlayView.hidden = true;
+            nowPlayingProgressSlider.hidden = true;
+        }
     }
     
     func handleMediaKey(mediaKey: MediaKey, event: KeyEvent) {

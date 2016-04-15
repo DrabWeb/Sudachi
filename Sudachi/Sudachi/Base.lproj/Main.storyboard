@@ -587,15 +587,22 @@ DQ
                                                                     <action selector="nowPlayingProgressSliderInteracted:" target="WsD-6C-jNV" id="igD-ws-qTo"/>
                                                                 </connections>
                                                             </slider>
+                                                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="eCO-nR-Jac" userLabel="Hover View" customClass="SCNowPlayingHoverView" customModule="Sudachi" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="0.0" width="297" height="183"/>
+                                                            </customView>
                                                         </subviews>
                                                         <constraints>
                                                             <constraint firstAttribute="bottom" secondItem="zVM-wN-qQB" secondAttribute="bottom" constant="-5" id="0jP-T9-lDP"/>
+                                                            <constraint firstItem="eCO-nR-Jac" firstAttribute="leading" secondItem="X1B-Wo-1Se" secondAttribute="leading" id="0te-c9-Suh"/>
+                                                            <constraint firstAttribute="trailing" secondItem="eCO-nR-Jac" secondAttribute="trailing" id="2jw-2w-eIg"/>
                                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="128" id="Fbe-Me-2N7"/>
                                                             <constraint firstAttribute="trailing" secondItem="dKc-Jt-XyJ" secondAttribute="trailing" id="Mbp-8U-0U4"/>
                                                             <constraint firstItem="zVM-wN-qQB" firstAttribute="leading" secondItem="X1B-Wo-1Se" secondAttribute="leading" constant="-1" id="NzM-2W-4PK"/>
                                                             <constraint firstItem="dKc-Jt-XyJ" firstAttribute="leading" secondItem="X1B-Wo-1Se" secondAttribute="leading" id="Qww-y0-2GS"/>
                                                             <constraint firstItem="dKc-Jt-XyJ" firstAttribute="top" secondItem="X1B-Wo-1Se" secondAttribute="top" id="S7K-xf-C5M"/>
                                                             <constraint firstAttribute="trailing" secondItem="zVM-wN-qQB" secondAttribute="trailing" constant="-1" id="SFG-Xd-F5f"/>
+                                                            <constraint firstAttribute="bottom" secondItem="eCO-nR-Jac" secondAttribute="bottom" id="jOb-zu-sI7"/>
+                                                            <constraint firstItem="eCO-nR-Jac" firstAttribute="top" secondItem="X1B-Wo-1Se" secondAttribute="top" id="kv7-Yv-L2E"/>
                                                             <constraint firstAttribute="bottom" secondItem="dKc-Jt-XyJ" secondAttribute="bottom" id="sOE-Jj-zPF"/>
                                                         </constraints>
                                                     </customView>
@@ -797,6 +804,7 @@ DQ
                         <outlet property="nowPlayingContainer" destination="X1B-Wo-1Se" id="sRE-uA-gqf"/>
                         <outlet property="nowPlayingCoverImageView" destination="4ap-5g-7nq" id="UA3-ay-NaQ"/>
                         <outlet property="nowPlayingCoverOverlayView" destination="Xp8-eD-P5q" id="46k-0U-W8H"/>
+                        <outlet property="nowPlayingHoverView" destination="eCO-nR-Jac" id="g1I-rJ-23m"/>
                         <outlet property="nowPlayingNextButton" destination="RhI-Ct-O2O" id="VfP-Ux-aPZ"/>
                         <outlet property="nowPlayingNextButtonLeftSpacingConstraint" destination="dDI-6d-Gp4" id="vSv-MH-CPg"/>
                         <outlet property="nowPlayingPausePlayButton" destination="ihw-wE-33b" id="lEK-v7-lgg"/>
