@@ -13,18 +13,18 @@ class SCMusicBrowserCollectionViewItemImageView: SCRasterizedImageView {
     /// Does this image view want an image?
     var wantsShadow : Bool = true;
     
-    override func viewDidMoveToWindow() {
-        super.viewDidMoveToWindow();
+    override func drawLayer(layer: CALayer, inContext ctx: CGContext) {
+        super.drawLayer(layer, inContext: ctx);
         
         // If we want a shadow...
         if(wantsShadow) {
             // Show the shadow
-            self.layer!.shadowOpacity = 1;
+            layer.shadowOpacity = 1;
         }
         // If we dont want a shadow...
         else {
             // Hide the shadow
-            self.layer!.shadowOpacity = 0;
+            layer.shadowOpacity = 0;
         }
     }
 }
