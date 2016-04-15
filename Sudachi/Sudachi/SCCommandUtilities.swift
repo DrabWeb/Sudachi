@@ -29,10 +29,15 @@ class SCCommandUtilities {
             if(argumentsString != "") {
                 // Remove the last space from argumentsString
                 argumentsString = argumentsString.substringToIndex(argumentsString.endIndex.predecessor());
+                
+                // Print to the log what command we are running
+                print("Running command \"" + NSString(string: launchPath).lastPathComponent + " " + argumentsString + "\"");
             }
-            
-            // Print to the log what command we are running
-            print("Running command \"" + NSString(string: launchPath).lastPathComponent + " " + argumentsString + "\"");
+            // If the arguments string is blank...
+            else {
+                // Print to the log what command we are running, without the space after the launch path
+                print("Running command \"" + NSString(string: launchPath).lastPathComponent + "\"");
+            }
         }
         
         // Reset lastCommandTask

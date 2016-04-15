@@ -14,6 +14,27 @@ class SCMPD {
     /// The path to the user's MPD music folder
     var mpdFolderPath : String = "";
     
+    /// Returns the names of every artist in the user's collection
+    func getAllArtistNames() -> [String] {
+        /// The names of all the artists in the user's collection
+        var artistNames : [String] = [];
+        
+        // For every artist in the output of "mpc listall --format %albumartist%" split at every line...
+        for(_, currentArtistName) in (NSApplication.sharedApplication().delegate as! AppDelegate).SudachiMPD.runMpcCommand(["listall", "--format", "%albumartist%"], waitUntilExit: true, log: false).componentsSeparatedByString("\n").enumerate() {
+            // If the artist name isnt blank...
+            if(currentArtistName != "") {
+                // If the artist name hasnt already been added to artistNames...
+                if(!artistNames.contains(currentArtistName)) {
+                    // Add the current artist to artistNames
+                    artistNames.append(currentArtistName);
+                }
+            }
+        }
+        
+        /// Return the artist names
+        return artistNames;
+    }
+    
     /// Updates the music database to match the music directory
     func updateDatabase() {
         // Do the "mpc update" command

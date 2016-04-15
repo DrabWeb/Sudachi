@@ -136,6 +136,9 @@ CA
 DQ
 </string>
                                         </menuItem>
+                                        <menuItem title="Play First Song" keyEquivalent="1" id="lPr-D3-cZO">
+                                            <modifierMask key="keyEquivalentModifierMask" shift="YES" command="YES"/>
+                                        </menuItem>
                                         <menuItem isSeparatorItem="YES" id="SpD-wG-uKn"/>
                                         <menuItem title="Switch Repeat Mode" keyEquivalent="R" id="RrU-wG-DbZ"/>
                                         <menuItem title="Shuffle Playlist" keyEquivalent="S" id="5ee-y9-jpd"/>
@@ -221,6 +224,7 @@ DQ
                         <outlet property="menuItemClearPlaylist" destination="mE6-AP-gJx" id="yAk-Ry-IgO"/>
                         <outlet property="menuItemEnclosingFolder" destination="XbP-BF-V03" id="w4H-nx-dOS"/>
                         <outlet property="menuItemOpenSelectedItem" destination="L23-YX-Ueq" id="xOq-HM-it4"/>
+                        <outlet property="menuItemPlayFirstSong" destination="lPr-D3-cZO" id="ClA-tu-oh8"/>
                         <outlet property="menuItemPlaySelectedPlaylistItem" destination="d82-ZK-LKo" id="Xpg-FD-t5M"/>
                         <outlet property="menuItemRemoveSelectedPlaylistItem" destination="aqr-Qy-W1y" id="pfF-ua-LCY"/>
                         <outlet property="menuItemSelectMusicBrowser" destination="ijE-Ys-YYE" id="1hj-Nh-e7y"/>
@@ -358,7 +362,7 @@ DQ
                         <rect key="frame" x="0.0" y="0.0" width="854" height="480"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <splitView wantsLayer="YES" dividerStyle="thin" vertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xYC-HK-D6L" userLabel="Master Split View" customClass="SCInvisibleDividerSplitView" customModule="Sudachi" customModuleProvider="target">
+                            <splitView dividerStyle="thin" vertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xYC-HK-D6L" userLabel="Master Split View" customClass="SCInvisibleDividerSplitView" customModule="Sudachi" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="854" height="480"/>
                                 <subviews>
                                     <customView id="6rP-7d-YGz" userLabel="Music Browser">
@@ -423,7 +427,7 @@ DQ
                                             <constraint firstItem="noW-mk-K5m" firstAttribute="leading" secondItem="6rP-7d-YGz" secondAttribute="leading" constant="10" id="yhu-5I-v2L"/>
                                         </constraints>
                                     </customView>
-                                    <customView wantsLayer="YES" id="jAP-6H-eUt" userLabel="Playlist and Now Playing View">
+                                    <customView id="jAP-6H-eUt" userLabel="Playlist and Now Playing View">
                                         <rect key="frame" x="557" y="0.0" width="297" height="480"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <subviews>
@@ -621,7 +625,7 @@ DQ
                                                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1rY-Nd-zac" userLabel="Artist Label">
                                                                                             <rect key="frame" x="14" y="22" width="272" height="17"/>
                                                                                             <constraints>
-                                                                                                <constraint firstAttribute="height" constant="17" id="2Xr-Tc-SMn"/>
+                                                                                                <constraint firstAttribute="height" relation="lessThanOrEqual" constant="17" id="2Xr-Tc-SMn"/>
                                                                                             </constraints>
                                                                                             <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="left" title="by Artist アーティスト" usesSingleLineMode="YES" id="D58-yJ-zeI">
                                                                                                 <font key="font" metaFont="system"/>
@@ -632,7 +636,7 @@ DQ
                                                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="OUw-ao-4sl" userLabel="Song Title Label">
                                                                                             <rect key="frame" x="14" y="43" width="272" height="19"/>
                                                                                             <constraints>
-                                                                                                <constraint firstAttribute="height" constant="19" id="B5S-4V-yVx"/>
+                                                                                                <constraint firstAttribute="height" relation="lessThanOrEqual" constant="19" id="B5S-4V-yVx"/>
                                                                                             </constraints>
                                                                                             <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="left" title="Song Title 曲名" usesSingleLineMode="YES" id="w56-du-Wit">
                                                                                                 <font key="font" metaFont="system" size="16"/>
@@ -642,11 +646,13 @@ DQ
                                                                                         </textField>
                                                                                     </subviews>
                                                                                     <constraints>
+                                                                                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="1rY-Nd-zac" secondAttribute="bottom" constant="13" id="4UM-f9-Ugs"/>
+                                                                                        <constraint firstItem="OUw-ao-4sl" firstAttribute="top" relation="greaterThanOrEqual" secondItem="MLc-0M-cYz" secondAttribute="top" constant="13" id="Aqu-7d-agv"/>
                                                                                         <constraint firstAttribute="trailing" secondItem="OUw-ao-4sl" secondAttribute="trailing" constant="13" id="BMJ-sc-ISf"/>
-                                                                                        <constraint firstAttribute="bottom" secondItem="1rY-Nd-zac" secondAttribute="bottom" constant="22" id="WiN-qi-dj2"/>
+                                                                                        <constraint firstItem="1rY-Nd-zac" firstAttribute="centerY" secondItem="MLc-0M-cYz" secondAttribute="centerY" constant="11.5" id="GzV-2M-a02"/>
                                                                                         <constraint firstAttribute="trailing" secondItem="1rY-Nd-zac" secondAttribute="trailing" constant="13" id="XCf-kp-jt6"/>
                                                                                         <constraint firstItem="OUw-ao-4sl" firstAttribute="leading" secondItem="MLc-0M-cYz" secondAttribute="leading" constant="16" id="efg-fe-GFQ"/>
-                                                                                        <constraint firstItem="OUw-ao-4sl" firstAttribute="top" secondItem="MLc-0M-cYz" secondAttribute="top" constant="22" id="keT-jb-GAf"/>
+                                                                                        <constraint firstItem="OUw-ao-4sl" firstAttribute="centerY" secondItem="MLc-0M-cYz" secondAttribute="centerY" constant="-10.5" id="lsw-T8-jS9"/>
                                                                                         <constraint firstItem="1rY-Nd-zac" firstAttribute="leading" secondItem="MLc-0M-cYz" secondAttribute="leading" constant="16" id="tEJ-H2-wfx"/>
                                                                                     </constraints>
                                                                                     <connections>

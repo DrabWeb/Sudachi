@@ -44,6 +44,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     /// Playlist/Play Selected Item (⌘↩︎)
     @IBOutlet weak var menuItemPlaySelectedPlaylistItem: NSMenuItem!
     
+    /// Playlist/Play First Song (⌘⇧1)
+    @IBOutlet weak var menuItemPlayFirstSong: NSMenuItem!
+    
     /// Playlist/Switch Repeat Mode (⌘⇧R)
     @IBOutlet weak var menuItemSwitchRepeatMode: NSMenuItem!
     

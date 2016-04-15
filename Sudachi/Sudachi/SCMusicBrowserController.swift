@@ -66,22 +66,31 @@ class SCMusicBrowserController: NSObject {
     
     /// Called when an item in the Music Browser is opened
     func browserItemOpened(browserItem : SCMusicBrowserItem) {
-        // If the item is a folder...
-        if(SCFileUtilities().isFolder((NSApplication.sharedApplication().delegate as! AppDelegate).SudachiMPD.mpdFolderPath + browserItem.representedObjectPath)) {
-            /// Display the items folder contents(First removes the MPD folder path from the represented path)
-            displayItemsFromRelativePath(browserItem.representedObjectPath);
+        // If the openSearch if browserItem is nil...
+        if(browserItem.openSearch == nil) {
+            // If the item is a folder...
+            if(SCFileUtilities().isFolder((NSApplication.sharedApplication().delegate as! AppDelegate).SudachiMPD.mpdFolderPath + browserItem.representedObjectPath)) {
+                /// Display the items folder contents(First removes the MPD folder path from the represented path)
+                displayItemsFromRelativePath(browserItem.representedObjectPath);
+            }
+                // If the item is a song...
+            else {
+                // Add the song to the playlist
+                /// The temporary song to pass to the SCMPD.addSongToPlaylist
+                let itemSong : SCSong = SCSong();
+                
+                // Set the path
+                itemSong.filePath = (NSApplication.sharedApplication().delegate as! AppDelegate).SudachiMPD.mpdFolderPath + browserItem.representedObjectPath;
+                
+                // Add the song to the playlist
+                (NSApplication.sharedApplication().delegate as! AppDelegate).SudachiMPD.addSongToPlaylist(itemSong, insert: false);
+            }
         }
-        // If the item is a song...
+        // If the openSearch if browserItem is not nil...
         else {
-            // Add the song to the playlist
-            /// The temporary song to pass to the SCMPD.addSongToPlaylist
-            let itemSong : SCSong = SCSong();
-            
-            // Set the path
-            itemSong.filePath = (NSApplication.sharedApplication().delegate as! AppDelegate).SudachiMPD.mpdFolderPath + browserItem.representedObjectPath;
-            
-            // Add the song to the playlist
-            (NSApplication.sharedApplication().delegate as! AppDelegate).SudachiMPD.addSongToPlaylist(itemSong, insert: false);
+            // Perform the search
+            searchFor(browserItem.openSearch!);
+            searchField.stringValue = lastSearch;
         }
     }
     
@@ -312,7 +321,7 @@ class SCMusicBrowserController: NSObject {
             }
             
             // For every search result...
-            for(_, currentSearchResult) in (NSApplication.sharedApplication().delegate as! AppDelegate).SudachiMPD.runMpcCommand(["search", searchType, searchString], waitUntilExit: true, log: true).componentsSeparatedByString("\n").enumerate() {
+            for(_, currentSearchResult) in (NSApplication.sharedApplication().delegate as! AppDelegate).SudachiMPD.runMpcCommand(["search", searchType, "\"" + searchString + "\""], waitUntilExit: true, log: true).componentsSeparatedByString("\n").enumerate() {
                 // If the search result isnt blank(For some reason it puts an extra blank one on the end)...
                 if(currentSearchResult != "") {
                     // Clear the display grid
@@ -402,12 +411,15 @@ class SCMusicBrowserController: NSObject {
         arrayController.addObjects(browserItems);
         
         // TODO: Fix this so it also works on the first load(Currently on the first load the layer is nil, and setting it hides the image)
-        // If we said to hide shadows on music browser items...
-        if(!SCThemingEngine().defaultEngine().musicBrowserItemShadowEnabled) {
-            // For every grid item...
-            for currentIndex in 0...((arrayController.arrangedObjects as! [AnyObject]).count - 1) {
-                // Remove the current grid item's layer
-                musicBrowserCollectionView.itemAtIndex(currentIndex)!.imageView!.layer?.shadowOpacity = 0;
+        // If there is at least one item in the array controller...
+        if((arrayController.arrangedObjects as! [AnyObject]).count > 0) {
+            // If we said to hide shadows on music browser items...
+            if(!SCThemingEngine().defaultEngine().musicBrowserItemShadowEnabled) {
+                // For every grid item...
+                for currentIndex in 0...((arrayController.arrangedObjects as! [AnyObject]).count - 1) {
+                    // Remove the current grid item's layer
+                    musicBrowserCollectionView.itemAtIndex(currentIndex)!.imageView!.layer?.shadowOpacity = 0;
+                }
             }
         }
     }
@@ -504,6 +516,9 @@ class SCMusicBrowserItem: NSObject {
     
     /// The path of the file/folder this item represents
     var representedObjectPath : String = "";
+    
+    /// The search to perform when this item is opened(Only performs if it is not nil)
+    var openSearch : String? = nil;
     
     /// Is this item a folder?
     var isFolder : Bool {

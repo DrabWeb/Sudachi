@@ -140,6 +140,12 @@ class SCPlaylistController: NSObject {
         }
     }
     
+    /// Starts playing the first song in the current playlist
+    func playFirstSongInCurrentPlaylist() {
+        // Start playing the first song
+        (NSApplication.sharedApplication().delegate as! AppDelegate).SudachiMPD.playSongInCurrentPlaylistAtIndex(1);
+    }
+    
     /// Loads the current MPD playlist into the table view
     func loadCurrentPlaylist() {
         // Load the current playlist
@@ -186,15 +192,25 @@ class SCPlaylistController: NSObject {
         (NSApplication.sharedApplication().delegate as! AppDelegate).menuItemRemoveSelectedPlaylistItem.target = self;
         (NSApplication.sharedApplication().delegate as! AppDelegate).menuItemClearPlaylist.target = self;
         (NSApplication.sharedApplication().delegate as! AppDelegate).menuItemSelectPlayList.target = self;
+        (NSApplication.sharedApplication().delegate as! AppDelegate).menuItemPlayFirstSong.target = self;
         
         // Set the actions
         (NSApplication.sharedApplication().delegate as! AppDelegate).menuItemPlaySelectedPlaylistItem.action = Selector("playSelectedItemFromPlaylist");
         (NSApplication.sharedApplication().delegate as! AppDelegate).menuItemRemoveSelectedPlaylistItem.action = Selector("removeSelectedItemsFromPlaylist");
         (NSApplication.sharedApplication().delegate as! AppDelegate).menuItemClearPlaylist.action = Selector("clearCurrentPlaylist");
         (NSApplication.sharedApplication().delegate as! AppDelegate).menuItemSelectPlayList.action = Selector("selectPlaylist");
+        (NSApplication.sharedApplication().delegate as! AppDelegate).menuItemPlayFirstSong.action = Selector("playFirstSongInCurrentPlaylist");
+    }
+    
+    /// Loads in the theme variables from SCThemingEngine
+    func loadTheme() {
+        
     }
     
     func initialize() {
+        // Load the theme
+        loadTheme();
+        
         // Update the playlist
         update();
         
