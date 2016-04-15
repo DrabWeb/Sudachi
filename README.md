@@ -9,8 +9,7 @@ A simple and customizable MPD front end for OSX
 ## Current Implemented Features
 * Theme Engine
 
-> * Customize all colors of the application
-> * Customize all images of the application(Media icons, folder icon, ETC.)
+> * Customize many things about the application appearance(Window, Images, Colors and more)
 
 * Player
 
@@ -56,7 +55,7 @@ A simple and customizable MPD front end for OSX
 ## Planned Features
 * Theme Engine
 
-> * Add more JSON files to customize more things(Like shadows, titlebar visibility, ETC.)
+> * Add JSON for more layout options
 
 * Player
 
