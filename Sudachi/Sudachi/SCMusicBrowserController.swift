@@ -468,6 +468,12 @@ class SCMusicBrowserController: NSObject {
         }
     }
     
+    /// Opens the root of the user's music folder
+    func openRootFolder() {
+        // Open the root folder
+        displayItemsFromRelativePath("");
+    }
+    
     /// Opens the parent folder of the current folder(Does nothing if we are in the root of the music directory)
     func openParentFolder() {
         // If currentFolder isnt blank...
@@ -498,6 +504,7 @@ class SCMusicBrowserController: NSObject {
         (NSApplication.sharedApplication().delegate as! AppDelegate).menuItemEnclosingFolder.target = self;
         (NSApplication.sharedApplication().delegate as! AppDelegate).menuItemUpdateMpdDatabase.target = self;
         (NSApplication.sharedApplication().delegate as! AppDelegate).menuItemAddListedSongs.target = self;
+        (NSApplication.sharedApplication().delegate as! AppDelegate).menuItemHome.target = self;
         
         // Set the actions
         (NSApplication.sharedApplication().delegate as! AppDelegate).menuItemOpenSelectedItem.action = Selector("openSelectedItems");
@@ -507,6 +514,7 @@ class SCMusicBrowserController: NSObject {
         (NSApplication.sharedApplication().delegate as! AppDelegate).menuItemEnclosingFolder.action = Selector("openParentFolder");
         (NSApplication.sharedApplication().delegate as! AppDelegate).menuItemUpdateMpdDatabase.action = Selector("updateDatabse");
         (NSApplication.sharedApplication().delegate as! AppDelegate).menuItemAddListedSongs.action = Selector("openListedSongs");
+        (NSApplication.sharedApplication().delegate as! AppDelegate).menuItemHome.action = Selector("openRootFolder");
     }
     
     /// Loads in the theme variables from SCThemingEngine
@@ -537,7 +545,7 @@ class SCMusicBrowserController: NSObject {
         musicBrowserDropView.dropAction = Selector("filesDroppedIntoMusicBrowser:");
         
         // Display the root of the music folder
-        displayItemsFromRelativePath("");
+        openRootFolder();
     }
 }
 

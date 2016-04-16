@@ -119,7 +119,15 @@ DQ
 </string>
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                         </menuItem>
-                                        <menuItem title="Enclosing Folder" keyEquivalent="" id="XbP-BF-V03"/>
+                                        <menuItem title="Go" id="qC5-XM-l0r">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <menu key="submenu" title="Go" id="Qpa-Lr-JGK">
+                                                <items>
+                                                    <menuItem title="Enclosing Folder" keyEquivalent="" id="XbP-BF-V03"/>
+                                                    <menuItem title="Home" keyEquivalent="H" id="eab-NH-qYs"/>
+                                                </items>
+                                            </menu>
+                                        </menuItem>
                                         <menuItem title="Add Listed Songs" keyEquivalent="O" id="D0s-8n-P8P"/>
                                         <menuItem isSeparatorItem="YES" id="Edh-KG-9Vc"/>
                                         <menuItem title="Select Search Field" keyEquivalent="f" id="Esl-sH-SIM"/>
@@ -229,6 +237,7 @@ DQ
                         <outlet property="menuItemAddListedSongs" destination="D0s-8n-P8P" id="kfP-wT-RWR"/>
                         <outlet property="menuItemClearPlaylist" destination="mE6-AP-gJx" id="yAk-Ry-IgO"/>
                         <outlet property="menuItemEnclosingFolder" destination="XbP-BF-V03" id="w4H-nx-dOS"/>
+                        <outlet property="menuItemHome" destination="eab-NH-qYs" id="HEU-o0-QAO"/>
                         <outlet property="menuItemOpenSelectedItem" destination="L23-YX-Ueq" id="xOq-HM-it4"/>
                         <outlet property="menuItemOpenSelectedItemsEnter" destination="XDK-y4-jAZ" id="iR8-Ij-9WG"/>
                         <outlet property="menuItemPlayFirstSong" destination="lPr-D3-cZO" id="ClA-tu-oh8"/>
