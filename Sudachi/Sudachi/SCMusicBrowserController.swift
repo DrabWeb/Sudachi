@@ -346,6 +346,12 @@ class SCMusicBrowserController: NSObject {
                     searchCommandArguments.append(searchType);
                     searchCommandArguments.append(searchQuery);
                 }
+                // If there wasnt a ":" in the current search...
+                else {
+                    // Add the any type and set the query to the whole string
+                    searchCommandArguments.append("any");
+                    searchCommandArguments.append(currentSearch);
+                }
             }
             
             // For every search result...
