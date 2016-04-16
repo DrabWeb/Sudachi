@@ -294,7 +294,7 @@ class SCMusicBrowserController: NSObject {
     var searchResultItems : [SCMusicBrowserItem] = [];
     
     /// Searches for the given string and displays the results
-    func searchFor(var searchString : String) {
+    func searchFor(searchString : String) {
         // Print to the log what we are searching for
         print("Searching for \"\(searchString)\" in music browser");
         
@@ -320,29 +320,36 @@ class SCMusicBrowserController: NSObject {
             // Show the searching container
             searchingContainer.hidden = false;
             
-            /// The type that we will search by (any|Artist|Album|AlbumArtist|Title|Track|Name|Genre|Date|Composer|Performer|Comment|Disc)
-            var searchType : String = "any";
+            /// The arguments for "mpc search"
+            var searchCommandArguments : [String] = ["search"];
             
-            // If there was a ":" in the search string...
-            if(searchString.rangeOfString(":") != nil) {
-                // Set the search type to the string before the ":"
-                searchType = searchString.substringToIndex(searchString.rangeOfString(":")!.startIndex);
-                
-                // Remove anything before and including the ":" from searchString
-                searchString = searchString.substringFromIndex(searchString.rangeOfString(":")!.startIndex.successor());
-                
-                // If searchString isnt blank...
-                if(searchString != "") {
-                    // If the first character in searchString is a " "...
-                    if(searchString.substringToIndex(searchString.startIndex.successor()) == " ") {
-                        // Remove the first character
-                        searchString = searchString.substringFromIndex(searchString.startIndex.successor());
+            // For every string in the search string split at every ", "
+            for(_, currentSearch) in searchString.componentsSeparatedByString(", ").enumerate() {
+                // If there was a ":" in the current search...
+                if(currentSearch.rangeOfString(":") != nil) {
+                    /// The type to search for
+                    let searchType = currentSearch.substringToIndex(currentSearch.rangeOfString(":")!.startIndex);
+                    
+                    /// The query to search for
+                    var searchQuery = currentSearch.substringFromIndex(currentSearch.rangeOfString(":")!.startIndex.successor());
+                    
+                    // If searchQuery isnt blank...
+                    if(searchQuery != "") {
+                        // If the first character in searchQuery is a " "...
+                        if(searchQuery.substringToIndex(searchQuery.startIndex.successor()) == " ") {
+                            // Remove the first character
+                            searchQuery = searchQuery.substringFromIndex(searchQuery.startIndex.successor());
+                        }
                     }
+                    
+                    // Add the search type and query to the search arguments
+                    searchCommandArguments.append(searchType);
+                    searchCommandArguments.append(searchQuery);
                 }
             }
             
             // For every search result...
-            for(_, currentSearchResult) in (NSApplication.sharedApplication().delegate as! AppDelegate).SudachiMPD.runMpcCommand(["search", searchType, searchString], waitUntilExit: true, log: true).componentsSeparatedByString("\n").enumerate() {
+            for(_, currentSearchResult) in (NSApplication.sharedApplication().delegate as! AppDelegate).SudachiMPD.runMpcCommand(searchCommandArguments, waitUntilExit: true, log: true).componentsSeparatedByString("\n").enumerate() {
                 // If the search result isnt blank(For some reason it puts an extra blank one on the end)...
                 if(currentSearchResult != "") {
                     // Clear the display grid
