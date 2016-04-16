@@ -341,8 +341,8 @@ class SCMPD {
         /// The current playlist
         var currentPlaylist : [SCSong] = [];
         
-        /// The raw output of "mpc playlist --format "%title% .:'':. %artist% .:'':. %file% .:'':. %duration%", split at every new line
-        let currentPlaylistRaw : [String] = runMpcCommand(["playlist", "--format", "%title% .:'':. %artist% .:'':. %file% .:'':. %time%"], waitUntilExit: true, log: true).componentsSeparatedByString("\n");
+        /// The raw output of "mpc playlist --format %title% .:'':. %artist% .:'':. %file% .:'':. %time% .:'':. %genre%", split at every new line
+        let currentPlaylistRaw : [String] = runMpcCommand(["playlist", "--format", "%title% .:'':. %artist% .:'':. %file% .:'':. %time% .:'':. %genre%"], waitUntilExit: true, log: true).componentsSeparatedByString("\n");
         
         // For every item in currentPlaylistRaw...
         for(_, currentItem) in currentPlaylistRaw.enumerate() {
@@ -352,8 +352,8 @@ class SCMPD {
             /// The output of the MPC current command(first line), split at every ".:'':."(The separator)
             let currentRaw : [String] = currentItem.componentsSeparatedByString(" .:'':. ");
             
-            // If currentRaw has at least 4 items...
-            if(currentRaw.count >= 4) {
+            // If currentRaw has at least 5 items...
+            if(currentRaw.count >= 5) {
                 // Set the song's title to the first value in currentRaw
                 currentSong.title = currentRaw[0];
                 
@@ -382,6 +382,9 @@ class SCMPD {
                     currentSong.title = NSString(string: currentSong.filePath).lastPathComponent.stringByReplacingOccurrencesOfString("." + NSString(string: currentSong.filePath).pathExtension, withString: "");
                 }
                 
+                // Set the genre to the fifth value
+                currentSong.genre = currentRaw[4];
+                
                 // Add the current item to the current playlist array
                 currentPlaylist.append(currentSong);
             }
@@ -403,10 +406,10 @@ class SCMPD {
         let currentPlayingSong : SCSong = SCSong();
         
         /// The output of the MPC current command(first line), split at every ".:'':."(The separator)
-        let currentRaw : [String] = runMpcCommand(["--format", "%title% .:'':. %artist% .:'':. %file% .:'':. %time%"], waitUntilExit: true, log: true).componentsSeparatedByString("\n")[0].componentsSeparatedByString(" .:'':. ");
+        let currentRaw : [String] = runMpcCommand(["--format", "%title% .:'':. %artist% .:'':. %file% .:'':. %time% .:'':. %genre%"], waitUntilExit: true, log: true).componentsSeparatedByString("\n")[0].componentsSeparatedByString(" .:'':. ");
         
-        // If currentRaw has at least 4 items...
-        if(currentRaw.count >= 4) {
+        // If currentRaw has at least 5 items...
+        if(currentRaw.count >= 5) {
             // Set the song's title to the first value in currentRaw
             currentPlayingSong.title = currentRaw[0];
             
@@ -434,6 +437,9 @@ class SCMPD {
                 // Set the title to the filename without the extension
                 currentPlayingSong.title = NSString(string: currentPlayingSong.filePath).lastPathComponent.stringByReplacingOccurrencesOfString("." + NSString(string: currentPlayingSong.filePath).pathExtension, withString: "");
             }
+            
+            // Set the genre to the fifth value
+            currentSong.genre = currentRaw[4];
         }
         
         // Set currentSong

@@ -19,6 +19,9 @@ class SCSong: NSObject {
     /// The name of the song's artist
     var artist : String = "Unknown";
     
+    /// The genre of this song
+    var genre : String = "";
+    
     /// The duration of the song
     var duration : SCSongTime = SCSongTime();
     
