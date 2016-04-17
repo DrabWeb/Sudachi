@@ -321,4 +321,9 @@ extension SCPlaylistController: NSTableViewDelegate {
         // Always allow drops
         return true;
     }
+    
+    func tableView(tableView: NSTableView, rowViewForRow row: Int) -> NSTableRowView? {
+        // Return the custom playlist table view row class
+        return SCPlaylistTableViewRowView();
+    }
 }

@@ -66,6 +66,9 @@ class SCThemingEngine {
     /// The default secondary text color for the current playlist item
     var playlistCurrentSongSecondaryTextColor : NSColor = NSColor(hexString: "#9F97A5")!;
     
+    /// The background color for selected rows in the playlist table view
+    var playlistSelectedItemBackgroundColor : NSColor = NSColor(hexString: "#4D4752")!;
+    
     /// The font size for the title label in playlist items(In points)
     var playlistTitleFontSize : CGFloat = 16;
     
@@ -239,6 +242,10 @@ class SCThemingEngine {
                     
                     if(NSColor(hexString: colorsJson["playlist-current-song-secondary-text-color"].stringValue) != nil) {
                         self.playlistCurrentSongSecondaryTextColor = NSColor(hexString: colorsJson["playlist-current-song-secondary-text-color"].stringValue)!;
+                    }
+                    
+                    if(NSColor(hexString: colorsJson["playlist-selected-song-background-color"].stringValue) != nil) {
+                        self.playlistSelectedItemBackgroundColor = NSColor(hexString: colorsJson["playlist-selected-song-background-color"].stringValue)!;
                     }
                     
                     if(NSColor(hexString: colorsJson["now-playing-title-text-color"].stringValue) != nil) {

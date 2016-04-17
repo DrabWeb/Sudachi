@@ -8,6 +8,45 @@
 
 import Cocoa
 
+class SCPlaylistTableViewRowView : NSTableRowView {
+    
+    /// The previous background color of this row
+    var previousBackgroundColor : NSColor = NSColor.clearColor();
+    
+    override var selected : Bool {
+        didSet {
+            // If this item isnt selected and the previous background color wasnt clear...
+            if(!self.selected && previousBackgroundColor != NSColor.clearColor()) {
+                // Set the row's background color back to it's pre-selection color
+                (self.subviews[0] as! SCPlaylistTableCellView).layer?.backgroundColor = previousBackgroundColor.CGColor;
+            }
+        }
+    }
+    
+    override func drawSelectionInRect(dirtyRect: NSRect) {
+        // If the selection style isn't none...
+        if(self.selectionHighlightStyle != NSTableViewSelectionHighlightStyle.None) {
+            // Store the rows current background color in previousBackgroundColor
+            previousBackgroundColor = NSColor(CGColor: ((self.subviews[0] as! SCPlaylistTableCellView).layer?.backgroundColor)!)!;
+            
+            // Set the row's background color to clear
+            (self.subviews[0] as! SCPlaylistTableCellView).layer?.backgroundColor = NSColor.clearColor().CGColor;
+            
+            /// The NSRect to draw the selection box in
+            let selectionRect : NSRect = self.bounds;
+            
+            // Set the fill color
+            SCThemingEngine().defaultEngine().playlistSelectedItemBackgroundColor.setFill();
+            
+            /// The bezier path to draw the selection box in
+            let selectionPath : NSBezierPath = NSBezierPath(rect: selectionRect);
+            
+            // Draw the box
+            selectionPath.fill();
+        }
+    }
+}
+
 class SCPlaylistTableCellView: NSTableCellView {
     
     /// The song this cell represents
