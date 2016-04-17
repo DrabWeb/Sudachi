@@ -16,6 +16,49 @@ class SCPlaylistTableView: NSTableView {
         // Drawing code here.
     }
     
+    override func awakeFromNib() {
+        // Add the observer for the playlist table view's selection change notification
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("selectionChanged:"), name: NSTableViewSelectionDidChangeNotification, object: nil);
+    }
+    
+    /// The timer so playlist items get deselected after the selection doesnt change for 5 seconds
+    var deselectTimer : NSTimer = NSTimer();
+    
+    /// When the playlist table view's selection changes...
+    func selectionChanged(notification : NSNotification) {
+        // If the notification object was this table view...
+        if((notification.object as? SCPlaylistTableView) == self) {
+            // Invalidate the current timer
+            deselectTimer.invalidate();
+            
+            // Start a new timer for the deselect wait
+            deselectTimer = NSTimer.scheduledTimerWithTimeInterval(NSTimeInterval(5), target: self, selector: Selector("deselectAllItems"), userInfo: nil, repeats: false);
+        }
+    }
+    
+    /// Deselects all the items for this table view
+    func deselectAllItems() {
+        // Deselect all the items
+        self.deselectAll(self);
+    }
+    
+    override func rightMouseDown(theEvent: NSEvent) {
+        /// The index of the row that was right clicked
+        let row : Int = self.rowAtPoint(self.convertPoint(theEvent.locationInWindow, fromView: nil));
+        
+        // Select the row the mouse is over
+        self.selectRowIndexes(NSIndexSet(index: row), byExtendingSelection: false);
+        
+        // If the playlist has any items selected...
+        if(self.selectedRow != -1) {
+            /// The SCPlaylistTableCellView at the right clicked row index
+            let cellAtSelectedRow : SCPlaylistTableCellView = (self.rowViewAtRow(row, makeIfNecessary: false)!.subviews[0] as! SCPlaylistTableCellView);
+            
+            // Display the right click menu for the row
+            NSMenu.popUpContextMenu(cellAtSelectedRow.menuForEvent(theEvent)!, withEvent: theEvent, forView: cellAtSelectedRow);
+        }
+    }
+    
     // Override the alternate row colors
     private func alternateBackgroundColor() -> NSColor? {
         self.superview?.superview?.superview?.layer?.backgroundColor = SCThemingEngine().defaultEngine().playlistSecondAlternatingColor.CGColor;
