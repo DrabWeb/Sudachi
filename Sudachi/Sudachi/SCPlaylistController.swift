@@ -335,12 +335,12 @@ extension SCPlaylistController: NSTableViewDelegate {
                 // If the row we want to drag to is lower than the current row we are moving...
                 if(row < currentRow) {
                     // Move the current row
-                    (NSApplication.sharedApplication().delegate as! AppDelegate).SudachiMPD.movePlaylistItem(currentRow + 1, to: row + 1);
+                    (NSApplication.sharedApplication().delegate as! AppDelegate).SudachiMPD.movePlaylistItem(currentRow + 1, to: row + 1 + draggedSongCount);
                 }
                 // If the row we want to drag to is greater than the current row we are moving...
                 else {
                     // Move the current row
-                    (NSApplication.sharedApplication().delegate as! AppDelegate).SudachiMPD.movePlaylistItem(currentRow + 1, to: row);
+                    (NSApplication.sharedApplication().delegate as! AppDelegate).SudachiMPD.movePlaylistItem(currentRow + 1, to: row - draggedSongCount);
                 }
                 
                 // Add 1 to the dragged song count

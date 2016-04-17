@@ -27,6 +27,7 @@ A simple and customizable MPD front end for OSX
 > * Jump to song in playlist
 > * Highlight current song
 > * Clear playlist
+> * Drag reorder your playlist
 > * Drag songs in from Finder
 
 * Music Browser
@@ -63,7 +64,6 @@ A simple and customizable MPD front end for OSX
 
 * Playlist
 
-> * Add drag reordering of playlist items
 > * Otions to set the display format of playlist items
 
 * Music Browser
