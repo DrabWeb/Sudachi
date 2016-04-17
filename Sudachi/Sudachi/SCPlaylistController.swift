@@ -31,6 +31,9 @@ class SCPlaylistController: NSObject {
         return playlistSongArray;
     }
     
+    /// Are we reordering the playlist and not dragging from Finder?
+    var reorderingPlaylist : Bool = false;
+    
     /// The table view for displaying the playlist to the user
     @IBOutlet weak var playlistTableView: SCPlaylistTableView!
     
@@ -264,13 +267,22 @@ extension SCPlaylistController: NSTableViewDataSource {
 extension SCPlaylistController: NSTableViewDelegate {
     // http://stackoverflow.com/questions/2121907/drag-drop-reorder-rows-on-nstableview
     func tableView(tableView: NSTableView, writeRowsWithIndexes rowIndexes: NSIndexSet, toPasteboard pboard: NSPasteboard) -> Bool {
-        print("Write rows with indexes \(rowIndexes)");
+        reorderingPlaylist = true;
+        
+        var songRows : [Int] = [];
+        
+        for(_, currentRow) in rowIndexes.enumerate() {
+            songRows.append(currentRow);
+        }
+        
+        pboard.setPropertyList(songRows, forType: "SCPlaylistDraggingRowIndexes");
+        
         return true;
     }
     
     func tableView(tableView: NSTableView, validateDrop info: NSDraggingInfo, proposedRow row: Int, proposedDropOperation dropOperation: NSTableViewDropOperation) -> NSDragOperation {
-        // If the dragged files are in the MPD music folder...
-        if(String(NSPasteboard(name: NSDragPboard).propertyListForType(NSFilenamesPboardType)).containsString((NSApplication.sharedApplication().delegate as! AppDelegate).SudachiMPD.mpdFolderPath)) {
+        // If the dragged files are in the MPD music folder or a song in the playlist table view...
+        if(String(NSPasteboard(name: NSDragPboard).propertyListForType(NSFilenamesPboardType)).containsString((NSApplication.sharedApplication().delegate as! AppDelegate).SudachiMPD.mpdFolderPath) || NSPasteboard(name: NSDragPboard).propertyListForType("SCPlaylistDraggingRowIndexes") != nil) {
             // Say they can drop the files
             return NSDragOperation.Every;
         }
@@ -288,27 +300,51 @@ extension SCPlaylistController: NSTableViewDelegate {
         /// How many items we've added from dragging
         var draggedItemCount : Int = 0;
         
-        // For every dragged file...
-        for(_, currentFile) in (NSPasteboard(name: NSDragPboard).propertyListForType(NSFilenamesPboardType) as! [String]).enumerate() {
-            // If the current file is in the MPD folder...
-            if(currentFile.containsString((NSApplication.sharedApplication().delegate as! AppDelegate).SudachiMPD.mpdFolderPath)) {
-                // Add the song to the playlist add the drop row
-                print("Adding \(currentFile.stringByReplacingOccurrencesOfString((NSApplication.sharedApplication().delegate as! AppDelegate).SudachiMPD.mpdFolderPath, withString: ""))");
+        // If we are dragging from Finder...
+        if(!reorderingPlaylist) {
+            // For every dragged file...
+            for(_, currentFile) in (NSPasteboard(name: NSDragPboard).propertyListForType(NSFilenamesPboardType) as! [String]).enumerate() {
+                // If the current file is in the MPD folder...
+                if(currentFile.containsString((NSApplication.sharedApplication().delegate as! AppDelegate).SudachiMPD.mpdFolderPath)) {
+                    // Add the song to the playlist add the drop row
+                    print("Adding \(currentFile.stringByReplacingOccurrencesOfString((NSApplication.sharedApplication().delegate as! AppDelegate).SudachiMPD.mpdFolderPath, withString: ""))");
+                    
+                    /// The placeholder song for currentFile
+                    let fileSong : SCSong = SCSong();
+                    
+                    // Set the file path to the current file path
+                    fileSong.filePath = currentFile;
+                    
+                    // Add the song to the playlist
+                    (NSApplication.sharedApplication().delegate as! AppDelegate).SudachiMPD.addSongToPlaylist(fileSong, insert: false);
+                    
+                    // Move the song to the correct place in the playlist
+                    (NSApplication.sharedApplication().delegate as! AppDelegate).SudachiMPD.movePlaylistItem((NSApplication.sharedApplication().delegate as! AppDelegate).SudachiMPD.runMpcCommand(["playlist"], waitUntilExit: true, log: false).componentsSeparatedByString("\n").count - 1, to: row + 1 + draggedItemCount);
+                    
+                    // Add 1 to the dragged item count
+                    draggedItemCount++;
+                }
+            }
+        }
+        // If we are reordering the playlist...
+        else {
+            var draggedSongCount : Int = 0;
+            
+            // For every dragged file...
+            for(_, currentRow) in (NSPasteboard(name: NSDragPboard).propertyListForType("SCPlaylistDraggingRowIndexes") as! [Int]).enumerate() {
+                // If the row we want to drag to is lower than the current row we are moving...
+                if(row < currentRow) {
+                    // Move the current row
+                    (NSApplication.sharedApplication().delegate as! AppDelegate).SudachiMPD.movePlaylistItem(currentRow + 1, to: row + 1);
+                }
+                // If the row we want to drag to is greater than the current row we are moving...
+                else {
+                    // Move the current row
+                    (NSApplication.sharedApplication().delegate as! AppDelegate).SudachiMPD.movePlaylistItem(currentRow + 1, to: row);
+                }
                 
-                /// The placeholder song for currentFile
-                let fileSong : SCSong = SCSong();
-                
-                // Set the file path to the current file path
-                fileSong.filePath = currentFile;
-                
-                // Add the song to the playlist
-                (NSApplication.sharedApplication().delegate as! AppDelegate).SudachiMPD.addSongToPlaylist(fileSong, insert: false);
-                
-                // Move the song to the correct place in the playlist
-                (NSApplication.sharedApplication().delegate as! AppDelegate).SudachiMPD.movePlaylistItem((NSApplication.sharedApplication().delegate as! AppDelegate).SudachiMPD.runMpcCommand(["playlist"], waitUntilExit: true, log: false).componentsSeparatedByString("\n").count - 1, to: row + 1 + draggedItemCount);
-                
-                // Add 1 to the dragged item count
-                draggedItemCount += 1;
+                // Add 1 to the dragged song count
+                draggedSongCount++;
             }
         }
         
@@ -317,6 +353,9 @@ extension SCPlaylistController: NSTableViewDelegate {
         
         // Update the playlist
         update();
+        
+        // Say we arent reordering the playlist
+        reorderingPlaylist = false;
         
         // Always allow drops
         return true;

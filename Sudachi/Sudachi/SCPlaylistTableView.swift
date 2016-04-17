@@ -59,6 +59,16 @@ class SCPlaylistTableView: NSTableView {
         }
     }
     
+    override func mouseDown(theEvent: NSEvent) {
+        super.mouseDown(theEvent);
+        
+        /// The index of the row that was clicked
+        let row : Int = self.rowAtPoint(self.convertPoint(theEvent.locationInWindow, fromView: nil));
+        
+        // Click the row the cursor is above
+        (self.rowViewAtRow(row, makeIfNecessary: false)?.subviews[0] as! SCPlaylistTableCellView).mouseDown(theEvent);
+    }
+    
     // Override the alternate row colors
     private func alternateBackgroundColor() -> NSColor? {
         self.superview?.superview?.superview?.layer?.backgroundColor = SCThemingEngine().defaultEngine().playlistSecondAlternatingColor.CGColor;

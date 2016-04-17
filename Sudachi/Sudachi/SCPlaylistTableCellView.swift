@@ -17,8 +17,11 @@ class SCPlaylistTableViewRowView : NSTableRowView {
         didSet {
             // If this item isnt selected and the previous background color wasnt clear...
             if(!self.selected && previousBackgroundColor != NSColor.clearColor()) {
-                // Set the row's background color back to it's pre-selection color
-                (self.subviews[0] as! SCPlaylistTableCellView).layer?.backgroundColor = previousBackgroundColor.CGColor;
+                // If the first subview of this row is a SCPlaylistTableCellView...
+                if((self.subviews[0] as? SCPlaylistTableCellView) != nil) {
+                    // Set the row's background color back to it's pre-selection color
+                    (self.subviews[0] as! SCPlaylistTableCellView).layer?.backgroundColor = previousBackgroundColor.CGColor;
+                }
             }
         }
     }
@@ -26,11 +29,14 @@ class SCPlaylistTableViewRowView : NSTableRowView {
     override func drawSelectionInRect(dirtyRect: NSRect) {
         // If the selection style isn't none...
         if(self.selectionHighlightStyle != NSTableViewSelectionHighlightStyle.None) {
-            // Store the rows current background color in previousBackgroundColor
-            previousBackgroundColor = NSColor(CGColor: ((self.subviews[0] as! SCPlaylistTableCellView).layer?.backgroundColor)!)!;
-            
-            // Set the row's background color to clear
-            (self.subviews[0] as! SCPlaylistTableCellView).layer?.backgroundColor = NSColor.clearColor().CGColor;
+            // If the first subview of this row is a SCPlaylistTableCellView...
+            if((self.subviews[0] as? SCPlaylistTableCellView) != nil) {
+                // Store the rows current background color in previousBackgroundColor
+                previousBackgroundColor = NSColor(CGColor: ((self.subviews[0] as! SCPlaylistTableCellView).layer?.backgroundColor)!)!;
+                
+                // Set the row's background color to clear
+                (self.subviews[0] as! SCPlaylistTableCellView).layer?.backgroundColor = NSColor.clearColor().CGColor;
+            }
             
             /// The NSRect to draw the selection box in
             let selectionRect : NSRect = self.bounds;
