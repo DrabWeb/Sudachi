@@ -59,6 +59,9 @@
                                         </items>
                                     </menu>
                                 </popUpButtonCell>
+                                <connections>
+                                    <action selector="themePopupButtonInteracted:" target="qvH-To-a1q" id="K9A-PM-iPM"/>
+                                </connections>
                             </popUpButton>
                             <button focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="56g-Qy-dba" userLabel="Apply Button" customClass="SCButton" customModule="Sudachi" customModuleProvider="target">
                                 <rect key="frame" x="401" y="3" width="75" height="32"/>
@@ -74,19 +77,34 @@
                                     <action selector="applyButtonPressed:" target="qvH-To-a1q" id="ulK-S2-Zow"/>
                                 </connections>
                             </button>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="z88-An-Td0">
+                                <rect key="frame" x="8" y="10" width="299" height="17"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="295" id="hgX-hw-9SF"/>
+                                    <constraint firstAttribute="height" constant="17" id="kct-SK-aU8"/>
+                                </constraints>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Restart Sudachi for visual changes to take effect" id="1ro-ld-uLR">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                         <constraints>
                             <constraint firstItem="bPY-WF-OOm" firstAttribute="leading" secondItem="Pjb-AF-1qg" secondAttribute="leading" constant="10" id="0qS-2f-cXO"/>
                             <constraint firstItem="bPY-WF-OOm" firstAttribute="top" secondItem="Pjb-AF-1qg" secondAttribute="top" constant="7" id="79Y-hv-eub"/>
                             <constraint firstAttribute="trailing" secondItem="zXQ-bW-Qeu" secondAttribute="trailing" constant="10" id="7jN-g4-IWQ"/>
+                            <constraint firstAttribute="bottom" secondItem="z88-An-Td0" secondAttribute="bottom" constant="10" id="FAC-6l-hb8"/>
                             <constraint firstItem="zXQ-bW-Qeu" firstAttribute="leading" secondItem="bPY-WF-OOm" secondAttribute="trailing" constant="10" id="X7y-2U-pbY"/>
                             <constraint firstAttribute="bottom" secondItem="56g-Qy-dba" secondAttribute="bottom" constant="10" id="cxz-Tk-XgP"/>
                             <constraint firstAttribute="trailing" secondItem="56g-Qy-dba" secondAttribute="trailing" constant="10" id="eri-r4-7lJ"/>
                             <constraint firstItem="zXQ-bW-Qeu" firstAttribute="leading" secondItem="bPY-WF-OOm" secondAttribute="trailing" constant="10" id="i9s-nr-6Th"/>
                             <constraint firstItem="zXQ-bW-Qeu" firstAttribute="top" secondItem="Pjb-AF-1qg" secondAttribute="top" constant="6" id="uY8-fF-51j"/>
+                            <constraint firstItem="z88-An-Td0" firstAttribute="leading" secondItem="Pjb-AF-1qg" secondAttribute="leading" constant="10" id="xzr-2e-deU"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="restartLabel" destination="z88-An-Td0" id="fNG-AJ-7ac"/>
                         <outlet property="themeLabel" destination="bPY-WF-OOm" id="sd0-o0-htN"/>
                         <outlet property="themePopupButton" destination="zXQ-bW-Qeu" id="JsG-r7-vwT"/>
                     </connections>

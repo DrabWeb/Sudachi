@@ -296,7 +296,7 @@ class SCMusicBrowserController: NSObject {
     /// Searches for the given string and displays the results
     func searchFor(searchString : String) {
         // Print to the log what we are searching for
-        print("Searching for \"\(searchString)\" in music browser");
+        print("SCMusicBrowserController: Searching for \"\(searchString)\" in music browser");
         
         // Set last search
         lastSearch = searchString;

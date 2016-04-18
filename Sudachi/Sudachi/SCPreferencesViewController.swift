@@ -19,10 +19,25 @@ class SCPreferencesViewController: NSViewController {
     /// The popup button for setting the theme
     @IBOutlet var themePopupButton: NSPopUpButton!
     
+    /// When we click themePopupButton...
+    @IBAction func themePopupButtonInteracted(sender: AnyObject) {
+        // If we clicked the "Add from folder..." item...
+        if(themePopupButton.selectedItem?.title == "Add from folder...") {
+            // Prompt to install a theme
+            SCThemingEngine().defaultEngine().promptToInstallTheme();
+            
+            // Reload the menu items
+            addThemePopupButtonItems();
+        }
+    }
+    
     /// When we click the "Apply" button...
     @IBAction func applyButtonPressed(sender: AnyObject) {
         
     }
+    
+    /// The label to tell teh user they have to restart Sudachi for visual changes to take effect
+    @IBOutlet var restartLabel: NSTextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +47,65 @@ class SCPreferencesViewController: NSViewController {
         
         // Load the theme
         loadTheme();
+        
+        // Add the theme popup button menu items
+        addThemePopupButtonItems();
+    }
+    
+    /// Selects the current theme for themePopupButton
+    func selectCurrentTheme() {
+        // For every item in themePopupButton's item titles...
+        for(currentItemIndex, currentItemTitle) in themePopupButton.itemTitles.enumerate() {
+            // If the current item's title matches the title of the current theme...
+            if(currentItemTitle == NSString(string: SCThemingEngine().defaultEngine().currentThemePath).lastPathComponent.stringByReplacingOccurrencesOfString("." + NSString(string: SCThemingEngine().defaultEngine().currentThemePath).pathExtension, withString: "")) {
+                // Select this item
+                themePopupButton.selectItemAtIndex(currentItemIndex);
+                
+                // Stop the loop
+                return;
+            }
+            // If the current item's title is Default and the theme folder path is blank...
+            if(currentItemTitle == "Default" && SCThemingEngine().defaultEngine().currentThemePath == "") {
+                // Select this item
+                themePopupButton.selectItemAtIndex(currentItemIndex);
+                
+                // Stop the loop
+                return;
+            }
+        }
+    }
+    
+    /// Sets up the menu items in themePopupButton, and then selects the current theme
+    func addThemePopupButtonItems() {
+        // Remove all the current menu items
+        themePopupButton.menu?.removeAllItems();
+        
+        // Add the "Default" menu item
+        themePopupButton.addItemWithTitle("Default");
+        
+        do {
+            // For every file in the themes folder of the Sudachi application support folder...
+            for(_, currentFile) in try NSFileManager.defaultManager().contentsOfDirectoryAtPath(NSHomeDirectory() + "/Library/Application Support/Sudachi/themes").enumerate() {
+                // If the current file's extension is .sctheme and its a folder...
+                if(NSString(string: currentFile).pathExtension == "sctheme" && SCFileUtilities().isFolder(NSHomeDirectory() + "/Library/Application Support/Sudachi/themes/" + currentFile)) {
+                    // Add the current theme folder to them menu, without the extension
+                    themePopupButton.addItemWithTitle(currentFile.stringByReplacingOccurrencesOfString("." + NSString(string: currentFile).pathExtension, withString: ""));
+                }
+            }
+        }
+        catch let error as NSError {
+            // Print the error description
+            print("SCPreferencesViewController: Error reading themes directory, \(error.description)");
+        }
+        
+        // Add the "Add from folder..." menu item
+        themePopupButton.addItemWithTitle("Add from folder...");
+        
+        // Refresh the popup button's style
+        (themePopupButton as! SCPopUpButton).setMenuItemsTitleColorsAndFonts();
+        
+        // Select the current theme
+        selectCurrentTheme();
     }
     
     /// Loads in the theme variables from SCThemingEngine
@@ -56,9 +130,11 @@ class SCPreferencesViewController: NSViewController {
         
         // Set the label colors
         themeLabel.textColor = SCThemingEngine().defaultEngine().preferencesLabelColor;
+        restartLabel.textColor = SCThemingEngine().defaultEngine().preferencesLabelColor;
         
         // Set the label fonts
         themeLabel.font = SCThemingEngine().defaultEngine().setFontFamily(themeLabel.font!, size: SCThemingEngine().defaultEngine().preferencesLabelFontSize);
+        restartLabel.font = SCThemingEngine().defaultEngine().setFontFamily(themeLabel.font!, size: SCThemingEngine().defaultEngine().preferencesLabelFontSize);
     }
     
     /// Styles the window

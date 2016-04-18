@@ -45,7 +45,7 @@ class ViewController: NSViewController, NSWindowDelegate {
         (NSApplication.sharedApplication().delegate as! AppDelegate).mainWindow = window;
         
         // An example theme on my machine for testing
-        SCThemingEngine().defaultEngine().loadFromThemeFolder(NSHomeDirectory() + "/Library/Application Support/Sudachi/themes/Bright Pink.sctheme/");
+        SCThemingEngine().defaultEngine().loadFromThemeFolder(NSHomeDirectory() + "/Library/Application Support/Sudachi/themes/Bright Pink.sctheme");
         
         // Load the theme
         loadTheme();

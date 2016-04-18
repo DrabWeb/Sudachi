@@ -216,7 +216,7 @@ class SCMPD {
     /// Jumps to the given position in the current song
     func jumpToPosition(position : SCSongTime) {
         // Print to the log where we are jumping to
-        print("Jumping to \(position.string)");
+        print("SCMPD: Jumping to \(position.string)");
         
         // Seek to the given position
         runMpcCommand(["seek", position.string], waitUntilExit: false, log: false);

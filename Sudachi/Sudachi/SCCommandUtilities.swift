@@ -31,12 +31,12 @@ class SCCommandUtilities {
                 argumentsString = argumentsString.substringToIndex(argumentsString.endIndex.predecessor());
                 
                 // Print to the log what command we are running
-                print("Running command \"" + NSString(string: launchPath).lastPathComponent + " " + argumentsString + "\"");
+                print("SCCommandUtilities: Running command \"" + NSString(string: launchPath).lastPathComponent + " " + argumentsString + "\"");
             }
             // If the arguments string is blank...
             else {
                 // Print to the log what command we are running, without the space after the launch path
-                print("Running command \"" + NSString(string: launchPath).lastPathComponent + "\"");
+                print("SCCommandUtilities: Running command \"" + NSString(string: launchPath).lastPathComponent + "\"");
             }
         }
         

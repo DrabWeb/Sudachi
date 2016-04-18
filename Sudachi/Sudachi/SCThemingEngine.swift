@@ -9,6 +9,10 @@
 import Cocoa
 
 class SCThemingEngine {
+    
+    /// The path to the current theme(If blank its the default theme)
+    var currentThemePath : String = "";
+    
     /// The titlebar color of any window in the app
     var titlebarColor : NSColor = NSColor(hexString: "#1D1921")!;
     
@@ -203,6 +207,12 @@ class SCThemingEngine {
     
     /// Loads the theme from the given Sudachi theme folder(Extension must be .sctheme)
     func loadFromThemeFolder(var folderPath : String) {
+        // If we passed "" as the folder path(Meaning we want the default theme)...
+        if(folderPath == "") {
+            // Stop the function, the default theme is already loaded
+            return;
+        }
+        
         // If the folder exists...
         if(NSFileManager.defaultManager().fileExistsAtPath(folderPath)) {
             // If the extension is .sctheme...
@@ -510,6 +520,9 @@ class SCThemingEngine {
                 if(NSFileManager.defaultManager().fileExistsAtPath(folderPath + "/images/browser-art-mask.png")) {
                     self.musicBrowserArtMask = NSImage(contentsOfFile: folderPath + "/images/browser-art-mask.png")!;
                 }
+                
+                // Set the current theme path
+                currentThemePath = folderPath;
             }
             // If the extension isnt .sctheme...
             else {
@@ -553,6 +566,7 @@ class SCThemingEngine {
     }
     
     /// Updates the application's font antialiasing based on antialiasFont
+    /// TODO: Make this actually disable antialiasing
     func setFontAntialiasing() {
         // If we said not to antialias the font...
         if(!antialiasFont) {
@@ -567,6 +581,38 @@ class SCThemingEngine {
         
         // Synchronize the user defaults
         NSUserDefaults.standardUserDefaults().synchronize();
+    }
+    
+    /// Prompts the user to install a theme from a .sctheme folder
+    func promptToInstallTheme() {
+        /// The open panel to get the theme folder
+        let openPanel : NSOpenPanel = NSOpenPanel();
+        
+        // Set the prompt
+        openPanel.prompt = "Install theme";
+        
+        // Only allow folders with the extension ".sctheme"
+        openPanel.allowedFileTypes = ["sctheme"];
+        openPanel.canChooseDirectories = false;
+        openPanel.canChooseFiles = true;
+        
+        // Run the panel, and if we hit "Install theme"...
+        if(Bool(openPanel.runModal())) {
+            /// The path of the chosen theme to install
+            let chosenThemePath : String = openPanel.URL!.absoluteString.stringByReplacingOccurrencesOfString("file://", withString: "").stringByRemovingPercentEncoding!;
+            
+            // Print what theme we are installing
+            print("SCThemingEngine: Installing theme from folder \"\(chosenThemePath)\"");
+            
+            do {
+                // Move the theme folder over to the application's theme folder
+                try NSFileManager.defaultManager().moveItemAtPath(chosenThemePath, toPath: NSHomeDirectory() + "/Library/Application Support/Sudachi/themes/" + NSString(string: chosenThemePath).lastPathComponent);
+            }
+            catch let error as NSError {
+                // Print the error description
+                print("SCThemingEngine: Failed to move theme folder \"\(chosenThemePath)\" to \"\(NSHomeDirectory() + "/Library/Application Support/Sudachi/themes/" + NSString(string: chosenThemePath).lastPathComponent)\", \(error.description)");
+            }
+        }
     }
     
     /// Returns the default theming engine

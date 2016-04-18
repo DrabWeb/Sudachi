@@ -307,7 +307,7 @@ extension SCPlaylistController: NSTableViewDelegate {
                 // If the current file is in the MPD folder...
                 if(currentFile.containsString((NSApplication.sharedApplication().delegate as! AppDelegate).SudachiMPD.mpdFolderPath)) {
                     // Add the song to the playlist add the drop row
-                    print("Adding \(currentFile.stringByReplacingOccurrencesOfString((NSApplication.sharedApplication().delegate as! AppDelegate).SudachiMPD.mpdFolderPath, withString: ""))");
+                    print("SCPlaylistController: Adding \(currentFile.stringByReplacingOccurrencesOfString((NSApplication.sharedApplication().delegate as! AppDelegate).SudachiMPD.mpdFolderPath, withString: ""))");
                     
                     /// The placeholder song for currentFile
                     let fileSong : SCSong = SCSong();
