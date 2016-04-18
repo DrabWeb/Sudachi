@@ -1,6 +1,8 @@
 {
 	"titlebar-color": "#FBFEFB",
 	"window-background-color": "#FBFEFB",
+	"control-background-color": "#000000,0.05",
+	"control-text-color": "#000000,0.25",
 	"playlist-first-alternation-color": "#FBFEFB",
 	"playlist-second-alternation-color": "#FBFEFB",
 	"playlist-regular-text-color": "#BCBCBC",
@@ -24,5 +26,6 @@
 	"music-browser-selection-background-color": "#000000,0.05",
 	"music-browser-searching-text-color": "#BCBCBC",
 	"music-browser-no-results-text-color": "#BCBCBC",
-	"playlist-actions-background-color": "#FBFEFB"
+	"playlist-actions-background-color": "#FBFEFB",
+	"preferences-label-text-color": "#BCBCBC"
 }

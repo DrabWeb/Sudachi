@@ -27,6 +27,15 @@ class SCThemingEngine {
     /// The caret color for text fields
     var caretColor : NSColor = NSColor(hexString: "#665F6E")!;
     
+    /// The background color for controls(Buttons, popup buttons, ETC.)
+    var controlBackgroundColor : NSColor = NSColor(hexString: "#665F6E")!;
+    
+    /// The text color for controls(Buttons, popup buttons, ETC.)
+    var controlTextColor : NSColor = NSColor(hexString: "#211D26")!;
+    
+    /// The font size for controls(Buttons, popup buttons, ETC.)
+    var controlTextFontSize : CGFloat = 13;
+    
     /// The default icon for songs that dont have a cover
     var musicFileIcon : NSImage = NSImage(named: "Music File")!;
     
@@ -186,6 +195,12 @@ class SCThemingEngine {
     /// The image for the random button when random mode is off in the playlist actions view
     var playlistActionsRandomOffImage : NSImage = NSImage(named: "Playlist Random Off")!;
     
+    /// The color for preference labels in the preferences window
+    var preferencesLabelColor : NSColor = NSColor(hexString: "#887F90")!;
+    
+    /// The font size for preference labels in the preferences window
+    var preferencesLabelFontSize : CGFloat = 13;
+    
     /// Loads the theme from the given Sudachi theme folder(Extension must be .sctheme)
     func loadFromThemeFolder(var folderPath : String) {
         // If the folder exists...
@@ -214,6 +229,14 @@ class SCThemingEngine {
                     
                     if(NSColor(hexString: colorsJson["window-background-color"].stringValue) != nil) {
                         self.backgroundColor = NSColor(hexString: colorsJson["window-background-color"].stringValue)!;
+                    }
+                    
+                    if(NSColor(hexString: colorsJson["control-background-color"].stringValue) != nil) {
+                        self.controlBackgroundColor = NSColor(hexString: colorsJson["control-background-color"].stringValue)!;
+                    }
+                    
+                    if(NSColor(hexString: colorsJson["control-text-color"].stringValue) != nil) {
+                        self.controlTextColor = NSColor(hexString: colorsJson["control-text-color"].stringValue)!;
                     }
                     
                     if(NSColor(hexString: colorsJson["playlist-first-alternation-color"].stringValue) != nil) {
@@ -311,6 +334,10 @@ class SCThemingEngine {
                     if(NSColor(hexString: colorsJson["music-browser-no-results-text-color"].stringValue) != nil) {
                         self.musicBrowserNoResultsTextColor = NSColor(hexString: colorsJson["music-browser-no-results-text-color"].stringValue)!;
                     }
+                    
+                    if(NSColor(hexString: colorsJson["preferences-label-text-color"].stringValue) != nil) {
+                        self.preferencesLabelColor = NSColor(hexString: colorsJson["preferences-label-text-color"].stringValue)!;
+                    }
                 }
                 
                 // Load the font and size settings
@@ -364,6 +391,14 @@ class SCThemingEngine {
                     
                     if(fontsJson["music-browser-item-title-font-size"].exists()) {
                         musicBrowserItemTitleFontSize = CGFloat(fontsJson["music-browser-item-title-font-size"].floatValue);
+                    }
+                    
+                    if(fontsJson["control-title-font-size"].exists()) {
+                        controlTextFontSize = CGFloat(fontsJson["control-title-font-size"].floatValue);
+                    }
+                    
+                    if(fontsJson["preferences-label-font-size"].exists()) {
+                        preferencesLabelFontSize = CGFloat(fontsJson["preferences-label-font-size"].floatValue);
                     }
                 }
                 

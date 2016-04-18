@@ -31,6 +31,8 @@
 		5D6B24E01CB19C8C005E8321 /* SCPlaylistTableViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D6B24DF1CB19C8C005E8321 /* SCPlaylistTableViewData.swift */; };
 		5D6B24E21CB19CEB005E8321 /* SCPlaylistController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D6B24E11CB19CEB005E8321 /* SCPlaylistController.swift */; };
 		5D6B24E41CB19D76005E8321 /* SCPlaylistTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D6B24E31CB19D76005E8321 /* SCPlaylistTableCellView.swift */; };
+		5D6E70DA1CC43AC800B189BC /* SCPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D6E70D91CC43AC800B189BC /* SCPreferencesViewController.swift */; };
+		5D6E70DC1CC43E8900B189BC /* SCViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D6E70DB1CC43E8900B189BC /* SCViews.swift */; };
 		5D7103A61CC1974C005FE187 /* SCMusicBrowserCollectionViewItemImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7103A51CC1974C005FE187 /* SCMusicBrowserCollectionViewItemImageView.swift */; };
 		5D7701E51CC15475009008EC /* SCNowPlayingHoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7701E41CC15475009008EC /* SCNowPlayingHoverView.swift */; };
 		5D7B989F1CB6E98C005F323E /* SCMusicBrowserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7B989E1CB6E98C005F323E /* SCMusicBrowserController.swift */; };
@@ -95,6 +97,8 @@
 		5D6B24DF1CB19C8C005E8321 /* SCPlaylistTableViewData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCPlaylistTableViewData.swift; sourceTree = "<group>"; };
 		5D6B24E11CB19CEB005E8321 /* SCPlaylistController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCPlaylistController.swift; sourceTree = "<group>"; };
 		5D6B24E31CB19D76005E8321 /* SCPlaylistTableCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCPlaylistTableCellView.swift; sourceTree = "<group>"; };
+		5D6E70D91CC43AC800B189BC /* SCPreferencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCPreferencesViewController.swift; sourceTree = "<group>"; };
+		5D6E70DB1CC43E8900B189BC /* SCViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCViews.swift; sourceTree = "<group>"; };
 		5D7103A51CC1974C005FE187 /* SCMusicBrowserCollectionViewItemImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCMusicBrowserCollectionViewItemImageView.swift; sourceTree = "<group>"; };
 		5D7701E41CC15475009008EC /* SCNowPlayingHoverView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNowPlayingHoverView.swift; sourceTree = "<group>"; };
 		5D7B989E1CB6E98C005F323E /* SCMusicBrowserController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCMusicBrowserController.swift; sourceTree = "<group>"; };
@@ -163,6 +167,7 @@
 		5D4A1F4A1CB04499003BA720 /* Controllers and Views */ = {
 			isa = PBXGroup;
 			children = (
+				5D6E70D81CC43AB500B189BC /* Preferences */,
 				5D2ED6891CBAC45B00D4269F /* Playlist Actions */,
 				5D7B989D1CB6E974005F323E /* Music Browser */,
 				5D4A1F501CB0450A003BA720 /* Now Playing */,
@@ -207,6 +212,7 @@
 				5D500C6B1CB5B1E30091B3FD /* SCSearchTextField.swift */,
 				5D89A4FA1CB707AD00B4F979 /* SCMusicBrowserCollectionViewSelectionBox.swift */,
 				5D226F4B1CB8339D00791276 /* SCRasterizedImageView.swift */,
+				5D6E70DB1CC43E8900B189BC /* SCViews.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -315,6 +321,14 @@
 				5D50B4A21CC151D300C72070 /* MediaKeyTapInternals.swift */,
 			);
 			path = MediaKeyTap;
+			sourceTree = "<group>";
+		};
+		5D6E70D81CC43AB500B189BC /* Preferences */ = {
+			isa = PBXGroup;
+			children = (
+				5D6E70D91CC43AC800B189BC /* SCPreferencesViewController.swift */,
+			);
+			name = Preferences;
 			sourceTree = "<group>";
 		};
 		5D7B989D1CB6E974005F323E /* Music Browser */ = {
@@ -484,6 +498,7 @@
 				5D4C489D1CAF07D900258D95 /* ViewController.swift in Sources */,
 				5D4A1F521CB0455B003BA720 /* SCNowPlayingController.swift in Sources */,
 				5D4A1F491CB03F32003BA720 /* NSColorFromHex.swift in Sources */,
+				5D6E70DA1CC43AC800B189BC /* SCPreferencesViewController.swift in Sources */,
 				5D226F501CB848FD00791276 /* SCConstants.swift in Sources */,
 				5D7B98A51CB6EE86005F323E /* SCMusicBrowserCollectionViewItem.swift in Sources */,
 				5D4C489B1CAF07D900258D95 /* AppDelegate.swift in Sources */,
@@ -491,6 +506,7 @@
 				5D2ED68B1CBAC46D00D4269F /* SCPlaylistActionsController.swift in Sources */,
 				5DC1EC671CB470CF0012A4FF /* SCThemingEngine.swift in Sources */,
 				5D4A1F571CB05E26003BA720 /* SCSong.swift in Sources */,
+				5D6E70DC1CC43E8900B189BC /* SCViews.swift in Sources */,
 				5D50B4A51CC151D300C72070 /* MediaKeyTap.swift in Sources */,
 				5D500C6C1CB5B1E30091B3FD /* SCSearchTextField.swift in Sources */,
 				5D6B24E01CB19C8C005E8321 /* SCPlaylistTableViewData.swift in Sources */,

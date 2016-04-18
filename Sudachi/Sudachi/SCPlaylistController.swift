@@ -328,6 +328,7 @@ extension SCPlaylistController: NSTableViewDelegate {
         }
         // If we are reordering the playlist...
         else {
+            /// The amount of songs we drag reordered
             var draggedSongCount : Int = 0;
             
             // For every dragged file...
