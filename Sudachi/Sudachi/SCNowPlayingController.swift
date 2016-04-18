@@ -190,6 +190,92 @@ class SCNowPlayingController: NSObject, MediaKeyTapDelegate {
         
         // Update the media buttons
         updateMediaButtons();
+        
+        // Update the menubar media buttons
+        updateStatusItemImages();
+    }
+    
+    /// The next song status item for the menu bar
+    var nextStatusItem : NSStatusItem = NSStatusBar.systemStatusBar().statusItemWithLength(NSSquareStatusItemLength);
+    
+    /// The pause/play song status item for the menu bar
+    var pausePlayStatusItem : NSStatusItem = NSStatusBar.systemStatusBar().statusItemWithLength(NSSquareStatusItemLength);
+    
+    /// The previous song status item for the menu bar
+    var previousStatusItem : NSStatusItem = NSStatusBar.systemStatusBar().statusItemWithLength(NSSquareStatusItemLength);
+    
+    /// Adds the status items(Previous, Pause/Play and Next) to the menu bar
+    func addStatusItems() {
+        // Update the status item images
+        updateStatusItemImages();
+        
+        // Set the targets then actions
+        previousStatusItem.button?.target = self;
+        pausePlayStatusItem.button?.target = self;
+        nextStatusItem.button?.target = self;
+        
+        previousStatusItem.button?.action = Selector("skipPrevious");
+        pausePlayStatusItem.button?.action = Selector("togglePlayPause");
+        nextStatusItem.button?.action = Selector("skipNext");
+    }
+    
+    /// Updates the images of the status items
+    func updateStatusItemImages() {
+        /// The image for the previous song status item
+        var previousImage : NSImage = SCThemingEngine().defaultEngine().menubarSkipPreviousImage;
+        
+        /// The image for the pause/play song status item
+        var pausePlayImage : NSImage = NSImage();
+        
+        /// The image for the next song status item
+        var nextImage : NSImage = SCThemingEngine().defaultEngine().menubarSkipNextImage;
+        
+        // Play/Pause button
+        // If the current status is Paused/Stop...
+        if((NSApplication.sharedApplication().delegate as! AppDelegate).SudachiMPD.status == .Paused || (NSApplication.sharedApplication().delegate as! AppDelegate).SudachiMPD.status == .Stopped) {
+            // Set the Pause/Play image to the play icon
+            pausePlayImage = SCThemingEngine().defaultEngine().menubarPlayImage;
+        }
+            // If the current status is Playing...
+        else if((NSApplication.sharedApplication().delegate as! AppDelegate).SudachiMPD.status == .Playing) {
+            // Set the Pause/Play image to the pause icon
+            pausePlayImage = SCThemingEngine().defaultEngine().menubarPauseImage;
+        }
+        
+        // Set all the status item images to be templates
+        previousImage = (previousImage.copy() as! NSImage);
+        previousImage.template = true;
+        
+        pausePlayImage = (pausePlayImage.copy() as! NSImage);
+        pausePlayImage.template = true;
+        
+        nextImage = (nextImage.copy() as! NSImage);
+        nextImage.template = true;
+        
+        // Set the image sizes to fit the menu bar
+        previousImage.size = NSSize(width: NSStatusBar.systemStatusBar().thickness - 12, height: NSStatusBar.systemStatusBar().thickness - 12);
+        pausePlayImage.size = NSSize(width: NSStatusBar.systemStatusBar().thickness - 12, height: NSStatusBar.systemStatusBar().thickness - 12);
+        nextImage.size = NSSize(width: NSStatusBar.systemStatusBar().thickness - 12, height: NSStatusBar.systemStatusBar().thickness - 12);
+        
+        // Set the status item images
+        previousStatusItem.image = previousImage;
+        pausePlayStatusItem.image = pausePlayImage;
+        nextStatusItem.image = nextImage;
+    }
+    
+    /// Calls SudachiMPD.skipPrevious()
+    func skipPrevious() {
+        (NSApplication.sharedApplication().delegate as! AppDelegate).SudachiMPD.skipPrevious();
+    }
+    
+    /// Calls SudachiMPD.togglePlayPause()
+    func togglePlayPause() {
+        (NSApplication.sharedApplication().delegate as! AppDelegate).SudachiMPD.togglePlayPause();
+    }
+    
+    /// Calls SudachiMPD.skipNext()
+    func skipNext() {
+        (NSApplication.sharedApplication().delegate as! AppDelegate).SudachiMPD.skipNext();
     }
     
     /// Loads in the theme variables from SCThemingEngine
@@ -257,6 +343,9 @@ class SCNowPlayingController: NSObject, MediaKeyTapDelegate {
         
         nowPlayingHoverView.exitedTarget = self;
         nowPlayingHoverView.exitedAction = Selector("mouseExited");
+        
+        // Add the status items
+        addStatusItems();
         
         // Update the status
         (NSApplication.sharedApplication().delegate as! AppDelegate).SudachiMPD.updateStatus();

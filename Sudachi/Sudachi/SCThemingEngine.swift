@@ -136,6 +136,18 @@ class SCThemingEngine {
     /// The image for the play media icon
     var playImage : NSImage = NSImage(named: "Play")!;
     
+    /// The image for the skip previous menubar item
+    var menubarSkipPreviousImage : NSImage = NSImage(named: "Menubar Skip Previous")!;
+    
+    /// The image for the skip next menubar item
+    var menubarSkipNextImage : NSImage = NSImage(named: "Menubar Skip Next")!;
+    
+    /// The image for the pause menubar item
+    var menubarPauseImage : NSImage = NSImage(named: "Menubar Pause")!;
+    
+    /// The image for the play menubar item
+    var menubarPlayImage : NSImage = NSImage(named: "Menubar Play")!;
+    
     /// The color for the background of search fields
     var searchFieldBackgroundColor : NSColor = NSColor(hexString: "#37333B")!;
     

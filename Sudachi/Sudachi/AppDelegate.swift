@@ -20,6 +20,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     /// The preferences object for the application
     var preferences : SCPreferencesObject = SCPreferencesObject();
     
+    /// Sudachi/Menubar Mode
+    @IBOutlet weak var menuItemMenubarMode: NSMenuItem!
+    
     /// Sudachi/Update MPD Database (⌘⇧U)
     @IBOutlet weak var menuItemUpdateMpdDatabase: NSMenuItem!
     
@@ -98,6 +101,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         // Set the MPD folder
         SudachiMPD.mpdFolderPath = getMPDFolder();
+    }
+    
+    func menubarItemPressed() {
+        print("Press");
     }
     
     func applicationDidFinishLaunching(aNotification: NSNotification) {
