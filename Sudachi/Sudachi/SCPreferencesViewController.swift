@@ -33,10 +33,14 @@ class SCPreferencesViewController: NSViewController {
     
     /// When we click the "Apply" button...
     @IBAction func applyButtonPressed(sender: AnyObject) {
+        // Save the preferences
+        savePreferences();
         
+        // Close the window
+        preferencesWindow.close();
     }
     
-    /// The label to tell teh user they have to restart Sudachi for visual changes to take effect
+    /// The label to tell the user they have to restart Sudachi for visual changes to take effect
     @IBOutlet var restartLabel: NSTextField!
     
     override func viewDidLoad() {
@@ -50,6 +54,21 @@ class SCPreferencesViewController: NSViewController {
         
         // Add the theme popup button menu items
         addThemePopupButtonItems();
+    }
+    
+    /// Puts the entered preferences values into the global preferences object
+    func savePreferences() {
+        // Set the values
+        // If the chosen theme was Default...
+        if(themePopupButton.selectedItem!.title == "Default") {
+            // Set the theme path to ""
+            (NSApplication.sharedApplication().delegate as! AppDelegate).preferences.themePath = "";
+        }
+        // If we chose any other theme...
+        else {
+            // Set the theme path to the chosen item's path
+            (NSApplication.sharedApplication().delegate as! AppDelegate).preferences.themePath = NSHomeDirectory() + "/Library/Application Support/Sudachi/themes/" + themePopupButton.selectedItem!.title + ".sctheme";
+        }
     }
     
     /// Selects the current theme for themePopupButton

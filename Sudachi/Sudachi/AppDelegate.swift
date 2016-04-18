@@ -17,6 +17,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     /// The main window of the application
     var mainWindow : NSWindow? = nil;
     
+    /// The preferences object for the application
+    var preferences : SCPreferencesObject = SCPreferencesObject();
+    
     /// Sudachi/Update MPD Database (⌘⇧U)
     @IBOutlet weak var menuItemUpdateMpdDatabase: NSMenuItem!
     
@@ -84,6 +87,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBOutlet weak var menuItemSizeWindowToCover: NSMenuItem!
     
     func initialize() {
+        // Load the preferences
+        loadPreferences();
+        
         // Create the application support folder
         createApplicationSupportFolder();
         
@@ -192,6 +198,27 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             return String(data: NSData(contentsOfFile: NSHomeDirectory() + "/Library/Application Support/Sudachi/mpdfolder")!, encoding: NSUTF8StringEncoding)!;
         }
     }
+    
+    // Saves the preferences to user defaults
+    func savePreferences() {
+        // The data for the preferences object
+        let data = NSKeyedArchiver.archivedDataWithRootObject(preferences);
+        
+        // Set the standard user defaults preferences key to that data
+        NSUserDefaults.standardUserDefaults().setObject(data, forKey: "preferences");
+        
+        // Synchronize the data
+        NSUserDefaults.standardUserDefaults().synchronize();
+    }
+    
+    // Load the preferences from user defaults
+    func loadPreferences() {
+        // If we have any data to load...
+        if let data = NSUserDefaults.standardUserDefaults().objectForKey("preferences") as? NSData {
+            // Set the preferences object to the loaded object
+            preferences = (NSKeyedUnarchiver.unarchiveObjectWithData(data) as! SCPreferencesObject);
+        }
+    }
 
     func applicationWillTerminate(aNotification: NSNotification) {
         // Insert code here to tear down your application
@@ -205,6 +232,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 // Do nothing
             }
         }
+        
+        // Save the preferences
+        savePreferences();
     }
 }
 

@@ -21,7 +21,7 @@ class SCFileUtilities {
     
     /// Is the given file an image?
     func isImage(path : String) -> Bool {
-        // Return if teh image file types contains the passed file's extension
+        // Return if the image file types contains the passed file's extension
         return NSImage.imageFileTypes().contains(NSString(string: path).lastPathComponent);
     }
     
