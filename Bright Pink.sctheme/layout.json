@@ -1,3 +1,7 @@
 {
-	"now-playing-previous-next-spacing": 30
+	"now-playing-previous-next-spacing": 30,
+	"music-browser-item-min-width": 200,
+	"music-browser-item-min-height": 200,
+	"music-browser-item-max-width": 250,
+	"music-browser-item-max-height": 250 
 }

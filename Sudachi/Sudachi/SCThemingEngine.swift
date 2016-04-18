@@ -458,6 +458,22 @@ class SCThemingEngine {
                     if(layoutJson["now-playing-previous-next-spacing"].exists()) {
                         nowPlayingPreviousNextButtonSpacing = CGFloat(layoutJson["now-playing-previous-next-spacing"].floatValue);
                     }
+                    
+                    if(layoutJson["music-browser-item-min-width"].exists()) {
+                        musicBrowserMinimumItemSize = NSSize(width: CGFloat(layoutJson["music-browser-item-min-width"].floatValue), height: musicBrowserMinimumItemSize.height);
+                    }
+                    
+                    if(layoutJson["music-browser-item-min-height"].exists()) {
+                        musicBrowserMinimumItemSize = NSSize(width: musicBrowserMinimumItemSize.width, height: CGFloat(layoutJson["music-browser-item-min-height"].floatValue));
+                    }
+                    
+                    if(layoutJson["music-browser-item-max-width"].exists()) {
+                        musicBrowserMaximumItemSize = NSSize(width: CGFloat(layoutJson["music-browser-item-max-width"].floatValue), height: musicBrowserMaximumItemSize.height);
+                    }
+                    
+                    if(layoutJson["music-browser-item-max-height"].exists()) {
+                        musicBrowserMaximumItemSize = NSSize(width: musicBrowserMaximumItemSize.width, height: CGFloat(layoutJson["music-browser-item-max-height"].floatValue));
+                    }
                 }
                 
                 // Load images
