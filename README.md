@@ -8,13 +8,18 @@ A simple and customizable MPD front end for OSX
 * OSX 10.10 or greater(Tested on 10.11)
 
 ## Features
-* Theme Engine
+### Theme Engine
+
+<img src="https://raw.githubusercontent.com/DrabWeb/Sudachi/master/Screenshots/Theme%20Engine%20Default.png">
+<img src="https://raw.githubusercontent.com/DrabWeb/Sudachi/master/Screenshots/Theme%20Engine%20Custom.png">
 
 > * Customizable appearance with the Sudachi Theme Engine
 
 > * Like the bright pink theme? You can get it at <a href="https://a.pomf.cat/msepqk.zip">https://a.pomf.cat/msepqk.zip</a>
 
-* Player
+### Player
+
+<img src="https://raw.githubusercontent.com/DrabWeb/Sudachi/master/Screenshots/Player.png">
 
 > * Time scrubbing
 > * Current position/duration
@@ -22,7 +27,9 @@ A simple and customizable MPD front end for OSX
 > * Use Apple's media keys to control the player
 > * Loop your playlist/song, shuffle your playlist and use random mode for random song order
 
-* Playlist
+### Playlist
+
+<img src="https://raw.githubusercontent.com/DrabWeb/Sudachi/master/Screenshots/Playlist.png">
 
 > * Browse your collection and add songs quickly and easily
 > * Jump to a song in your playlist with a double click
@@ -31,12 +38,16 @@ A simple and customizable MPD front end for OSX
 > * Drag reorder your playlist songs
 > * Add songs to your playlist by dragging them from Finder
 
-* Music Browser
+### Music Browser
+
+<img src="https://raw.githubusercontent.com/DrabWeb/Sudachi/master/Screenshots/Music%20Browser.png">
 
 > * Browse your collection in a simple grid-based browser
 > * Quickly trigger MPD database updates with a keybind
 
-* Search
+### Search
+
+<img src="https://raw.githubusercontent.com/DrabWeb/Sudachi/master/Screenshots/Search.png">
 
 > * Search by any, or even multiple MPC supported terms
 
