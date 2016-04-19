@@ -5,41 +5,41 @@ A simple and customizable MPD front end for OSX
 
 ## Requirements
 * A working MPD setup
+* OSX 10.10 or greater(Tested on 10.11)
 
-## Current Implemented Features
+## Features
 * Theme Engine
 
-> * Customize many things about the application appearance(Window, Images, Colors and more)
+> * Customizable appearance with the Sudachi Theme Engine
+
+> * Like the bright pink theme? You can get it at <a href="https://a.pomf.cat/msepqk.zip">https://a.pomf.cat/msepqk.zip</a>
 
 * Player
 
-> * Pause/play
-> * Skip
 > * Time scrubbing
 > * Current position/duration
 > * Title and artist display
-> * Use Apple media keys
-> * Loop/Shuffle/Random buttons and keybinds
+> * Use Apple's media keys to control the player
+> * Loop your playlist/song, shuffle your playlist and use random mode for random song order
 
 * Playlist
 
-> * Add/Remove songs
-> * Jump to song in playlist
-> * Highlight current song
-> * Clear playlist
-> * Drag reorder your playlist
-> * Drag songs in from Finder
+> * Browse your collection and add songs quickly and easily
+> * Jump to a song in your playlist with a double click
+> * Highlight the current playing song
+> * Clear the playlist with a keybind
+> * Drag reorder your playlist songs
+> * Add songs to your playlist by dragging them from Finder
 
 * Music Browser
 
-> * Browse collection in a Finder-like browser
-> * Update MPD database with keybind
+> * Browse your collection in a simple grid-based browser
+> * Quickly trigger MPD database updates with a keybind
 
 * Search
 
-> * Search by any MPC supported term
+> * Search by any, or even multiple MPC supported terms
 
-> > * any
 > > * Artist
 > > * Album
 > > * AlbumArtist

@@ -666,6 +666,7 @@
 					/usr/local/Cellar/libmpdclient/2.10,
 					/usr/local/Cellar/libmpdclient/2.10/lib,
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = drabweb.Sudachi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Sudachi/Sudachi-Bridging-Header.h";
@@ -687,6 +688,7 @@
 					/usr/local/Cellar/libmpdclient/2.10,
 					/usr/local/Cellar/libmpdclient/2.10/lib,
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = drabweb.Sudachi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Sudachi/Sudachi-Bridging-Header.h";
