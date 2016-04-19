@@ -75,7 +75,7 @@ A simple and customizable MPD front end for OSX
 
 * Playlist
 
-> * Otions to set the display format of playlist items
+> * Options to set the display format of playlist items
 
 * Music Browser
 
