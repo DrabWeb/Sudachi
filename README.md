@@ -15,7 +15,7 @@ A simple and customizable MPD front end for OSX
 
 > * Customizable appearance with the Sudachi Theme Engine
 
-> * Like the bright pink theme? You can get it at <a href="https://a.pomf.cat/msepqk.zip">https://a.pomf.cat/msepqk.zip</a>
+> * Like the bright pink theme? You can get it at <a href="https://a.pomf.cat/msepqk.zip">https://a.pomf.cat/msepqk.zip</a>(If you dont know how to install it, go to the <a href="https://github.com/DrabWeb/Sudachi/wiki/Installing-themes">Installing Themes wiki page</a>)
 
 ### Player
 
