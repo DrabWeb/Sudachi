@@ -45,8 +45,17 @@ class SCSong: NSObject {
         for currentTag:AVMetadataItem in songAsset.metadataForFormat(AVMetadataFormatID3Metadata) as Array<AVMetadataItem> {
             // If the current tag is the artwork tag...
             if(currentTag.commonKey == "artwork") {
-                // Set the cover image to this tag's image
-                songCoverImage = NSImage(data: currentTag.dataValue!)!;
+                // If the current tag's data value isnt nil...
+                if(currentTag.dataValue != nil) {
+                    /// The image from this tag
+                    let tagImage : NSImage? = NSImage(data: currentTag.dataValue!);
+                    
+                    // If tagImage isnt nil...
+                    if(tagImage != nil) {
+                        // Set the cover image to tagImage
+                        songCoverImage = tagImage!;
+                    }
+                }
             }
         }
         
