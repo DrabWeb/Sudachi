@@ -151,11 +151,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     /// Attempts to get the user's MPD folder, and if it fails it prompts for it. Returns the path to the MPD folder
     func getMPDFolder() -> String {
+        /// The path to the MPD folder
+        var mpdFolderPath : String = "";
+        
         // If the user's MPD folder hasnt already been stored in Application Support...
         if(!NSFileManager.defaultManager().fileExistsAtPath(NSHomeDirectory() + "/Library/Application Support/Sudachi/mpdfolder")) {
-            /// The path to the MPD folder
-            var mpdFolderPath : String = "";
-            
             // If the ~/.mpdconf file exists...
             if(NSFileManager.defaultManager().fileExistsAtPath(NSHomeDirectory() + "/.mpdconf")) {
                 /// The contents of ~/.mpdconf
@@ -195,15 +195,24 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                     mpdFolderPath = mpdFolderOpenPanel.URL!.absoluteString.stringByReplacingOccurrencesOfString("file://", withString: "").stringByRemovingPercentEncoding!;
                 }
             }
-            
-            // Return the folder path
-            return mpdFolderPath;
         }
         // If it already has been stored...
         else {
-            // Return the contents of ~/Library/Application Support/Sudachi/mpdfolder
-            return String(data: NSData(contentsOfFile: NSHomeDirectory() + "/Library/Application Support/Sudachi/mpdfolder")!, encoding: NSUTF8StringEncoding)!;
+            // Set mpdFolderPath to the contents of ~/Library/Application Support/Sudachi/mpdfolder
+            mpdFolderPath = String(data: NSData(contentsOfFile: NSHomeDirectory() + "/Library/Application Support/Sudachi/mpdfolder")!, encoding: NSUTF8StringEncoding)!;
         }
+        
+        // If mpdFolderPath isnt balnk...
+        if(mpdFolderPath != "") {
+            // If the last character in mpdFolderPath isnt a "/"...
+            if(mpdFolderPath.substringFromIndex(mpdFolderPath.endIndex.predecessor()) != "/") {
+                // Add a "/" to the end of mpdFolderPath
+                mpdFolderPath = mpdFolderPath + "/";
+            }
+        }
+        
+        // Return the MPD folder path
+        return mpdFolderPath;
     }
     
     // Saves the preferences to user defaults
