@@ -124,7 +124,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         SCCommandUtilities().runCommand("/usr/local/bin/mpd", arguments: [], waitUntilExit: true, log: true);
     }
     
-    /// Creates the application support folder for Sudachi if it doesnt already exist
+    /// Creates the application support folder for Sudachi if it doesnt already exist(And the other folders sudachi need inside of it)
     func createApplicationSupportFolder() {
         // If the application support folder doesnt exist...
         if(!NSFileManager.defaultManager().fileExistsAtPath(NSHomeDirectory() + "/Library/Application Support/Sudachi/")) {
@@ -202,7 +202,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             mpdFolderPath = String(data: NSData(contentsOfFile: NSHomeDirectory() + "/Library/Application Support/Sudachi/mpdfolder")!, encoding: NSUTF8StringEncoding)!;
         }
         
-        // If mpdFolderPath isnt balnk...
+        // If mpdFolderPath isnt blank...
         if(mpdFolderPath != "") {
             // If the last character in mpdFolderPath isnt a "/"...
             if(mpdFolderPath.substringFromIndex(mpdFolderPath.endIndex.predecessor()) != "/") {

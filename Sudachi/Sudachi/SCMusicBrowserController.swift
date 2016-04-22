@@ -147,6 +147,7 @@ class SCMusicBrowserController: NSObject {
             // Load the item's display image
             currentBrowserItem.grabAndSetDisplayImage();
             
+            
             // If this item isnt a folder...
             if(!currentBrowserItem.isFolder) {
                 // Set the display title to the file's name without the extension
@@ -188,6 +189,9 @@ class SCMusicBrowserController: NSObject {
                     // Set the target and action
                     currentBrowserItemCollectionViewItem.openTarget = self;
                     currentBrowserItemCollectionViewItem.openAction = Selector("browserItemOpened:");
+                    
+                    // Load the item's display image
+                    currentBrowserItemCollectionViewItem.imageView?.image = (currentBrowserItemCollectionViewItem.representedObject as! SCMusicBrowserItem).displayImage;
                 }
             }
             else {
