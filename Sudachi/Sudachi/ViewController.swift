@@ -3,7 +3,6 @@
 //  Sudachi
 //
 //  Created by Seth on 2016-04-01.
-//  Copyright © 2016 DrabWeb. All rights reserved.
 //
 
 import Cocoa

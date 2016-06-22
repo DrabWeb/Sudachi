@@ -3,14 +3,13 @@
 //  Sudachi
 //
 //  Created by Seth on 2016-04-02.
-//  Copyright © 2016 DrabWeb. All rights reserved.
 //
 
 import Cocoa
 
 class SCCommandUtilities {
     // The NSTask for the last command we ran
-    var lastCommandTask : NSTask!;
+    var lastCommandTask : NSTask? = nil;
     
     // Runs the specified command as a shell script, returns the output
     func runCommand(launchPath : String, arguments : [String], waitUntilExit : Bool, log : Bool) -> String {
@@ -44,27 +43,27 @@ class SCCommandUtilities {
         lastCommandTask = NSTask();
         
         // Set the launch path to the launch path we passed
-        lastCommandTask.launchPath = launchPath;
+        lastCommandTask?.launchPath = launchPath;
         
         // Set the arguments to be the arguments string split at every space
-        lastCommandTask.arguments = arguments;
+        lastCommandTask?.arguments = arguments;
         
         // Create a pipe to get the output
         let pipe = NSPipe();
         
         // Set the tasks output to our pipe
-        lastCommandTask.standardOutput = pipe;
+        lastCommandTask?.standardOutput = pipe;
         
         // Set the error output to our pipe
-        lastCommandTask.standardError = pipe;
+        lastCommandTask?.standardError = pipe;
         
         // Launch the task
-        lastCommandTask.launch();
+        lastCommandTask?.launch();
         
         // If we said to wait until the command finished...
         if(waitUntilExit) {
             // Wait until it is done
-            lastCommandTask.waitUntilExit();
+            lastCommandTask?.waitUntilExit();
         }
         
         // Create a data variable with the data output of the command

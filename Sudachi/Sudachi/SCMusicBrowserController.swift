@@ -3,7 +3,6 @@
 //  Sudachi
 //
 //  Created by Seth on 2016-04-07.
-//  Copyright © 2016 DrabWeb. All rights reserved.
 //
 
 import Cocoa
@@ -146,7 +145,6 @@ class SCMusicBrowserController: NSObject {
             
             // Load the item's display image
             currentBrowserItem.grabAndSetDisplayImage();
-            
             
             // If this item isnt a folder...
             if(!currentBrowserItem.isFolder) {
