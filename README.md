@@ -4,7 +4,7 @@
 A simple and customizable MPD front end for OSX
 
 ## Outaded and abandoned
-Sudachi is outdated and not stable, it is being replaced by [Azusa](github.com/DrabWeb/Azusa)
+Sudachi is outdated and not stable, it is being replaced by [Azusa](https://github.com/DrabWeb/Azusa)
 
 ## Requirements
 * A working MPD setup
